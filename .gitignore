@@ -1,20 +1,22 @@
-# 自定义
+# 常规
 _ig_**
 *._ig_
 稿纸.*
 稿纸/
 _g_**
-*.py
-LICENSE
 
-/arts/*
-!/arts/static
-
-art.json
-pyproject.toml
-/arts/static/README.md
-/arts/index.html
+# 共同
+test.py
 发布.cmd
+
+# 其它
+pyproject.toml
+/arts/index.html
+
+# cooldfa
+*-cooldfa/
+
+################################################################################################## 默认
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

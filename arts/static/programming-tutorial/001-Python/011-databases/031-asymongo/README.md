@@ -6,11 +6,7 @@
 
 昵称：lcctoor.com
 
-域名：lcctoor.com
-
-邮箱：lcctoor@outlook.com
-
-[主页](https://lcctoor.github.io/arts/) \| [微信](https://lcctoor.github.io/arts/arts/static/static-files/WeChatQRC.jpg) \| [Python交流群](https://lcctoor.github.io/arts/arts/static/static-files/PythonWeChatGroupQRC.jpg) \| [捐赠](https://lcctoor.github.io/arts/arts/static/static-files/DonationQRC-1rmb.jpg)
+[主页](https://lcctoor.github.io/arts/) \| [微信](https://lcctoor.github.io/arts/arts/static/static-files/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [Python交流群](https://lcctoor.github.io/arts/arts/static/static-files/PythonWeChatGroupQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [域名](http://lcctoor.com) \| [捐赠](https://lcctoor.github.io/arts/arts/static/static-files/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
@@ -22,7 +18,7 @@
 pip install asymongo
 ```
 
-# [教程](https://lcctoor.github.io/arts?pk=asymongo)
+# [教程](https://lcctoor.github.io/arts?pk=asymongo)👈
 
 # 教程预览
 
