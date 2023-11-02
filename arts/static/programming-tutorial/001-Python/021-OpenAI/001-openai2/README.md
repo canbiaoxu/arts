@@ -56,6 +56,25 @@ Tony.request('再往后呢?')  # >>> 53
 Lucy.request('再往后呢?')  # >>> 103
 ```
 
+#### 流式对话
+```python
+for answer in Tony.stream_request('世界上最大的海洋是哪个?'):
+    print(answer)
+世
+界
+上
+最
+大
+的
+海
+洋
+是
+太
+平
+洋
+。
+```
+
 #### 存档
 
 ```python
@@ -262,6 +281,25 @@ async def main():
     print(answer)
 
 asyncio.run(main())  # >>> 太平洋
+```
+
+#### 异步流式对话
+```python
+async for answer in Tony.async_stream_request('世界上最大的海洋是哪个?'):
+    print(answer)
+世
+界
+上
+最
+大
+的
+海
+洋
+是
+太
+平
+洋
+。
 ```
 
 #### 更多方法
