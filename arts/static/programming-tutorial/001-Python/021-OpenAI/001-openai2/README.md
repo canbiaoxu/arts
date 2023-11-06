@@ -1,6 +1,6 @@
 # 项目描述
 
-ChatGPT 工具包，支持连续对话、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、限制历史消息数量、异步请求。
+ChatGPT 工具包，支持连续对话、流式对话、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、限制历史消息数量、异步请求。
 
 内测功能：群聊多角色模拟
 
@@ -9,6 +9,8 @@ ChatGPT 工具包，支持连续对话、对话存档与载入、对话回滚、
 昵称：lcctoor.com
 
 [主页](https://lcctoor.github.io/arts/) \| [微信](https://lcctoor.github.io/arts/arts/static/static-files/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [Python交流群](https://lcctoor.github.io/arts/arts/static/static-files/PythonWeChatGroupQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [域名](http://lcctoor.com) \| [捐赠](https://lcctoor.github.io/arts/arts/static/static-files/DonationQRC-0rmb.jpg)
+
+# [主要贡献者](https://lcctoor.github.io/arts/arts/openai2/major_contributors)👈
 
 # Bug提交、功能提议
 
@@ -57,8 +59,9 @@ Lucy.request('再往后呢?')  # >>> 103
 ```
 
 #### 流式对话
+
 ```python
-for answer in Tony.stream_request('世界上最大的海洋是哪个?'):
+for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
     print(answer)
 世
 界
@@ -277,13 +280,14 @@ from openai2 import Chat
 Tony = Chat(api_key=api_key, model="gpt-3.5-turbo")
 
 async def main():
-    answer = await Tony.asy_request('世界上最大的海洋是哪个')
+    answer = await Tony.async_request('世界上最大的海洋是哪个')
     print(answer)
 
 asyncio.run(main())  # >>> 太平洋
 ```
 
 #### 异步流式对话
+
 ```python
 async for answer in Tony.async_stream_request('世界上最大的海洋是哪个?'):
     print(answer)

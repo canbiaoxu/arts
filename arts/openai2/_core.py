@@ -120,7 +120,7 @@ class Temque:
 
 class Chat:
     """
-    文档: https://pypi.org/project/openai2
+    文档: https://lcctoor.github.io/arts/?pk=openai2
 
     获取api_key:
         获取链接1: https://platform.openai.com/account/api-keys
@@ -170,8 +170,8 @@ class Chat:
                 "api_key": self.recently_used_apikey,
                 "model": self.model,
                 "messages": list(self._messages + [{"role": "user", "content": text}]),
-                "stream": True,
                 **self.kwargs,
+                "stream": True,  # 放 self.kwargs 后面以免被覆盖
             }
         )
         answer: str = ""
@@ -186,7 +186,7 @@ class Chat:
             {"role": "user", "content": text}, {"role": "assistant", "content": answer}
         )
 
-    async def asy_request(self, text: str):
+    async def async_request(self, text: str):
         self.recently_used_apikey = self._akpool.fetch_key()
         completion = await openai.ChatCompletion.acreate(
             **{
@@ -202,6 +202,8 @@ class Chat:
         )
         return answer
 
+    asy_request = async_request  # asy_request 更名为 async_request, 为 async_request 设置别名为 asy_request 以兼容旧的用户
+
     async def async_stream_request(self, text: str):
         self.recently_used_apikey = self._akpool.fetch_key()
         completion = await openai.ChatCompletion.acreate(
@@ -209,8 +211,8 @@ class Chat:
                 "api_key": self.recently_used_apikey,
                 "model": self.model,
                 "messages": list(self._messages + [{"role": "user", "content": text}]),
-                "stream": True,
                 **self.kwargs,
+                "stream": True,
             }
         )
         answer: str = ""

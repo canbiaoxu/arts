@@ -16,6 +16,9 @@ pyproject.toml
 # cooldfa
 *-cooldfa/
 
+# hash-drive
+**/hash-drive/_ig_files/
+
 ################################################################################################## 默认
 
 # Byte-compiled / optimized / DLL files
