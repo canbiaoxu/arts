@@ -3,6 +3,7 @@ from typing import Union
 
 class rslice:
     def __init__(self, core: Union[list, tuple, str]): self.core = core
+    
     def __len__(self): return len(self.core)
 
     def __getitem__(self, key):

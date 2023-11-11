@@ -28,7 +28,7 @@ except:
 
 
 class AKPool:
-    """轮询获取api_key"""
+    """ 轮询获取api_key """
 
     def __init__(self, apikeys: list):
         self._pool = self._POOL(apikeys)
@@ -64,7 +64,7 @@ assistant_msg = type("assistant_msg", (RoleMsgBase,), {"role_name": "assistant"}
 
 
 class Temque:
-    """一个先进先出, 可设置最大容量, 可固定元素的队列"""
+    """ 一个先进先出, 可设置最大容量, 可固定元素的队列 """
 
     def __init__(self, maxlen: int = None):
         self.core: List[dict] = []
@@ -123,8 +123,8 @@ class Chat:
     文档: https://lcctoor.github.io/arts/?pk=openai2
 
     获取api_key:
-        获取链接1: https://platform.openai.com/account/api-keys
-        获取链接2: https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key
+    * 获取链接1: https://platform.openai.com/account/api-keys
+    * 获取链接2: https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key
     """
 
     recently_used_apikey: str = ""
@@ -133,20 +133,16 @@ class Chat:
         self,
         api_key: Union[str, AKPool],
         model: str = "gpt-3.5-turbo",
-        MsgMaxCount=None,
-        api_base: str = None,
-        prompt: str = None,
+        MsgMaxCount = None,
+        api_base: str = None,  # api_base 参数用于修改基础URL
         **kwargs,
     ):
         self.reset_api_key(api_key)
-        self.api_base = api_base
         self.model = model
         self._messages = Temque(maxlen=MsgMaxCount)
         if api_base:
             kwargs["api_base"] = api_base
         self.kwargs = kwargs
-        if prompt:
-            self._messages.add_many({"role": "system", "content": prompt})
 
     def reset_api_key(self, api_key: Union[str, AKPool]):
         if isinstance(api_key, AKPool):
@@ -247,22 +243,21 @@ class Chat:
         self._messages.unpin(*indexes)
 
     def dump(self, fpath: str):
-        """存档"""
+        """ 存档 """
         jt = jsonDumps(list(self._messages), ensure_ascii=False)
         Path(fpath).write_text(jt, encoding="utf8")
         return True
 
     def load(self, fpath: str):
-        """载入存档"""
+        """ 载入存档 """
         jt = Path(fpath).read_text(encoding="utf8")
         self._messages.add_many(*jsonLoads(jt))
         return True
 
     def forge(self, *messages: Union[system_msg, user_msg, assistant_msg]):
-        """伪造对话内容"""
+        """ 伪造对话内容 """
         for x in messages:
             self._messages.add_many(dict(x))
-        print(self._messages)
 
     def fetch_messages(self):
         return list(self._messages)

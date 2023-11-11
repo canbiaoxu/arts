@@ -32,7 +32,7 @@ class incrementer():
             class ele: ...
             self._threads.append(ele)
             x = EncodeNum(self._threads.index(ele))
-            cont = ['', 0] if x == '1' else [f"{x}-", 0]
+            cont = ['', 0] if x == '1' else [f"{x}-", 0]  # 当多线程时, x 可能 > 1
         cont[1] += 1
         x, y = cont
         self._ContPool.append(cont)
