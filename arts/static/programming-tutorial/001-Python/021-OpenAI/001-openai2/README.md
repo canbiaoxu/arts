@@ -1,6 +1,6 @@
 # 项目描述
 
-ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、限制历史消息数量、异步请求。
+ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
 
 # 作者信息
 
@@ -28,13 +28,13 @@ pip install openai2
 
 # 教程 ([查看美化版](https://lcctoor.github.io/arts/?pk=openai2)👈)
 
-#### 导入
+### 导入
 
 ```python
 from openai2 import Chat
 ```
 
-#### 创建对话
+### 创建对话
 
 ```python
 api_key = 'api_key'  # 更换成自己的api_key
@@ -43,7 +43,7 @@ Tony = Chat(api_key=api_key, model="gpt-3.5-turbo")
 Lucy = Chat(api_key=api_key, model="gpt-3.5-turbo")  # 每个实例可使用 相同 或者 不同 的api_key
 ```
 
-#### 对话
+### 对话
 
 ```python
 Tony.request('自然数50的后面是几?')  # >>> 51
@@ -56,7 +56,7 @@ Tony.request('再往后呢?')  # >>> 53
 Lucy.request('再往后呢?')  # >>> 103
 ```
 
-#### 流式对话 ([演示视频](https://lcctoor.github.io/arts/arts/static/programming-tutorial/001-Python/021-OpenAI/001-openai2/流式对话演示.mp4)👈)
+### 流式对话 ([查看演示](https://lcctoor.github.io/arts/arts/static/programming-tutorial/001-Python/021-OpenAI/001-openai2/流式对话演示.mp4)👈)
 
 ```python
 for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
@@ -76,7 +76,7 @@ for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
 。
 ```
 
-#### 异步对话
+### 异步对话
 
 ```python
 import asyncio
@@ -91,7 +91,7 @@ async def main():
 asyncio.run(main())  # >>> '世界上最大的海洋是太平洋。'
 ```
 
-#### 异步流式对话
+### 异步流式对话
 
 ```python
 async for answer in Tony.async_stream_request('世界上最大的海洋是哪个?'):
@@ -111,7 +111,7 @@ async for answer in Tony.async_stream_request('世界上最大的海洋是哪个
 。
 ```
 
-#### 对话回滚
+### 对话回滚
 
 ```python
 Anna = Chat(api_key=api_key, model="gpt-3.5-turbo")
@@ -139,7 +139,7 @@ Anna.request('再往后呢?')  # >>> 5
 
 2、`Anna.rollback()` 相当于 `Anna.rollback(n=1)` 。
 
-#### 轮询 api_key 池
+### 轮询 api_key 池
 
 ```python
 from openai2 import Chat, AKPool
@@ -158,7 +158,7 @@ Chris = Chat(api_key=AK3, model="gpt-3.5-turbo")  # 令 Chris 使用独立的'ap
 
 注：允许（而非不允许）同一个 api_key 投放到不同的 api_key 池中，但每个 api_key 池都是独立调度，不会互相通信。
 
-#### 重置 api_key
+### 重置 api_key
 
 ```python
 AK5 = 'sk-jg93...'
@@ -170,7 +170,7 @@ Carl.reset_api_key(AK6)  # 再次重置 api_key
 ...
 ```
 
-#### 对话导出与导入
+### 对话导出与导入
 
 ##### 对话导出
 
@@ -240,7 +240,7 @@ print(answer)  # >>> 非常抱歉，我刚才的回答有些不适当。1+1=2, 1
 
 注：对话导出与导入可以穿插在对话中的任何时刻。
 
-#### 群聊多角色模拟
+### 群聊多角色模拟
 
 ```python
 from json import loads as jsonLoads
@@ -287,7 +287,7 @@ except:
 
 注：同一个 group 会记住各个角色的历史对话，无须重复传。
 
-#### 限制历史消息数量
+### 限制历史消息数量
 
 ##### 限制历史消息数量
 
@@ -403,7 +403,7 @@ Ariel.unpin(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 
 注：unpin 方法也允许传入“未锁定的消息”的索引，这使得当不确定某些消息的状态时，可以放心地将它们的索引传进去。
 
-#### 更多方法
+### 更多方法
 
 1、`openai2.Chat` 底层调用了 `openai.OpenAI`，在实例化时，支持 `openai.OpenAI` 的所有参数。
 
@@ -413,12 +413,9 @@ Ariel.unpin(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 
 [查看相关参数👈](https://platform.openai.com/docs/api-reference/chat)
 
-#### 内测功能
-
-##### 在命令行聊天
+### 在命令行对话 ([查看演示](https://lcctoor.github.io/arts/arts/static/programming-tutorial/001-Python/021-OpenAI/001-openai2/命令行对话演示.mp4)👈)
 
 ```cpp
-openai2 set_apikey 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  // 创建apikey, 创建一次就行
-openai2 read_apikey  // 可选项, 查看apikey
+openai2 set_apikey sk-T92mZYXHLWKt1234...gtPKT3BlbkFJ  // 创建apikey, 创建一次就行
 openai2 chat
 ```

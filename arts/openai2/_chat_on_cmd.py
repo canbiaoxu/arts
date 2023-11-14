@@ -7,9 +7,9 @@ from ._core import Chat
 parent = Path(__file__).parent
 
 def chat_on_cmd():
-    print("\n您已进入命令行聊天模式, 该模式使用'gpt-4-32k'模型, 请确保您的apikey支持该模型.")
+    print("\n您已进入命令行聊天模式, 该模式使用'gpt-4-1106-preview'模型, 请确保您的apikey支持该模型.")
     record_file = parent / '_cmd_record.json'
-    gpt = Chat(api_key=apikey, model='gpt-4-32k')
+    gpt = Chat(api_key=apikey, model='gpt-4-1106-preview')
     try:
         record = json.loads(record_file.read_text('utf8'))
         gpt.add_dialogs(*record)
