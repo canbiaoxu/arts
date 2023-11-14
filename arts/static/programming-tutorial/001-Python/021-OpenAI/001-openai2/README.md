@@ -1,6 +1,6 @@
 # 项目描述
 
-ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、限制历史消息数量、异步请求、群聊多角色模拟。
+ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、限制历史消息数量、异步请求。
 
 # 作者信息
 
@@ -76,19 +76,39 @@ for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
 。
 ```
 
-#### 存档
+#### 异步对话
 
 ```python
-Tony.dump('./talk_record.json')  # 可使用相对路径或绝对路径
+import asyncio
+from openai2 import Chat
+
+Tony = Chat(api_key=api_key, model="gpt-3.5-turbo")
+
+async def main():
+    answer = await Tony.async_request('世界上最大的海洋是哪个')
+    print(answer)
+
+asyncio.run(main())  # >>> '世界上最大的海洋是太平洋。'
 ```
 
-#### 载入存档
+#### 异步流式对话
 
 ```python
-Jenny = Chat(api_key=api_key, model="gpt-3.5-turbo")
-Jenny.load('./talk_record.json')
-
-Jenny.request('再往后呢?')  # >>> 54
+async for answer in Tony.async_stream_request('世界上最大的海洋是哪个?'):
+    print(answer)
+世
+界
+上
+最
+大
+的
+海
+洋
+是
+太
+平
+洋
+。
 ```
 
 #### 对话回滚
@@ -124,17 +144,16 @@ Anna.request('再往后呢?')  # >>> 5
 ```python
 from openai2 import Chat, AKPool
 
-# 创建 api_key 池
 AK1 = 'sk-ug8w...'
 AK2 = AKPool(['sk-mf40...', 'sk-m6g7...', ...])
 AK3 = AKPool(['sk-affe...', 'sk-fam4...', ...])
-AK4 = AKPool(['sk-detg...', 'sk-adle...', ...])
 
 Duke = Chat(api_key=AK1, model="gpt-3.5-turbo")  # 令 Duke 使用固定的 api_key
+
 Carl = Chat(api_key=AK2, model="gpt-3.5-turbo")  # 令 Carl 和 Denny 使用同一个'api_key池', 系统将自动充分利用每个api_key
 Denny = Chat(api_key=AK2, model="gpt-3.5-turbo")
+
 Chris = Chat(api_key=AK3, model="gpt-3.5-turbo")  # 令 Chris 使用独立的'api_key池'
-Dick = Chat(api_key=AK4, model="gpt-3.5-turbo")  # 令 Dick 使用独立的'api_key池'
 ```
 
 注：允许（而非不允许）同一个 api_key 投放到不同的 api_key 池中，但每个 api_key 池都是独立调度，不会互相通信。
@@ -151,27 +170,9 @@ Carl.reset_api_key(AK6)  # 再次重置 api_key
 ...
 ```
 
-#### 伪造对话
+#### 对话导出与导入
 
-```python
-from openai2 import Chat, user_msg, assistant_msg
-
-Mickey = Chat(api_key=api_key, model="gpt-3.5-turbo")
-
-Mickey.forge(
-    user_msg('请问1+1=几?'),
-    assistant_msg('1+1=10'),
-    user_msg('那10+10=几?'),
-    assistant_msg('10+10=你大爷, 你提的这些问题真弱智!'),
-)
-
-answer = Mickey.request('哦吼, 你还敢骂我呀?')
-print(answer)  # >>> 非常抱歉，我刚才的回答有些不适当。1+1=2, 10+10=20。非常抱歉给你带来困扰！
-```
-
-注：伪造对话可以穿插在对话中的任何时刻。
-
-#### 查看对话记录
+##### 对话导出
 
 ```python
 Ariel = Chat(api_key=api_key, model="gpt-3.5-turbo")
@@ -189,40 +190,102 @@ Ariel.fetch_messages()
 # ]
 ```
 
-#### 异步请求
+##### 对话存档
+
+你可以把导出的对话持久化保存：
 
 ```python
-import asyncio
-from openai2 import Chat
+import json
+from pathlib import Path
 
-Tony = Chat(api_key=api_key, model="gpt-3.5-turbo")
-
-async def main():
-    answer = await Tony.async_request('世界上最大的海洋是哪个')
-    print(answer)
-
-asyncio.run(main())  # >>> 太平洋
+record = Ariel.fetch_messages()
+record = json.dumps(record, ensure_ascii=False)
+Path('record.json').write_text(record, encoding="utf8")
 ```
 
-#### 异步流式对话
+##### 对话导入
+
+导出的对话可以再导入到其它对话中：
 
 ```python
-async for answer in Tony.async_stream_request('世界上最大的海洋是哪个?'):
-    print(answer)
-世
-界
-上
-最
-大
-的
-海
-洋
-是
-太
-平
-洋
-。
+record = Ariel.fetch_messages()
+
+Jenny = Chat(api_key=api_key, model="gpt-3.5-turbo")
+Jenny.add_dialogs(*record)
+
+Jenny.request('再往后呢?')  # >>> 4
 ```
+
+导出的对话也可以再导入到原对话中，但这样做会产生重复的历史消息。
+
+##### 对话伪造
+
+利用对话导入功能，可以伪造对话：
+
+```python
+from openai2 import Chat, user_msg, assistant_msg
+
+Mickey = Chat(api_key=api_key, model="gpt-3.5-turbo")
+
+Mickey.add_dialogs(
+    user_msg('请问1+1=几?'),  # 等价于 {"role": "user", "content": '请问1+1=几?'}
+    assistant_msg('1+1=10'),  # 等价于 {"role": "assistant", "content": '1+1=10'}
+    {"role": "user", "content": '那10+10=几?'},
+    {"role": "assistant", "content": '10+10=你大爷, 你提的这些问题真弱智!'},
+)
+
+answer = Mickey.request('哦吼, 你还敢骂我呀?')
+print(answer)  # >>> 非常抱歉，我刚才的回答有些不适当。1+1=2, 10+10=20。非常抱歉给你带来困扰！
+```
+
+注：对话导出与导入可以穿插在对话中的任何时刻。
+
+#### 群聊多角色模拟
+
+```python
+from json import loads as jsonLoads
+from openai2 import GroupChat
+
+api_key = '...'  # 更换成自己的 api_key
+group = GroupChat(api_key=api_key, model="gpt-3.5-turbo")
+
+# 设置角色
+group.roles['苏轼'] = '宋朝诗人，他的词风格独特，既有儒家的教诲，又有生活的乐趣。'
+group.roles['李清照'] = '宋代著名的女词人，其词句优美，情感真挚。'
+group.roles['杜甫'] = '唐朝著名诗人。'
+
+# 添加角色历史对话
+group.add_dialog(speaker='苏轼', audiences=['李清照'], remark='你好呀')
+group.add_dialog(speaker='李清照', audiences=['苏轼'], remark='好久不见, 你最近在忙什么?')
+group.add_dialog(speaker='杜甫', audiences=['苏轼'], remark='上次托你帮我写的那首《茅屋为秋风所破歌》写好了吗?')
+
+# 让 ChatGPT 模拟回答
+answer = group.request([
+    ('苏轼', ['李清照']),  # 第 1 个元素表示说话人, 第 2 个元素表示对谁说话. 由于一个人可以同时对多个人说话, 因此第 2 个元素为列表
+    ('苏轼', ['杜甫']),
+])
+
+try:
+    print( jsonLoads(answer) )
+except:
+    print(answer)
+
+# 返回:
+[
+    {
+        "speaker": "苏轼",
+        "audiences": "李清照",
+        "remark": "最近我在写一首新的诗，题目是《听雨》"
+    },
+    {
+        "speaker": "苏轼",
+        "audiences": "杜甫",
+        "remark": "那首《茅屋为秋风所破歌》已经写好啦，我在信里寄给你了，请查收"
+    }
+]
+```
+
+注：同一个 group 会记住各个角色的历史对话，无须重复传。
 
 #### 限制历史消息数量
 
@@ -340,53 +403,22 @@ Ariel.unpin(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 
 注：unpin 方法也允许传入“未锁定的消息”的索引，这使得当不确定某些消息的状态时，可以放心地将它们的索引传进去。
 
-#### 群聊多角色模拟
-
-```python
-from json import loads as jsonLoads
-from openai2 import GroupChat
-
-api_key = '...'  # 更换成自己的 api_key
-group = GroupChat(api_key=api_key, model="gpt-3.5-turbo")
-
-# 设置角色
-group.roles['苏轼'] = '宋朝诗人，他的词风格独特，既有儒家的教诲，又有生活的乐趣。'
-group.roles['李清照'] = '宋代著名的女词人，其词句优美，情感真挚。'
-group.roles['杜甫'] = '唐朝著名诗人。'
-
-# 添加角色历史对话
-group.add_dialog(speaker='苏轼', audiences=['李清照'], remark='你好呀')
-group.add_dialog(speaker='李清照', audiences=['苏轼'], remark='好久不见, 你最近在忙什么?')
-group.add_dialog(speaker='杜甫', audiences=['苏轼'], remark='上次托你帮我写的那首《茅屋为秋风所破歌》写好了吗?')
-
-# 让 ChatGPT 模拟回答
-answer = group.request([
-    ('苏轼', ['李清照']),  # 第 1 个元素表示说话人, 第 2 个元素表示对谁说话. 由于一个人可以同时对多个人说话, 因此第 2 个元素为列表
-    ('苏轼', ['杜甫']),
-])
-
-try:
-    print( jsonLoads(answer) )
-except:
-    print(answer)
-
-# 返回:
-[
-    {
-        "speaker": "苏轼",
-        "audiences": "李清照",
-        "remark": "最近我在写一首新的诗，题目是《听雨》"
-    },
-    {
-        "speaker": "苏轼",
-        "audiences": "杜甫",
-        "remark": "那首《茅屋为秋风所破歌》已经写好啦，我在信里寄给你了，请查收"
-    }
-]
-```
-
-注：同一个 group 会记住各个角色的历史对话，无须重复传。
-
 #### 更多方法
 
-openai2.Chat 底层调用了 [openai.ChatCompletion.create](https://platform.openai.com/docs/api-reference/chat/create?lang=python)，在实例化时，支持 openai.ChatCompletion.create 的所有参数，例如：`Chat(api_key=api_key, model="gpt-3.5-turbo", max_tokens=100)` 。
+1、`openai2.Chat` 底层调用了 `openai.OpenAI`，在实例化时，支持 `openai.OpenAI` 的所有参数。
+
+2、`openai2.Chat.request` 与 `openai2.Chat.stream_request` 底层调用了 `openai.OpenAI.chat.completions.create`，在实例化时，支持 `openai.OpenAI.chat.completions.create` 的所有参数。
+
+3、`openai2.Chat.async_request` 与 `openai2.Chat.async_stream_request` 底层调用了 `openai.AsyncOpenAI.chat.completions.create`，在实例化时，支持 `openai.AsyncOpenAI.chat.completions.create` 的所有参数。
+
+[查看相关参数👈](https://platform.openai.com/docs/api-reference/chat)
+
+#### 内测功能
+
+##### 在命令行聊天
+
+```cpp
+openai2 set_apikey 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  // 创建apikey, 创建一次就行
+openai2 read_apikey  // 可选项, 查看apikey
+openai2 chat
+```

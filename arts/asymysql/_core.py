@@ -368,14 +368,14 @@ class sheetORM():
 
     async def insert(self, data):
         if type(data) is dict:
-            cols = data.keys()
+            cols = [f"`{x}`" for x in data]
             sql = f"insert into {self.sheetName}({', '.join(cols)}) values ({', '.join(('%s',)*len(cols))})"
             rdata, cursor = await self.execute(sql, tuple(data.values()))
             return cursor  # cursor.rowcount, cursor.lastrowid
         else:
             cols = set()
             for x in data: cols |= set(x)
-            cols = list(cols)
+            cols = [f"`{x}`" for x in cols]
             sql = f"insert into {self.sheetName}({', '.join(cols)}) values ({', '.join(('%s',)*len(cols))})"
             data = tuple(tuple(x.get(k) for k in cols) for x in data)
             r, cursor = await self.executemany(sql, data)
@@ -417,7 +417,7 @@ class sheetORM():
         return makeSlice(self._updateBase, data=data)
 
     async def _updateBase(self, key, data:dict):
-        data = ', '.join([f"{k}={v.field}" if isinstance(v,Filter) else f"{k}={jsonChinese(v)}" for k,v in data.items()])
+        data = ', '.join([f"`{k}`={v.field}" if isinstance(v,Filter) else f"{k}={jsonChinese(v)}" for k,v in data.items()])
         # [::]
         if isinstance(key, slice):
             L, R, S = key.start, key.stop, key.step or 1

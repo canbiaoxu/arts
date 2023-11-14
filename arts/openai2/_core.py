@@ -1,30 +1,8 @@
 from json import dumps as jsonDumps
 from json import loads as jsonLoads
 from pathlib import Path
-from typing import Union, List
-import openai
-
-
-try:
-    import aiohttp
-    from openai import api_requestor
-    from contextlib import asynccontextmanager
-
-    @asynccontextmanager
-    async def aiohttp_session():
-        """
-        该函数是基于 PyPi包 "openai" 中的 aiohttp_session 函数改写
-        """
-        user_set_session = openai.aiosession.get()
-        if user_set_session:
-            yield user_set_session
-        else:
-            async with aiohttp.ClientSession(trust_env=True) as session:
-                yield session
-
-    api_requestor.aiohttp_session = aiohttp_session
-except:
-    pass
+from typing import Union, List, Literal
+from openai import OpenAI, AsyncOpenAI
 
 
 class AKPool:
@@ -43,7 +21,7 @@ class AKPool:
                 yield x
 
 
-class RoleMsgBase:
+class MsgBase:
     role_name: str
     text: str
 
@@ -58,9 +36,9 @@ class RoleMsgBase:
         yield "content", self.text
 
 
-system_msg = type("system_msg", (RoleMsgBase,), {"role_name": "system"})
-user_msg = type("user_msg", (RoleMsgBase,), {"role_name": "user"})
-assistant_msg = type("assistant_msg", (RoleMsgBase,), {"role_name": "assistant"})
+system_msg = type("system_msg", (MsgBase,), {"role_name": "system"})
+user_msg = type("user_msg", (MsgBase,), {"role_name": "user"})
+assistant_msg = type("assistant_msg", (MsgBase,), {"role_name": "assistant"})
 
 
 class Temque:
@@ -120,115 +98,121 @@ class Temque:
 
 class Chat:
     """
-    文档: https://lcctoor.github.io/arts/?pk=openai2
+    [文档](https://lcctoor.github.io/arts/?pk=openai2)
 
     获取api_key:
-    * 获取链接1: https://platform.openai.com/account/api-keys
-    * 获取链接2: https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key
+    * [获取链接1](https://platform.openai.com/account/api-keys)
+    * [获取链接2](https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key)
     """
+    
+    recently_request_data: dict  # 最近一次请求所用的参数
 
-    recently_used_apikey: str = ""
+    def __init__(self,
+                 # kwargs
+                 api_key: Union[str, AKPool],
+                 base_url: str = None,  # base_url 参数用于修改基础URL
+                 timeout=None,
+                 max_retries=None,
+                 http_client=None,
+                 # request_kwargs
+                 model: Literal["gpt-4-1106-preview", "gpt-4-vision-preview", "gpt-4", "gpt-4-0314", "gpt-4-0613",
+                                "gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0613", "gpt-3.5-turbo"] = "gpt-3.5-turbo",
+                 # Chat
+                 MsgMaxCount=None,
+                 # kwargs
+                 **kwargs,
+                 ):
+        api_base = kwargs.pop('api_base', None)
 
-    def __init__(
-        self,
-        api_key: Union[str, AKPool],
-        model: str = "gpt-3.5-turbo",
-        MsgMaxCount = None,
-        api_base: str = None,  # api_base 参数用于修改基础URL
-        **kwargs,
-    ):
+        if base_url or api_base: kwargs["base_url"] = base_url or api_base
+        if timeout: kwargs["timeout"] = timeout
+        if max_retries: kwargs["max_retries"] = max_retries
+        if http_client: kwargs["http_client"] = http_client
+
         self.reset_api_key(api_key)
-        self.model = model
+        self._kwargs = kwargs
+        self._request_kwargs = {'model':model}
         self._messages = Temque(maxlen=MsgMaxCount)
-        if api_base:
-            kwargs["api_base"] = api_base
-        self.kwargs = kwargs
-
+    
     def reset_api_key(self, api_key: Union[str, AKPool]):
         if isinstance(api_key, AKPool):
             self._akpool = api_key
         else:
             self._akpool = AKPool([api_key])
 
-    def request(self, text: str):
-        self.recently_used_apikey = self._akpool.fetch_key()
-        completion = openai.ChatCompletion.create(
-            **{
-                "api_key": self.recently_used_apikey,
-                "model": self.model,
-                "messages": list(self._messages + [{"role": "user", "content": text}]),
-                **self.kwargs,
-            }
-        )
-        answer: str = completion.choices[0].message["content"]
-        self._messages.add_many(
-            {"role": "user", "content": text}, {"role": "assistant", "content": answer}
-        )
+    def request(self, text: str=None, **kwargs):
+        messages = [{"role": "user", "content": text}]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
+        assert messages
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        completion = OpenAI(api_key=api_key, **self._kwargs).chat.completions.create(**{
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            "messages": list(self._messages + messages),
+            "stream": False,
+        })
+        answer: str = completion.choices[0].message.content
+        self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         return answer
 
-    def stream_request(self, text: str):
-        self.recently_used_apikey = self._akpool.fetch_key()
-        completion = openai.ChatCompletion.create(
-            **{
-                "api_key": self.recently_used_apikey,
-                "model": self.model,
-                "messages": list(self._messages + [{"role": "user", "content": text}]),
-                **self.kwargs,
-                "stream": True,  # 放 self.kwargs 后面以免被覆盖
-            }
-        )
+    def stream_request(self, text: str=None, **kwargs):
+        messages = [{"role": "user", "content": text}]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
+        assert messages
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        completion = OpenAI(api_key=api_key, **self._kwargs).chat.completions.create(**{
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            "messages": list(self._messages + messages),
+            "stream": True,
+        })
         answer: str = ""
         for chunk in completion:
-            choice = chunk.choices[0]
-            if choice.finish_reason == "stop":
-                break
-            content: str = choice.delta.get("content", "")
-            answer += content
-            yield content
-        self._messages.add_many(
-            {"role": "user", "content": text}, {"role": "assistant", "content": answer}
-        )
+            if content := chunk.choices[0].delta.content:
+                answer += content
+                yield content
+        self._messages.add_many(*messages, {"role": "assistant", "content": answer})
 
-    async def async_request(self, text: str):
-        self.recently_used_apikey = self._akpool.fetch_key()
-        completion = await openai.ChatCompletion.acreate(
-            **{
-                "api_key": self.recently_used_apikey,
-                "model": self.model,
-                "messages": list(self._messages + [{"role": "user", "content": text}]),
-                **self.kwargs,
-            }
-        )
-        answer: str = completion.choices[0].message["content"]
-        self._messages.add_many(
-            {"role": "user", "content": text}, {"role": "assistant", "content": answer}
-        )
+    async def async_request(self, text: str=None, **kwargs):
+        messages = [{"role": "user", "content": text}]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
+        assert messages
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        completion = await AsyncOpenAI(api_key=api_key, **self._kwargs).chat.completions.create(**{
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            "messages": list(self._messages + messages),
+            "stream": False,
+        })
+        answer: str = completion.choices[0].message.content
+        self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         return answer
 
-    asy_request = async_request  # asy_request 更名为 async_request, 为 async_request 设置别名为 asy_request 以兼容旧的用户
-
-    async def async_stream_request(self, text: str):
-        self.recently_used_apikey = self._akpool.fetch_key()
-        completion = await openai.ChatCompletion.acreate(
-            **{
-                "api_key": self.recently_used_apikey,
-                "model": self.model,
-                "messages": list(self._messages + [{"role": "user", "content": text}]),
-                **self.kwargs,
-                "stream": True,
-            }
-        )
+    async def async_stream_request(self, text: str=None, **kwargs):
+        messages = [{"role": "user", "content": text}]
+        messages += (kwargs.pop('messages', None) or [])  # 兼容官方包[openai]用户, 使其代码可以无缝切换到[openai2]
+        assert messages
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        completion = await AsyncOpenAI(api_key=api_key, **self._kwargs).chat.completions.create(**{
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            "messages": list(self._messages + messages),
+            "stream": True,
+        })
         answer: str = ""
         async for chunk in completion:
-            choice = chunk.choices[0]
-            if choice.finish_reason == "stop":
-                break
-            content: str = choice.delta.get("content", "")
-            answer += content
-            yield content
-        self._messages.add_many(
-            {"role": "user", "content": text}, {"role": "assistant", "content": answer}
-        )
+            if content := chunk.choices[0].delta.content:
+                answer += content
+                yield content
+        self._messages.add_many(*messages, {"role": "assistant", "content": answer})
 
     def rollback(self, n=1):
         self._messages.core[-2 * n :] = []
@@ -241,23 +225,29 @@ class Chat:
 
     def unpin(self, *indexes):
         self._messages.unpin(*indexes)
+    
+    def fetch_messages(self):
+        return list(self._messages)
+    
+    def add_dialogs(self, *ms: Union[system_msg, user_msg, assistant_msg, dict]):
+        '''
+        添加历史对话
+        '''
+        messages = [dict(x) for x in ms]
+        self._messages.add_many(*messages)
+    
+    asy_request = async_request  # 兼容旧代码
 
-    def dump(self, fpath: str):
+    forge = add_dialogs  # 兼容旧代码
+    
+    def dump(self, fpath: str):  # 兼容旧代码
         """ 存档 """
-        jt = jsonDumps(list(self._messages), ensure_ascii=False)
+        jt = jsonDumps(self.fetch_messages(), ensure_ascii=False)
         Path(fpath).write_text(jt, encoding="utf8")
         return True
-
-    def load(self, fpath: str):
+    
+    def load(self, fpath: str):  # 兼容旧代码
         """ 载入存档 """
         jt = Path(fpath).read_text(encoding="utf8")
         self._messages.add_many(*jsonLoads(jt))
         return True
-
-    def forge(self, *messages: Union[system_msg, user_msg, assistant_msg]):
-        """ 伪造对话内容 """
-        for x in messages:
-            self._messages.add_many(dict(x))
-
-    def fetch_messages(self):
-        return list(self._messages)

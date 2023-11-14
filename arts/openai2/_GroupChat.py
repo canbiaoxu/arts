@@ -1,7 +1,8 @@
 from json import dumps as jsonDumps
-from typing import List, Tuple
+from typing import List, Tuple, Union, Literal
 import openai
-from ._core import system_msg, user_msg, assistant_msg, Chat
+from openai import OpenAI
+from ._core import system_msg, user_msg, assistant_msg, Chat, AKPool
 
 
 class GroupChat(Chat):
@@ -15,18 +16,33 @@ class GroupChat(Chat):
         "小张":"一个漂亮的女人"
     }
 
-    def __init__(
-        self,
-        api_key,
-        model: str = "gpt-3.5-turbo",
-        MsgMaxCount = None,
-        api_base: str = None,  # api_base 参数用于修改基础URL
-        **kwargs,
-    ):
-        Chat.__init__(self, api_key, model, MsgMaxCount, api_base, **kwargs)
+    _top_messages: List[dict] = None
+
+    def __init__(self, *vs, **kvs):
+        Chat.__init__(self, *vs, **kvs)
         self.roles = self.roles.copy()
         self._new_dialogs = []
-        self._top_messages = self._render_top_messages()
+        if not self.__class__._top_messages:
+            self.__class__._top_messages = self._render_top_messages()
+    
+    # 欺骗编辑器进行代码提示
+    if len(__file__) < 0:
+        def __init__(self,
+                    # kwargs
+                    api_key: Union[str, AKPool],
+                    base_url: str = None,  # base_url 参数用于修改基础URL
+                    timeout=None,
+                    max_retries=None,
+                    http_client=None,
+                    # request_kwargs
+                    model: Literal["gpt-4-1106-preview", "gpt-4-vision-preview", "gpt-4", "gpt-4-0314", "gpt-4-0613",
+                                    "gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0613", "gpt-3.5-turbo"] = "gpt-3.5-turbo",
+                    # Chat
+                    MsgMaxCount=None,
+                    # kwargs
+                    **kwargs,
+                    ):
+            ...
     
     def add_dialog(self, speaker:str, audiences:list, remark:str):
         '''
@@ -54,23 +70,25 @@ class GroupChat(Chat):
         text = f'''以下是新增的对话记录：\n\n{_new_dialogs}\n\n请根据以下JSON文档的内容，模拟角色的视角进行发言，并把发言填充到'remark'字段中：\n\n```json\n{roles}\n```\n\n请把填充完整后的JSON文档发给我，只返回JSON文档即可，勿包含任何其它信息，否则会干扰我的解析。'''
         return text
     
-    def request(self, roles: List[Tuple[str, List[str]]]):
+    def request(self, roles: List[Tuple[str, List[str]]], **kwargs):
         '''
         request([
             ('苏轼', ['李清照', '杜甫']),
             ('小明', ['小东']),
         ])
         '''
-        text = self._get_user_text(roles)
-        self.recently_used_apikey = self._akpool.fetch_key()
-        completion = openai.ChatCompletion.create(**{
-            'api_key': self.recently_used_apikey,
-            'model': self.model,
-            'messages': self._top_messages + list(self._messages) + [{"role": "user", "content": text}],
-            **self.kwargs
+        messages = [{"role": "user", "content": self._get_user_text(roles)}]
+        self.recently_request_data = {
+            'api_key': (api_key := self._akpool.fetch_key()),
+        }
+        completion = OpenAI(api_key=api_key, **self._kwargs).chat.completions.create(**{
+            **self._request_kwargs,  # 全局参数
+            **kwargs,  # 单次请求的参数覆盖全局参数
+            "messages": self._top_messages + list(self._messages) + messages,
+            "stream": False,
         })
-        answer:str = completion.choices[0].message['content']
-        self._messages.add_many({"role": "user", "content": text}, {"role": "assistant", "content": answer})
+        answer: str = completion.choices[0].message.content
+        self._messages.add_many(*messages, {"role": "assistant", "content": answer})
         self._new_dialogs = []
         return answer
     

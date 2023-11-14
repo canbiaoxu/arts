@@ -8,6 +8,7 @@ _g_**
 # 共同
 test.py
 **.test.py
+test_*.py
 发布.cmd
 
 # 其它
