@@ -1,25 +1,13 @@
-# 常规
-_ig_**
-*._ig_
-稿纸.*
-稿纸/
-_g_**
-
 # 共同
-test.py
-**.test.py
-test_*.py
+_ig_**
+*稿纸*
+*test*
 发布.cmd
 
 # 其它
+_g_**
 pyproject.toml
 /arts/index.html
-
-# cooldfa
-*-cooldfa/
-
-# hash-drive
-**/hash-drive/_ig_files/
 
 ################################################################################################## 默认
 
