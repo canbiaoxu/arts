@@ -14,7 +14,7 @@ class coolstr:
         coolstr( '.a.json..ce.' ).suffixes
         >>> ['.a', '.json', '.', '.ce', '.']
         '''
-        return re.findall('\.[^.]*', self.string)
+        return re.findall(r'\.[^.]*', self.string)
     
     @property
     def suffix(self):
