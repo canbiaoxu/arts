@@ -15,12 +15,13 @@ uniset = TRUE()
 empset = FALSE()
 undefined = FALSE()
 
-class OrmIndexError(IndexError):
+class ODMIndexError(IndexError):
     def __repr__(self):
-        return 'OrmIndexError'
+        return 'ODMIndexError'
 
 
-class ORM():
+class ODM():
+    
     def __init__(self):
         self._connpool = deque([], maxlen=1)
         self._aconnpool = deque([], maxlen=1)
@@ -31,11 +32,10 @@ class ORM():
         '''
         return MongoClient(host='localhost', port=27017)
     
-    async def amkconn(self):
+    async def amkconn(self):  # 面向未来编程。虽然 AsyncIOMotorClient 是同步方法，但为了未来的可扩展性，这里将 amkconn 定义为异步函数
         '''
         请在子类中覆盖此方法
         '''
-        # 面向未来编程。虽然 AsyncIOMotorClient 是同步方法，但为了未来的可扩展性，这里将 amkconn 定义为异步函数
         return AsyncIOMotorClient(host='localhost', port=27017)
     
     def get_conn(self):
@@ -63,12 +63,12 @@ class ORM():
         return core()
     
     def get_db_names(self):
-        ignore = ('admin',)
+        ignore = ('admin', 'config', 'local')
         with self.get_conn() as conn:
             return [x for x in conn.list_database_names() if x not in ignore]
 
     async def aget_db_names(self):
-        ignore = ('admin',)
+        ignore = ('admin', 'config', 'local')
         async with self.get_conn() as conn:
             return [x for x in await conn.list_database_names() if x not in ignore]
     
@@ -78,23 +78,23 @@ class ORM():
 
     def __iter__(self):
         for x in self.get_db_names():
-            yield DB_ORM(parent=self, db_name=x)
+            yield DB(parent=self, db_name=x)
 
     async def __aiter__(self):
         for x in await self.aget_db_names():
-            yield DB_ORM(parent=self, db_name=x)
+            yield DB(parent=self, db_name=x)
     
     def __getitem__(self, db_name: str|tuple):
         if type(db_name) is str:
-            return DB_ORM(parent=self, db_name=db_name)
+            return DB(parent=self, db_name=db_name)
         else:
             assert type(db_name) is tuple
-            return [DB_ORM(parent=self, db_name=x) for x in db_name]
+            return [DB(parent=self, db_name=x) for x in db_name]
 
 
-class DB_ORM():
+class DB():
 
-    def __init__(self, parent: ORM, db_name: str):
+    def __init__(self, parent: ODM, db_name: str):
         self.parent = parent
         self.db_name = db_name
 
@@ -107,7 +107,7 @@ class DB_ORM():
             return await conn.drop_database(self.db_name)
         
     def __repr__(self):
-        return f"coolmongo.DB_ORM:<{self.db_name}>"
+        return f"oomongo.DB:<{self.db_name}>"
     
     __str__ = __repr__
 
@@ -125,23 +125,23 @@ class DB_ORM():
 
     def __iter__(self):
         for x in self.get_sheet_names():
-            yield Sheet_ORM(parent=self, sheet_name=x)
+            yield Sheet(parent=self, sheet_name=x)
 
     async def __aiter__(self):
         for x in await self.aget_sheet_names():
-            yield Sheet_ORM(parent=self, sheet_name=x)
+            yield Sheet(parent=self, sheet_name=x)
     
     def __getitem__(self, sheet_name: str|tuple):
         if type(sheet_name) is str:
-            return Sheet_ORM(parent=self, sheet_name=sheet_name)
+            return Sheet(parent=self, sheet_name=sheet_name)
         else:
             assert type(sheet_name) is tuple
-            return [Sheet_ORM(parent=self, sheet_name=x) for x in sheet_name]
+            return [Sheet(parent=self, sheet_name=x) for x in sheet_name]
 
 
-class Sheet_ORM():
+class Sheet():
 
-    def __init__(self, parent: DB_ORM, sheet_name: str, _condition: dict=None):
+    def __init__(self, parent: DB, sheet_name: str, _condition: dict=None):
         self.parent = parent
         self.sheet_name = sheet_name
         self._condition: Dict[Literal['where', 'columns', 'order', 'slice'], Factory|str|tuple|dict|list|None] = _condition or {
@@ -152,7 +152,7 @@ class Sheet_ORM():
         }
 
     def _deepcopy(self, condition_key: str, value):
-        return Sheet_ORM(
+        return Sheet(
             parent = self.parent,
             sheet_name = self.sheet_name,
             _condition = {
@@ -231,18 +231,18 @@ class Sheet_ORM():
         if type(key) is int:
             index = key
             if index < 0: index = self.len() + index + 1  # R索引
-            if index < 1: raise OrmIndexError(f"index({key}) out of range")
+            if index < 1: raise ODMIndexError(f"index({key}) out of range")
             skip = index - 1
             with self.parent.parent.get_conn() as conn:
                 sheet = conn[self.parent.db_name][self.sheet_name]
-                sh = sheet.find(self._parse_where(), self._parse_columns())
+                res = sheet.find(self._parse_where(), self._parse_columns())
                 if sort:= self._parse_order():
-                    sh = sh.sort(sort)
-                if skip: sh = sh.skip(skip)
-                if r := list(sh.limit(1)):
+                    res = res.sort(sort)
+                if skip: res = res.skip(skip)
+                if r := list(res.limit(1)):
                     return r[0]
                 else:
-                    raise OrmIndexError(f"index({key}) out of range")  # 没有的话引发OrmIndexError错误. 已被self.update和self.delete调用
+                    raise ODMIndexError(f"index({key}) out of range")  # 没有的话引发ODMIndexError错误. 已被self.update和self.delete调用
         else:
             # 没有的话返回空列表, 但不要报错. 已被self.update和self.delete调用
             L, R, S = key[0], key[1], key[2] or 1
@@ -266,12 +266,12 @@ class Sheet_ORM():
             if size > 0:
                 with self.parent.parent.get_conn() as conn:
                     sheet = conn[self.parent.db_name][self.sheet_name]
-                    sh = sheet.find(self._parse_where(), self._parse_columns())
+                    res = sheet.find(self._parse_where(), self._parse_columns())
                     if sort:= self._parse_order():
-                        sh = sh.sort(sort)
-                    if skip: sh = sh.skip(skip)
-                    if type(size) is int: sh = sh.limit(size)
-                    r = list(sh)
+                        res = res.sort(sort)
+                    if skip: res = res.skip(skip)
+                    if type(size) is int: res = res.limit(size)
+                    r = list(res)
                 if sliceSort:
                     return r if S == 1 else r[::S]
                 else:
@@ -285,18 +285,18 @@ class Sheet_ORM():
         if type(key) is int:
             index = key
             if index < 0: index = await self.alen() + index + 1
-            if index < 1: raise OrmIndexError(f"index({key}) out of range")
+            if index < 1: raise ODMIndexError(f"index({key}) out of range")
             skip = index - 1
             async with self.parent.parent.get_conn() as conn:
                 sheet = conn[self.parent.db_name][self.sheet_name]
-                sh = sheet.find(self._parse_where(), self._parse_columns())
+                res = sheet.find(self._parse_where(), self._parse_columns())
                 if sort:= self._parse_order():
-                    sh = sh.sort(sort)
-                if skip: sh = sh.skip(skip)
-                if r := await sh.limit(1).to_list(1):
+                    res = res.sort(sort)
+                if skip: res = res.skip(skip)
+                if r := await res.limit(1).to_list(1):
                     return r[0]
                 else:
-                    raise OrmIndexError(f"index({key}) out of range")
+                    raise ODMIndexError(f"index({key}) out of range")
         else:
             L, R, S = key[0], key[1], key[2] or 1
             tL, tR, tS = type(L), type(R), type(S)
@@ -319,12 +319,12 @@ class Sheet_ORM():
             if size > 0:
                 async with self.parent.parent.get_conn() as conn:
                     sheet = conn[self.parent.db_name][self.sheet_name]
-                    sh = sheet.find(self._parse_where(), self._parse_columns())
+                    res = sheet.find(self._parse_where(), self._parse_columns())
                     if sort:= self._parse_order():
-                        sh = sh.sort(sort)
-                    if skip: sh = sh.skip(skip)
-                    if type(size) is int: sh = sh.limit(size)
-                    r = [x async for x in sh]
+                        res = res.sort(sort)
+                    if skip: res = res.skip(skip)
+                    if type(size) is int: res = res.limit(size)
+                    r = [x async for x in res]
                 if sliceSort:
                     return r if S == 1 else r[::S]
                 else:
@@ -368,7 +368,7 @@ class Sheet_ORM():
             # 其它情况
             try:
                 ids = self['_id'][self._condition['slice']].find()
-            except OrmIndexError:  # 说明key是int而非切片，且找不到符合条件的
+            except ODMIndexError:  # 说明key是int而非切片，且找不到符合条件的
                 return sheet.update_one(empsetCondi, data_, upsert=upsert)
             else:
                 if isinstance(ids, list):
@@ -414,7 +414,7 @@ class Sheet_ORM():
             # 其它情况
             try:
                 ids = await self['_id'][self._condition['slice']].afind()
-            except OrmIndexError:
+            except ODMIndexError:
                 return await sheet.update_one(empsetCondi, data_, upsert=upsert)
             else:
                 if isinstance(ids, list):
@@ -444,7 +444,7 @@ class Sheet_ORM():
             # 其它索引
             try:
                 ids = self['_id'][self._condition['slice']].find()
-            except OrmIndexError:  # 说明key是int而非切片，且找不到符合条件的
+            except ODMIndexError:  # 说明key是int而非切片，且找不到符合条件的
                 return sheet.delete_one( Factory(empset).ParseWhere() )
             else:
                 if isinstance(ids, list):
@@ -469,7 +469,7 @@ class Sheet_ORM():
             # 其它索引
             try:
                 ids = await self['_id'][self._condition['slice']].afind()
-            except OrmIndexError:  # 说明key是int而非切片，且找不到符合条件的
+            except ODMIndexError:  # 说明key是int而非切片，且找不到符合条件的
                 return await sheet.delete_one( Factory(empset).ParseWhere() )
             else:
                 if isinstance(ids, list):
@@ -485,7 +485,7 @@ class Sheet_ORM():
         raise TypeError(key)
 
     def __repr__(self):
-        return f"coolmongo.Sheet_ORM<{self.parent.db_name}.{self.sheet_name}>"
+        return f"oomongo.Sheet<{self.parent.db_name}.{self.sheet_name}>"
     
     __str__ = __repr__
 
@@ -503,14 +503,14 @@ class Factory:
         assert self._variable
         object.__setattr__(self, name, value)
     
-    def __bool__(self): return True  # 下面有一个 where or Factory(uniset)
+    def __bool__(self): return True
 
     def _deepcopy(self, obj):
         if obj in (uniset, empset):
             return obj
         return deepcopy(obj)
 
-    def __and__(self, obj):  # 交集
+    def __and__(self, obj: 'Factory'):  # 交集 &
         a = self._deepcopy(self.where)
         b = self._deepcopy(obj.where)
         if a is uniset: return Factory(b)
@@ -521,7 +521,7 @@ class Factory:
             return Factory({**a, **b})
         return Factory(empset)
     
-    def __or__(self, obj):  # 并集
+    def __or__(self, obj: 'Factory'):  # 并集 |
         a = self._deepcopy(self.where)
         b = self._deepcopy(obj.where)
         if a is empset: return Factory(b)
@@ -529,15 +529,15 @@ class Factory:
         if a is uniset or b is uniset:
             return Factory(uniset)
         return Factory({'$or': [a, b]})
-    
-    def __sub__(self, obj): return self & (~ obj)  # 差集
 
-    def __invert__(self):  # 补集
+    def __invert__(self):  # 补集 ~
         w = self.where
         if w is uniset: return Factory(empset)
         if w is empset: return Factory(uniset)
         return Factory({'$nor': [w]})
     
+    def __sub__(self, obj): return self & (~ obj)  # 差集 -
+
     def ParseWhere(self) -> dict:
         where  = self._deepcopy(self.where)
         if where is uniset: return {}
@@ -545,7 +545,7 @@ class Factory:
         return where
 
 
-def GetFiField(obj:'Filter'):
+def GetFiField(obj: 'Filter'):
     return object.__getattribute__(obj, 'field')
 
 
@@ -561,6 +561,7 @@ class Filter():
         object.__setattr__(self, name, value)
     
     def __getattribute__(self, field): return Filter(f"{GetFiField(self)}.{field}")
+    
     __getitem__ = __getattribute__
 
     def __lt__(self, obj): return Factory({GetFiField(self): {'$lt': obj}})  # <
@@ -583,8 +584,8 @@ class Filter():
             return Factory(empset)
         
         elif isinstance(obj, mf.contain_none):
-            lis = obj.lis
-            if lis: return Factory({'$nor': [{GetFiField(self): {'$elemMatch':{'$eq':x}}} for x in set(lis)]})
+            if lis := obj.lis:
+                return Factory({'$nor': [{GetFiField(self): {'$elemMatch':{'$eq':x}}} for x in set(lis)]})
             return Factory(uniset)
         
         elif isinstance(obj, mf.isin):
@@ -599,7 +600,8 @@ class Filter():
             if len(lis) == 1: return Factory({GetFiField(self): {'$ne': lis[0]}})
             return Factory({GetFiField(self): {'$nin': lis}})
         
-        return Factory({GetFiField(self): obj})
+        else:
+            return Factory({GetFiField(self): obj})
 
 
 class mf_base:
@@ -613,10 +615,10 @@ class mf:
     class contain_none(mf_base): ...
     class isin(mf_base): ...
     class notin(mf_base): ...
-    def re(s, i=False):
+    def re(pattern, i=False):
         if i:
-            return {'$regex': s, '$options': 'i'}
-        return {'$regex': s}
+            return {'$regex': pattern, '$options': 'i'}
+        return {'$regex': pattern}
 
 
 class mo_base: ...
@@ -660,7 +662,7 @@ class mo:
     poplast = _(1)  # 删除数组最后1个元素
 
 
-def creat_Filter(cls_or_self, field) -> Filter:
+def creat_Filter(cls, field) -> Filter:
     return Filter(field=field)
 
 class McType(type):

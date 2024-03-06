@@ -18,9 +18,9 @@ uniset = TRUE()
 empset = FALSE()
 undefined = FALSE()
 
-class OrmIndexError(IndexError):
+class ORMIndexError(IndexError):
     def __repr__(self):
-        return 'OrmIndexError'
+        return 'ORMIndexError'
 
 def JChinese(data): return dumps(data, ensure_ascii=False)
 
@@ -98,47 +98,51 @@ class ORM():
         return core()
     
     def get_db_names(self):
+        ignore = ('mysql', 'information_schema', 'performance_schema', 'sys')
         with self.get_conn() as (conn, cursor):
             cursor.execute("show databases")  # 非本地操作, 需要连接到数据库
-            return [x['Database'] for x in cursor.fetchall()]
+            dbs = [x['Database'] for x in cursor.fetchall()]
+            return [x for x in dbs if x not in ignore]
     
     async def aget_db_names(self):
+        ignore = ('mysql', 'information_schema', 'performance_schema', 'sys')
         async with self.get_conn() as (conn, cursor):
             await cursor.execute("show databases")  # 非本地操作, 需要连接到数据库
-            return [x['Database'] for x in await cursor.fetchall()]
+            dbs = [x['Database'] for x in await cursor.fetchall()]
+            return [x for x in dbs if x not in ignore]
     
     def len(self): return len(self.get_db_names())
     
     async def alen(self): return len(await self.aget_db_names())
 
-    def get_dbs(self): return [DB_ORM(parent=self, db_name=x) for x in self.get_db_names()]
+    def get_dbs(self): return [DB(parent=self, db_name=x) for x in self.get_db_names()]
     
-    async def aget_dbs(self): return [DB_ORM(parent=self, db_name=x) for x in await self.aget_db_names()]
+    async def aget_dbs(self): return [DB(parent=self, db_name=x) for x in await self.aget_db_names()]
 
     def __iter__(self):
         for x in self.get_db_names():
-            yield DB_ORM(parent=self, db_name=x)
+            yield DB(parent=self, db_name=x)
 
     async def __aiter__(self):
         for x in await self.aget_db_names():
-            yield DB_ORM(parent=self, db_name=x)
+            yield DB(parent=self, db_name=x)
     
     def __getitem__(self, db_name: str|tuple):
         if type(db_name) is str:
-            return DB_ORM(parent=self, db_name=db_name)
+            return DB(parent=self, db_name=db_name)
         else:
             assert type(db_name) is tuple
-            return [DB_ORM(parent=self, db_name=x) for x in db_name]
+            return [DB(parent=self, db_name=x) for x in db_name]
 
 
-class DB_ORM():
+class DB():
 
     def __init__(self, parent: ORM, db_name: str):
         self.parent = parent
         self.db_name = db_name
 
     def __repr__(self):
-        return f"coolmysql.DB_ORM:<{self.db_name}>"
+        return f"oomysql.DB:<{self.db_name}>"
     
     __str__ = __repr__
 
@@ -158,34 +162,34 @@ class DB_ORM():
     
     async def alen(self): return len(await self.aget_sheet_names())
 
-    def get_sheets(self): return [Sheet_ORM(parent=self, sheet_name=x) for x in self.get_sheet_names()]
+    def get_sheets(self): return [Sheet(parent=self, sheet_name=x) for x in self.get_sheet_names()]
     
-    async def aget_sheets(self): return [Sheet_ORM(parent=self, sheet_name=x) for x in await self.aget_sheet_names()]
+    async def aget_sheets(self): return [Sheet(parent=self, sheet_name=x) for x in await self.aget_sheet_names()]
 
     def __getitem__(self, sheet_name: str|tuple):
         if type(sheet_name) is str:
-            return Sheet_ORM(parent=self, sheet_name=sheet_name)
+            return Sheet(parent=self, sheet_name=sheet_name)
         else:
             assert type(sheet_name) is tuple
-            return [Sheet_ORM(parent=self, sheet_name=x) for x in sheet_name]
+            return [Sheet(parent=self, sheet_name=x) for x in sheet_name]
 
     def __iter__(self):
         for x in self.get_sheet_names():
-            yield Sheet_ORM(parent=self, sheet_name=x)
+            yield Sheet(parent=self, sheet_name=x)
 
     async def __aiter__(self):
         for x in await self.aget_sheet_names():
-            yield Sheet_ORM(parent=self, sheet_name=x)
+            yield Sheet(parent=self, sheet_name=x)
     
     def close(self):
         self.parent.close()
 
 
-class Sheet_ORM():
+class Sheet():
     
     _pk = ''
 
-    def __init__(self, parent: DB_ORM, sheet_name: str, _condition: dict=None):
+    def __init__(self, parent: DB, sheet_name: str, _condition: dict=None):
         self.parent = parent
         self.sheet_name = sheet_name
         self._condition: Dict[Literal['where', 'columns', 'order', 'slice'], Factory|str|tuple|dict|list|None] = _condition or {
@@ -196,12 +200,12 @@ class Sheet_ORM():
         }
 
     def __repr__(self):
-        return f"coolmysql.Sheet_ORM<{self.parent.db_name}.{self.sheet_name}>"
+        return f"oomysql.Sheet<{self.parent.db_name}.{self.sheet_name}>"
     
     __str__ = __repr__
 
     def _deepcopy(self, condition_key: str, value):
-        return Sheet_ORM(
+        return Sheet(
             parent = self.parent,
             sheet_name = self.sheet_name,
             _condition = {
@@ -329,7 +333,7 @@ class Sheet_ORM():
         if type(key) is int:
             index = key
             if index < 0: index = self.len() + index + 1  # R索引
-            if index < 1: raise OrmIndexError(f"index({key}) out of range")
+            if index < 1: raise ORMIndexError(f"index({key}) out of range")
             skip = index - 1
             parseLimit = f" limit {skip}, 1"
             sql = f"select {self._parse_columns()} from {self.sheet_name}{self._parse_where()}{self._parse_order()}{parseLimit}"
@@ -337,7 +341,7 @@ class Sheet_ORM():
             if r:
                 return r[0]
             else:
-                raise OrmIndexError(f"index({key}) out of range")  # 没有的话引发OrmIndexError错误. 已被self.update和self.delete调用
+                raise ORMIndexError(f"index({key}) out of range")  # 没有的话引发ORMIndexError错误. 已被self.update和self.delete调用
         else:
             # 没有的话返回空列表, 但不要报错. 已被self.update和self.delete调用
             L, R, S = key[0], key[1], key[2] or 1
@@ -377,7 +381,7 @@ class Sheet_ORM():
         if isinstance(key, int):
             index = key
             if index < 0: index = await self.alen() + index + 1  # R索引
-            if index < 1: raise OrmIndexError(f"index({key}) out of range")
+            if index < 1: raise ORMIndexError(f"index({key}) out of range")
             skip = index - 1
             parseLimit = f" limit {skip}, 1"
             sql = f"select {self._parse_columns()} from {self.sheet_name}{self._parse_where()}{self._parse_order()}{parseLimit}"
@@ -385,7 +389,7 @@ class Sheet_ORM():
             if r:
                 return r[0]
             else:
-                raise OrmIndexError(f"index({key}) out of range")  # 没有的话引发OrmIndexError错误. 已被self.update和self.delete调用
+                raise ORMIndexError(f"index({key}) out of range")  # 没有的话引发ORMIndexError错误. 已被self.update和self.delete调用
         else:
             # 没有的话返回空列表, 但不要报错. 已被self.update和self.delete调用
             L, R, S = key[0], key[1], key[2] or 1
@@ -441,7 +445,7 @@ class Sheet_ORM():
         pk = self.get_pk()
         try:
             pks = self[pk][self._condition['slice']].select()
-        except OrmIndexError:
+        except ORMIndexError:
             rdata, cursor = self.execute(f"update {self.sheet_name} set {data} where 1 = 2 limit 1")
         else:
             if isinstance(pks, list):
@@ -472,7 +476,7 @@ class Sheet_ORM():
         pk = await self.aget_pk()
         try:
             pks = await self[pk][self._condition['slice']].aselect()
-        except OrmIndexError:
+        except ORMIndexError:
             rdata, cursor = await self.aexecute(f"update {self.sheet_name} set {data} where 1 = 2 limit 1")
         else:
             if isinstance(pks, list):
@@ -502,7 +506,7 @@ class Sheet_ORM():
         pk = self.get_pk()
         try:
             pks = self[pk][self._condition['slice']].select()
-        except OrmIndexError:
+        except ORMIndexError:
             rdata, cursor = self.execute(f"delete from {self.sheet_name} where 1 = 2 limit 1")
         else:
             if isinstance(pks, list):
@@ -532,7 +536,7 @@ class Sheet_ORM():
         pk = await self.aget_pk()
         try:
             pks = await self[pk][self._condition['slice']].aselect()
-        except OrmIndexError:
+        except ORMIndexError:
             rdata, cursor = await self.aexecute(f"delete from {self.sheet_name} where 1 = 2 limit 1")
         else:
             if isinstance(pks, list):
@@ -733,7 +737,7 @@ class Factory:
         assert self._variable
         object.__setattr__(self, name, value)
 
-    def __and__(self, obj):
+    def __and__(self, obj: 'Factory'):
         a = self.where
         b = obj.where
         if a is uniset: return Factory(b)
@@ -741,7 +745,7 @@ class Factory:
         if a and b: return Factory(f"({a}) and ({b})")
         return Factory(empset)
 
-    def __or__(self, obj):
+    def __or__(self, obj: 'Factory'):
         a = self.where
         b = obj.where
         if a is empset: return Factory(b)
@@ -783,7 +787,7 @@ class Filter():
     def __le__(self, obj): return Factory(f"{self.field} <= {JChinese(obj)}")
     def __gt__(self, obj): return Factory(f"{self.field} > {JChinese(obj)}")
     def __ge__(self, obj): return Factory(f"{self.field} >= {JChinese(obj)}")
-    def re(self, string): return Factory(f"{self.field} regexp {JChinese(string or '')}")
+    def re(self, pattern): return Factory(f"{self.field} regexp {JChinese(pattern or '')}")
 
     def isin(self, *lis):
         if not lis: return Factory(empset)
@@ -833,7 +837,7 @@ class Filter():
         return Factory(sumlis)
 
 
-def creat_Filter(cls_or_self, field) -> Filter:
+def creat_Filter(cls, field) -> Filter:
     return Filter(field=field)
 
 class McType(type):
@@ -843,7 +847,7 @@ class McType(type):
 class mc(object, metaclass=McType):
     id = None  # 预设字段提示
 
-def _builtFunc(cls_or_self, func):
+def _builtFunc(cls, func):
     def builtFunc(*fields):
         return Filter(field=f"{func}({', '.join(fields)})")
     return builtFunc

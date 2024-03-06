@@ -1,6 +1,6 @@
 # 项目描述
 
-一个使用 Python + HTML 开发桌面应用的框架。
+一个使用 Python + HTML 开发桌面 GUI 应用的框架，支持 Windows、Mac、Linux 平台。
 
 功能：
 
@@ -84,7 +84,7 @@ asyncio.run( my_app().start() )
 
 ### 指定窗口内容源
 
-可通过传递 HTML 或 URL 文本这两种数据之一来决定窗口内容，示例：
+可通过传递 HTML 文本或 URL 链接这两种数据之一来决定窗口内容，示例：
 
 ```python
 await self.create_window(html='你好!')
