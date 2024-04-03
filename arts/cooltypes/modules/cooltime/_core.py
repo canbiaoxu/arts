@@ -2,19 +2,18 @@ import re
 from random import uniform
 from datetime import datetime as DT2
 from datetime import timedelta
-from typing import Union
 
 
 def parse_add(seconds=0, minutes=0, hours=0, days=0, weeks=0):
     return timedelta(seconds=seconds, minutes=minutes, hours=hours, days=days, weeks=weeks)
 
-def parse_time(datetime: Union[int, float, 'cooltime']=None) -> DT2:
+def parse_time(datetime: 'int|float|str|Cooltime|None'=None) -> DT2:
     typ = type(datetime)
     if typ in (int, float):  # 从时间戳生成
         return DT2.fromtimestamp(datetime)
     elif not datetime:  # 生成当前时区的当前时间
         return DT2.now()
-    elif isinstance(datetime, cooltime):  # 从自身类型生成
+    elif isinstance(datetime, Cooltime):  # 从自身类型生成
         return datetime._datetime
     else:  # 从字符串生成
         datetime = re.split(r'[^\d]+', re.sub(r'^[^\d]+', '', str(datetime)), 5)
@@ -23,9 +22,9 @@ def parse_time(datetime: Union[int, float, 'cooltime']=None) -> DT2:
                 datetime += second[0]
         return DT2(*[int(x) for x in datetime if x])
 
-class cooltime():
+class Cooltime():
 
-    def __init__(self, _datetime: Union[int, float, 'cooltime']=None):
+    def __init__(self, _datetime: 'int|float|str|Cooltime|None'=None):
         self._datetime = parse_time(_datetime)
 
     @property
@@ -50,7 +49,7 @@ class cooltime():
     def random(start=None, end=None):
         if type(start) not in (int, float) and not start: start = 63043200  # 北京时间1972-01-01
         if type(end) not in (int, float) and not end: end = 2114352000  # 北京时间2037-01-01
-        return cooltime(uniform(float(cooltime(start)), float(cooltime(end))))
+        return Cooltime(uniform(float(Cooltime(start)), float(Cooltime(end))))
 
     def __eq__(self, _datetime): return self._datetime == parse_time(_datetime)
     def __ne__(self, _datetime): return self._datetime != parse_time(_datetime)
@@ -62,7 +61,7 @@ class cooltime():
     def __float__(self): return self._datetime.timestamp()  # 1687271066.000028
     def __int__(self): return int(float(self))  # 1687271066
     def __str__(self): return self.datetime
-    def __repr__(self): return f"arts.cooltime<{self._datetime}>"  # arts.cooltime<2023-06-20 22:24:26.000028>
+    def __repr__(self): return f"arts.Cooltime<{self._datetime}>"  # arts.Cooltime<2023-06-20 22:24:26.000028>
 
     @property
     def datetime(self): return str(self._datetime)  # 2023-06-20 22:24:26.000028
@@ -83,7 +82,7 @@ class cooltime():
         self._datetime += parse_add(seconds=seconds, minutes=minutes, hours=hours, days=days, weeks=weeks)
     
     def shift_copy(self, seconds=0, minutes=0, hours=0, days=0, weeks=0):
-        return cooltime(self._datetime + parse_add(seconds=seconds, minutes=minutes, hours=hours, days=days, weeks=weeks))
+        return Cooltime(self._datetime + parse_add(seconds=seconds, minutes=minutes, hours=hours, days=days, weeks=weeks))
     
     def strftime(self, fmt=r"%Y-%m-%d %H:%M:%S"):
         return self._datetime.strftime(fmt)

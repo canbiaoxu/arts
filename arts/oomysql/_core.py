@@ -22,7 +22,7 @@ class ORMIndexError(IndexError):
     def __repr__(self):
         return 'ORMIndexError'
 
-def JChinese(data): return dumps(data, ensure_ascii=False)
+def dump_data(data): return dumps(data, ensure_ascii=False)
 
 
 class ORM():
@@ -429,7 +429,7 @@ class Sheet():
 
     def update(self, data: dict):
         key = self._parse_slice()
-        data = ', '.join([f"{k}={v.field}" if isinstance(v,Filter) else f"{k}={JChinese(v)}" for k,v in data.items()])
+        data = ', '.join([f"{k}={v.field}" if isinstance(v,Filter) else f"{k}={dump_data(v)}" for k,v in data.items()])
         # [::]
         if isinstance(key, list):
             L, R, S = key[0], key[1], key[2] or 1
@@ -460,7 +460,7 @@ class Sheet():
 
     async def aupdate(self, data: dict):
         key = self._parse_slice()
-        data = ', '.join([f"{k}={v.field}" if isinstance(v,Filter) else f"{k}={JChinese(v)}" for k,v in data.items()])
+        data = ', '.join([f"{k}={v.field}" if isinstance(v,Filter) else f"{k}={dump_data(v)}" for k,v in data.items()])
         # [::]
         if isinstance(key, list):
             L, R, S = key[0], key[1], key[2] or 1
@@ -619,7 +619,7 @@ class Sheet():
             for field, kvs in records.items():
                 s = [f"{field} = ", '    case']
                 for k, v in kvs.items():
-                    s.append(f"        when {pk} = {JChinese(k)} then {JChinese(v)}")
+                    s.append(f"        when {pk} = {dump_data(k)} then {dump_data(v)}")
                 s.append(f"else {field}")
                 s.append('end')
                 blocks.append('\n'.join(s))
@@ -664,7 +664,7 @@ class Sheet():
             for field, kvs in records.items():
                 s = [f"{field} = ", '    case']
                 for k, v in kvs.items():
-                    s.append(f"        when {pk} = {JChinese(k)} then {JChinese(v)}")
+                    s.append(f"        when {pk} = {dump_data(k)} then {dump_data(v)}")
                 s.append(f"else {field}")
                 s.append('end')
                 blocks.append('\n'.join(s))
@@ -688,7 +688,7 @@ class Sheet():
         for field, kvs in records.items():
             s = [f"{field} = ", '    case']
             for k, v in kvs.items():
-                s.append(f"        when {pk} = {JChinese(k)} then {JChinese(v)}")
+                s.append(f"        when {pk} = {dump_data(k)} then {dump_data(v)}")
             s.append(f"else {field}")
             s.append('end')
             blocks.append('\n'.join(s))
@@ -707,7 +707,7 @@ class Sheet():
         for field, kvs in records.items():
             s = [f"{field} = ", '    case']
             for k, v in kvs.items():
-                s.append(f"        when {pk} = {JChinese(k)} then {JChinese(v)}")
+                s.append(f"        when {pk} = {dump_data(k)} then {dump_data(v)}")
             s.append(f"else {field}")
             s.append('end')
             blocks.append('\n'.join(s))
@@ -776,18 +776,18 @@ class Filter():
     def __eq__(self, obj):
         if obj is None:
             return Factory(f"{self.field} is null")
-        return Factory(f"{self.field} = {JChinese(obj)}")
+        return Factory(f"{self.field} = {dump_data(obj)}")
 
     def __ne__(self, obj):
         if obj is None:
             return Factory(f"{self.field} is not null")
-        return Factory(f"{self.field} != {JChinese(obj)}")
+        return Factory(f"{self.field} != {dump_data(obj)}")
 
-    def __lt__(self, obj): return Factory(f"{self.field} < {JChinese(obj)}")
-    def __le__(self, obj): return Factory(f"{self.field} <= {JChinese(obj)}")
-    def __gt__(self, obj): return Factory(f"{self.field} > {JChinese(obj)}")
-    def __ge__(self, obj): return Factory(f"{self.field} >= {JChinese(obj)}")
-    def re(self, pattern): return Factory(f"{self.field} regexp {JChinese(pattern or '')}")
+    def __lt__(self, obj): return Factory(f"{self.field} < {dump_data(obj)}")
+    def __le__(self, obj): return Factory(f"{self.field} <= {dump_data(obj)}")
+    def __gt__(self, obj): return Factory(f"{self.field} > {dump_data(obj)}")
+    def __ge__(self, obj): return Factory(f"{self.field} >= {dump_data(obj)}")
+    def re(self, pattern): return Factory(f"{self.field} regexp {dump_data(pattern or '')}")
 
     def isin(self, *lis):
         if not lis: return Factory(empset)
@@ -802,9 +802,9 @@ class Filter():
         sumlis = []
         for lis in type_item.values():
             if len(lis) == 1:
-                sumlis.append(f"{self.field} = {JChinese(list(lis)[0])}")
+                sumlis.append(f"{self.field} = {dump_data(list(lis)[0])}")
             elif len(lis) > 1:
-                sumlis.append(f"{self.field} in ({', '.join(JChinese(x) for x in lis)})")
+                sumlis.append(f"{self.field} in ({', '.join(dump_data(x) for x in lis)})")
         if null:
             sumlis.append(f"{self.field} is null")
         if len(sumlis) == 1:
@@ -825,9 +825,9 @@ class Filter():
         sumlis = []
         for lis in type_item.values():
             if len(lis) == 1:
-                sumlis.append(f"{self.field} != {JChinese(list(lis)[0])}")
+                sumlis.append(f"{self.field} != {dump_data(list(lis)[0])}")
             elif len(lis) > 1:
-                sumlis.append(f"{self.field} not in ({', '.join(JChinese(x) for x in lis)})")
+                sumlis.append(f"{self.field} not in ({', '.join(dump_data(x) for x in lis)})")
         if null:
             sumlis.append(f"{self.field} is not null")
             sumlis = sumlis[0] if len(sumlis) == 1 else ' and '.join(f"({x})" for x in sumlis)

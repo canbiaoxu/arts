@@ -4,11 +4,11 @@ from weakref import WeakKeyDictionary
 from os.path import abspath
 from pathlib import Path
 from json import loads as json_loads
-from json import dumps as json_dumps
 from typing import Dict, Any
 from tornado.web import RequestHandler, Application
 from pyppeteer.launcher import Launcher, DEFAULT_ARGS
 from pyppeteer.page import Page
+from arts.cooltypes import json_chinese, get_chrome_path
 
 
 # 使不会提示'缺少 Google API 密钥, 因此 Chromium 的部分功能将不可使用。'
@@ -42,18 +42,6 @@ DEFAULT_ARGS[:] = [
     '--disable-session-crashed-bubble',
 ]
 
-def get_chrome_path():
-    for chrome in [
-        rf'C:\Program Files\Google\Chrome\Application\chrome.exe',  # Chrome [已校验]
-        rf'C:\Users\{os.getlogin()}\AppData\Local\360ChromeX\Chrome\Application\360ChromeX.exe',  # 360极速浏览器X [已校验]
-        rf'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',  # Edge [已校验] 32位的, 置底
-        rf'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',  # Mac Chrome
-        rf'/usr/bin/chromium-browser',  # Linux chromium
-        rf'/usr/bin/google-chrome',  # Linux Chrome
-    ]:
-        if Path(chrome).is_file():
-            return chrome
-    return None
 
 # 为 Page.goto 添加 title 参数
 native_goto = Page.goto
@@ -160,32 +148,28 @@ class App:
                 TorSelf.set_header("Access-Control-Allow-Origin", "*")
                 return TorSelf.write( self._home_text )
         
-        class callpy(RequestHandler):            
+        class callpy(RequestHandler):
             async def post(TorSelf):
+                code, msg, data = 'success', '', None
                 try:
-                    try:
-                        TorSelf.set_header("Access-Control-Allow-Origin", "*")
-                        body: dict = json_loads(TorSelf.request.body)
-                        method_name = body['method_name']
-                        kwargs = body['kwargs'] or {}
-                        if method_name[:1] == '_':
-                            code, msg, data = 2, "For the server's security, calling methods starting with '_' is prohibited.", None
+                    TorSelf.set_header("Access-Control-Allow-Origin", "*")
+                    body: dict = json_loads(TorSelf.request.body)
+                    method_name = body['method_name']
+                    kwargs = body['kwargs'] or {}
+                    if method_name[:1] == '_':
+                        code, msg, data = 'security_error', "为了服务器的安全, 不支持调用以 '_' 开头的方法.", None
+                    else:
+                        func = getattr(self, method_name)
+                        __func__ = func.__func__ if hasattr(func, '__func__') else func
+                        if __func__ in _allow_callpy_funcs:
+                            code, msg, data = 'success', '', await func(**kwargs)
                         else:
-                            func = getattr(self, method_name)
-                            __func__ = func.__func__ if hasattr(func, '__func__') else func
-                            if __func__ in _allow_callpy_funcs:
-                                code, msg, data = 0, '', await func(**kwargs)
-                            else:
-                                code, msg, data = 3, 'This method does not allow calling.', None
-                        try:
-                            r = json_dumps({'code':code, 'msg':msg, 'data':data}, ensure_ascii=False)
-                        except:
-                            r = json_dumps({'code':code, 'msg':msg, 'data':str(data)}, ensure_ascii=False)
-                        return TorSelf.write(r)
-                    except Exception as e:
-                        return TorSelf.write( json_dumps({'code':1, 'msg':str(e), 'data':None}, ensure_ascii=False) )
+                            code, msg, data = 'allow_callpy_error', '方法未注册, 不支持调用.', None
+                    return TorSelf.write( json_chinese(dict(code=code, msg=msg, data=data)) )
                 except Exception as e:
-                    print(e)
+                    code, msg = type(e).__name__, str(e)
+                    if data is not None: data = str(data)
+                    return TorSelf.write( json_chinese(dict(code=code, msg=msg, data=data)) )
         
         # 查找一个空闲端口
         sock = socket.socket()

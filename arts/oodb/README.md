@@ -10,11 +10,11 @@
 
 [江南雨上](mailto:lcctoor@outlook.com)
 
-[主页](https://lcctoor.github.io/arts/) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-您可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -33,7 +33,7 @@ from pymongo import MongoClient
 from oodb import OOM, Row, mc, mf, mo, mpy
 ```
 
-## 创建 OOM
+## 创建OOM
 
 ```python
 class OOM_2(OOM):
@@ -195,11 +195,13 @@ def say_hello(self: 'Row', name: 'str'):
     return f"[{int(time.time())}] 你好，{name}！我是【{版本名称}】版本的 iPhone15，很高兴成为你的移动助理！"
 
 # 将对象方法赋值给基对象base, 它的子孙对象都将继承此方法
-next( sheet[mc._id == id_base].find() ).update({'say_hello': say_hello})
+base_obj = next( sheet[mc._id == id_base].find() )
+base_obj.update({'say_hello': say_hello})
 
 # 调用对象方法
-for _id in (id_128G_黑, id_128G_白, id_128G_白_联通合作):
-    say_hello = next( sheet[mc._id == _id].find() )['say_hello']
+for _id in [id_128G_黑, id_128G_白, id_128G_白_联通合作]:
+    obj = next( sheet[mc._id == _id].find() )
+    say_hello = obj['say_hello']
     print(say_hello('程序猿'))
 
 # >>> [1709654174] 你好，程序猿！我是【128G-黑色】版本的 iPhone15，很高兴成为你的移动助理！
@@ -213,11 +215,11 @@ for _id in (id_128G_黑, id_128G_白, id_128G_白_联通合作):
 
 2、注意到这行代码 `def say_hello(self: 'Row', name: 'str'):` 中， `'Row'` 和 `'str'` 被加了引号 —— 当我们为对象方法的参数做类型提示时，必须以字符串的格式。以下这种方式是错误的： `def say_hello(self: Row, name: str):` 。当然，类型提示只是用来让编辑器提示代码的，它可有可无，不是必要的。
 
-3、可以在对象方法内导入并使用任何 Python 包，包括标准库、第三方包、当前环境变量内的包。
+3、可以在对象方法内导入并使用任何【标准库】和【第三方包】。
 
 4、调用对象方法时，既可以使用位置传参，也可以使用关键词传参。例如，这两种方式都是可行的： `say_hello('程序猿')` 、 `say_hello(name='程序猿')` 。
 
-5、对象方法是以人类易读的文本格式（[查看图示](https://lcctoor.github.io/arts/arts/oodb/ip_static/对象方法.png)）存储在 MongoDB 中的，可直接通过 Navicat 等管理工具灵活修改。
+5、对象方法是以人类易读的文本格式存储在 MongoDB 中的（[查看图示](https://lcctoor.github.io/arts/arts/oodb/ip_static/对象方法.png)），可直接通过 Navicat 等管理工具灵活修改。
 
 ## 动态属性
 
@@ -233,12 +235,11 @@ C4 = sheet.insert({'班级编号': 4, '学生数量': 40}).inserted_id
 # 创建一个获取学生总数量的动态属性值
 @mpy.dynamic(C1, C2, id3=C3, id4=C4)
 def get_students_count(self: 'Row', id1, id2, id3, id4):
-    from oodb import Row
-    parent = self.parent
-    rows = [Row(parent=parent, _id=x) for x in (id1, id2, id3, id4)]
+    from oodb import Row  # Row 在实例化时需要接收两个参数: (parent: Sheet, _id)
+    rows = [Row(parent=self.parent, _id=x) for x in (id1, id2, id3, id4)]
     return sum( [x['学生数量'] for x in rows] )
 
-# 新增一个年级对象，并将 动态属性值 赋值给 '学生总数量'属性
+# 新增一个年级对象，并将【动态属性值】赋值给【学生总数量】属性
 gid = sheet.insert({'年级': '五年级', '学生总数量': get_students_count}).inserted_id
 
 # 查询动态属性值
@@ -246,7 +247,7 @@ grade = next( sheet[mc._id == gid].find() )
 print(grade['学生总数量'])  # >>> 100
 ```
 
-如果我们修改某个班级的学生数量，年级的'学生总数量'的返回值也会相应变化：
+如果我们修改某个班级的学生数量，年级的【学生总数量】的返回值也会相应变化：
 
 ```python
 next( sheet[mc._id == C1].find() ).update({'学生数量': 15})
@@ -259,11 +260,11 @@ print(grade['学生总数量'])  # >>> 105
 
 2、注意到这行代码 `def get_students_count(self: 'Row', id1, id2, id3, id4):` 中， `'Row'` 被加了引号 —— 当我们为动态属性的参数做类型提示时，必须以字符串的格式。以下这种方式是错误的： `def get_students_count(self: Row, id1, id2, id3, id4):` 。当然，类型提示只是用来让编辑器提示代码的，它可有可无，不是必要的。
 
-3、可以在动态属性内导入并使用任何 Python 包，包括标准库、第三方包、当前环境变量内的包。
+3、可以在动态属性内导入并使用任何【标准库】和【第三方包】。
 
 4、创建动态属性时，必须将所需要的参数值在 `@mpy.dynamic(...)` 的括号内传入。比如：我们定义的 `get_students_count` 需要 `id1, id2, id3, id4` 这四个参数，相对应地，我们在 `@mpy.dynamic(...)` 中传递了 `C1, C2, id3=C3, id4=C4` 这四个参数值。传递参数值时，既可以使用位置传参，也可以使用关键词传参，例如： `C1, C2` 使用了位置传参，而 `id3=C3, id4=C4` 使用了关键词传参。
 
-5、动态属性是以人类易读的文本格式（[查看图示](https://lcctoor.github.io/arts/arts/oodb/ip_static/动态属性.png)）存储在 MongoDB 中的，可直接通过 Navicat 等管理工具灵活修改。
+5、动态属性是以人类易读的文本格式存储在 MongoDB 中的（[查看图示](https://lcctoor.github.io/arts/arts/oodb/ip_static/动态属性.png)），可直接通过 Navicat 等管理工具灵活修改。
 
 ## 面向对象特性综述
 
@@ -303,7 +304,7 @@ print(grade['学生总数量'])  # >>> 105
 | mc.姓名 == mf.re( '小' )                                                       | 正则匹配                                        |
 | \[mc.年龄 > 3\][mc.年龄 < 100]                                                 | 交集（方式一）                                  |
 | [ (mc.年龄 > 3) & (mc.年龄 < 100) ]                                            | 交集（方式二）                                  |
-| [(mc.年龄<30) &#124; (mc.年龄>30) &#124; (mc.年龄==30) &#124; (mc.年龄==None)] | 并集                                            |
+| [(mc.年龄<30)&#124; (mc.年龄>30) &#124; (mc.年龄==30) &#124; (mc.年龄==None)] | 并集                                            |
 | [ (mc.年龄 > 3) - (mc.年龄 > 100) ]                                            | 差集                                            |
 | [ ~(mc.年龄 > 100) ]                                                           | 补集                                            |
 

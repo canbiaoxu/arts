@@ -9,8 +9,10 @@ show = (src) => {event.preventDefault(); window.open(src, '_blank')}
         for (let src of media) {
             let suffix = src.match(/\.([^.]+)$/)
             if (suffix) {
-                if (video_suffixes.includes(suffix[1])) {content.push(video_template.replace(/{{src}}/g, src))}
-                else if (img_suffixes.includes(suffix[1])) {content.push(img_template.replace(/{{src}}/g, src))}
+                if (video_suffixes.includes(suffix[1]))
+                    {content.push(video_template.replace(/{{src}}/g, src))}
+                else if (img_suffixes.includes(suffix[1]))
+                    {content.push(img_template.replace(/{{src}}/g, src))}
             }
         }
         let ch_15 = document.createElement('div')

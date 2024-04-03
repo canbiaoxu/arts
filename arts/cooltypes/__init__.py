@@ -1,15 +1,8 @@
 # 无依赖的
-from .vtype import (
-    vbool, vtrue, vfalse,
-    bidict, vdict, vstr, vbytes,
-    ToolPool, jsonChinese, readJson, writeJson,
-    cut_data, getGroupNumber,
-    check_dir, check_parent_dir,
-    system_type, ternary, repairPathClash, uniform_put, cool_iter, limit_input,
-    creat_vtrue_instance, creat_vfalse_instance, get_chrome_path
+from .modules.vtype._core import (
+    json_chinese, group_data, repair_pathclash, uniform_put, limit_input, get_chrome_path,
 )
-from .Coolstr import coolstr
-from .Cooltime import cooltime
-from .rstyleslice import rslice
-
+from .modules.coolstr._core import Coolstr
+from .modules.cooltime._core import Cooltime
+from .modules.rslice._core import Rslice
 # 有依赖的

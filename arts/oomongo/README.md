@@ -6,11 +6,11 @@
 
 [江南雨上](mailto:lcctoor@outlook.com)
 
-[主页](https://lcctoor.github.io/arts/) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
 
 # Bug提交、功能提议
 
-您可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
 
 # 安装
 
@@ -30,7 +30,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from oomongo import ODM, mc, mf, mo
 ```
 
-## 创建 ODM
+## 创建ODM
 
 ```python
 class ODM_2(ODM):
@@ -123,7 +123,7 @@ r2.inserted_ids
 | mc.姓名 == mf.re( '小' )                                                       | 正则匹配                                        |
 | \[mc.年龄 > 3\][mc.年龄 < 100]                                                 | 交集（方式一）                                  |
 | [ (mc.年龄 > 3) & (mc.年龄 < 100) ]                                            | 交集（方式二）                                  |
-| [(mc.年龄<30) &#124; (mc.年龄>30) &#124; (mc.年龄==30) &#124; (mc.年龄==None)] | 并集                                            |
+| [(mc.年龄<30)&#124; (mc.年龄>30) &#124; (mc.年龄==30) &#124; (mc.年龄==None)] | 并集                                            |
 | [ (mc.年龄 > 3) - (mc.年龄 > 100) ]                                            | 差集                                            |
 | [ ~(mc.年龄 > 100) ]                                                           | 补集                                            |
 
