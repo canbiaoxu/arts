@@ -172,7 +172,7 @@ class Chat:
         })
         answer: str = ""
         for chunk in completion:
-            if content := chunk.choices[0].delta.content:
+            if chunk.choices and (content := chunk.choices[0].delta.content):
                 answer += content
                 yield content
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
@@ -209,7 +209,7 @@ class Chat:
         })
         answer: str = ""
         async for chunk in completion:
-            if content := chunk.choices[0].delta.content:
+            if chunk.choices and (content := chunk.choices[0].delta.content):
                 answer += content
                 yield content
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
