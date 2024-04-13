@@ -80,13 +80,13 @@ class caches_tool:
 
 class App:
 
-    def __init__(self, chrome:str|Path=None):
+    def __init__(self, chrome: str|Path=None):
         chrome = chrome or get_chrome_path()
         if chrome:
             self.chrome = abspath(chrome)
         else:
             # chromium 官网下载地址: https://www.chromium.org/getting-involved/download-chromium/
-            raise OSError(f'Please pass the path of the Chromium browser. Chromium download link: https://www.chromium.org/getting-involved/download-chromium/')
+            raise OSError(f'请安装 Chrome 浏览器!')
         self._pages: Dict[Page, Any] = WeakKeyDictionary()  # 面向未来编程
 
     async def main(self):

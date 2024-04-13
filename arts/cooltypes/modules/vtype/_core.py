@@ -259,8 +259,8 @@ class _CoolQueue:
             que.add_many(*obj)
         return que
 
-def group_data(data, groupSize):
-    return [data[groupSize*(i-1): groupSize*i] for i in range(1, ceil(len(data)/groupSize)+1)]
+def group_data(data, group_size):
+    return [data[group_size*(i-1): group_size*i] for i in range(1, ceil(len(data)/group_size)+1)]
 
 def json_chinese(data): return jsonDumps(data, ensure_ascii=False)
 

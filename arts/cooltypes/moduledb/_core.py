@@ -104,11 +104,11 @@ class DB:
     path: Path
     depth: int
 
-    def __init__(self, module: ModuleType|str, depth: int):
-        if isinstance(module, ModuleType): module = module.__file__
+    def __init__(self, module: str, depth: int):
+        if isinstance(module, ModuleType): module = abspath(module.__file__)
         assert type(module) is str
-        module = abspath(module)  # module必须传入ModuleType实例或者某个模块的__file__. 否则, 若传入某个非路径字符串, 比如'abc', 经过 abspath 处理将会自动变成 '<入口模块路径>/abc'
-        module = Path( f"{Path('~/.py_moduledb').expanduser()}/{sha3_256(module.encode('utf8')).hexdigest()}" )
+        module = sha3_256(module.encode('utf8')).hexdigest()
+        module = Path( f"{Path('~/.py_moduledb').expanduser()}/{module}" )
         module.mkdir(parents=True, exist_ok=True)
         self.path = module
         self.depth = depth

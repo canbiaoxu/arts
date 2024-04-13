@@ -1,7 +1,8 @@
+from os.path import abspath
 from arts.cooltypes import moduledb
 
 
-sheet: moduledb.File = moduledb.DB(__file__, depth=1)['sheet_1']
+sheet: moduledb.File = moduledb.DB(abspath(__file__), depth=1)['sheet_1']
 
 
 def set_environment_name(name: str):

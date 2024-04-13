@@ -287,12 +287,12 @@ except:
 
 ### 限制历史消息数量
 
-随着对话次数越来越多，最终上下文长度就会超出 openai 接口限定的最大 token 数量，此时可使用 MsgMaxCount 参数来限制历史消息数量。当消息数量超出 MsgMaxCount 后，程序会自动移除最早的记录，使消息数量减少到恰好等于 MsgMaxCount 。
+随着对话次数越来越多，最终上下文长度就会超出 openai 接口限定的最大 token 数量，此时可使用 msg_max_count 参数来限制历史消息数量。当消息数量超出 msg_max_count 后，程序会自动移除最早的记录，使消息数量减少到恰好等于 msg_max_count 。
 
 ```python
-MsgMaxCount = 6  # 最多保留6条历史消息
+msg_max_count = 6  # 最多保留6条历史消息
 
-Ariel = Chat(api_key=api_key, model="gpt-3.5-turbo", MsgMaxCount=MsgMaxCount)
+Ariel = Chat(api_key=api_key, model="gpt-3.5-turbo", msg_max_count=msg_max_count)
 
 Ariel.request('英国的首都是什么？')  # >>> '伦敦'
 Ariel.request('日本首都是什么？')  # >>> '东京'
@@ -321,9 +321,9 @@ Ariel.fetch_messages()
 当程序自动移除消息记录时，也许我们希望某些消息不要被移除，此时可将这些消息锁定。
 
 ```python
-MsgMaxCount = 6
+msg_max_count = 6
 
-Ariel = Chat(api_key=api_key, model="gpt-3.5-turbo", MsgMaxCount=MsgMaxCount)
+Ariel = Chat(api_key=api_key, model="gpt-3.5-turbo", msg_max_count=msg_max_count)
 
 Ariel.request('英国的首都是什么？')  # >>> '伦敦'
 Ariel.request('日本首都是什么？')  # >>> '东京'
@@ -353,7 +353,7 @@ Ariel.pin_messages(0, -2, -1)  # 索引无须按顺序填写: pin_messages(0, 1,
 Ariel.request('美国的首都是什么？')  # >>> '华盛顿'
 ```
 
-由于设置了 MsgMaxCount = 6，此时共有 6 条消息记录：
+由于设置了 msg_max_count = 6，此时共有 6 条消息记录：
 
 | 消息                 | 正序索引 | 逆序索引 | 锁定状态 |
 | -------------------- | :------: | :------: | :------: |

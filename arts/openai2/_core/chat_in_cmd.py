@@ -1,19 +1,18 @@
 import sys
 from .chat import Chat, AKPool
 from arts.cooltypes import moduledb
-from arts import openai2
 
 
-mdb = moduledb.DB(openai2, depth=3)['chat_in_cmd']
+mdb = moduledb.DB('https://pypi.org/project/openai2', depth=3)['chat_in_cmd']
 apikeys: moduledb.File = mdb['apikeys']['data_1']
 apikeys.setdefault('list', [])
 record: moduledb.File = mdb['records']['chat_1']
 record.setdefault('messages', [])
 
 
-def chat_in_cmd(apikeys:list, newchat=False, model='gpt-4-1106-preview', MsgMaxCount=30):
+def chat_in_cmd(apikeys:list, newchat=False, model='gpt-4-1106-preview', msg_max_count=30):
     print(f"\n\033[0m您已进入命令行聊天模式, 当前使用'{model}'模型, 请确保您的apikey支持该模型.", end='')
-    gpt = Chat(api_key=AKPool(apikeys), model=model, MsgMaxCount=MsgMaxCount)
+    gpt = Chat(api_key=AKPool(apikeys), model=model, msg_max_count=msg_max_count)
     if not newchat:
         gpt.add_dialogs(*record['messages'])
     while True:

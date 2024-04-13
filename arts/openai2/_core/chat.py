@@ -1,7 +1,7 @@
 from json import dumps as jsonDumps
 from json import loads as jsonLoads
 from pathlib import Path
-from typing import Union, List, Literal
+from typing import List, Literal
 from openai import OpenAI, AsyncOpenAI
 
 
@@ -84,9 +84,9 @@ class Temque:
         return que
 
     def deepcopy(self):
-        ...  # 创建这个方法是为了提醒用户: copy 方法是浅拷贝
+        ...  # 创建这个方法是为了以代码提示的方式提醒用户: copy 方法是浅拷贝
 
-    def __add__(self, obj: Union[list, "Temque"]):
+    def __add__(self, obj: 'list|Temque'):
         que = self.copy()
         if isinstance(obj, self.__class__):
             que.core += obj.core
@@ -109,7 +109,7 @@ class Chat:
 
     def __init__(self,
                  # kwargs
-                 api_key: Union[str, AKPool],
+                 api_key: str|AKPool,
                  base_url: str = None,  # base_url 参数用于修改基础URL
                  timeout=None,
                  max_retries=None,
@@ -118,13 +118,16 @@ class Chat:
                  model: Literal["gpt-4-1106-preview", "gpt-4-vision-preview", "gpt-4", "gpt-4-0314", "gpt-4-0613",
                                 "gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0613", "gpt-3.5-turbo"] = "gpt-3.5-turbo",
                  # Chat
-                 MsgMaxCount=None,
+                 msg_max_count: int=None,
                  # kwargs
                  **kwargs,
                  ):
         api_base = kwargs.pop('api_base', None)
+        base_url = base_url or api_base
+        MsgMaxCount = kwargs.pop('MsgMaxCount', None)
+        msg_max_count = msg_max_count or MsgMaxCount
 
-        if base_url or api_base: kwargs["base_url"] = base_url or api_base
+        if base_url: kwargs["base_url"] = base_url
         if timeout: kwargs["timeout"] = timeout
         if max_retries: kwargs["max_retries"] = max_retries
         if http_client: kwargs["http_client"] = http_client
@@ -132,9 +135,9 @@ class Chat:
         self.reset_api_key(api_key)
         self._kwargs = kwargs
         self._request_kwargs = {'model':model}
-        self._messages = Temque(maxlen=MsgMaxCount)
+        self._messages = Temque(maxlen=msg_max_count)
     
-    def reset_api_key(self, api_key: Union[str, AKPool]):
+    def reset_api_key(self, api_key: str|AKPool):
         if isinstance(api_key, AKPool):
             self._akpool = api_key
         else:
@@ -215,42 +218,59 @@ class Chat:
         self._messages.add_many(*messages, {"role": "assistant", "content": answer})
 
     def rollback(self, n=1):
+        '''
+        回滚对话
+        '''
         self._messages.core[-2 * n :] = []
         for x in self._messages.core[-2:]:
             x = x["obj"]
             print(f"[{x['role']}]:{x['content']}")
 
     def pin_messages(self, *indexes):
+        '''
+        锁定历史消息
+        '''
         self._messages.pin(*indexes)
 
     def unpin_messages(self, *indexes):
+        '''
+        解锁历史消息
+        '''
         self._messages.unpin(*indexes)
     
     def fetch_messages(self):
         return list(self._messages)
     
-    def add_dialogs(self, *ms: Union[system_msg, user_msg, assistant_msg, dict]):
+    def add_dialogs(self, *ms: dict|system_msg|user_msg|assistant_msg):
         '''
         添加历史对话
         '''
         messages = [dict(x) for x in ms]
         self._messages.add_many(*messages)
-    
-    asy_request = async_request  # 兼容旧代码
+        
+    def __getattr__(self, name):
+        match name:  # 兼容旧代码
+            case 'asy_request':
+                return self.async_request
+            case 'forge':
+                return self.add_dialogs
+            case 'pin':
+                return self.pin_messages
+            case 'unpin':
+                return self.unpin_messages
+            case 'dump':
+                return self._dump
+            case 'load':
+                return self._load
+        raise AttributeError(name)
 
-    forge = add_dialogs  # 兼容旧代码
-
-    pin = pin_messages  # 兼容旧代码
-
-    unpin = unpin_messages  # 兼容旧代码
-    
-    def dump(self, fpath: str):  # 兼容旧代码
+    def _dump(self, fpath: str):
         """ 存档 """
         jt = jsonDumps(self.fetch_messages(), ensure_ascii=False)
         Path(fpath).write_text(jt, encoding="utf8")
         return True
     
-    def load(self, fpath: str):  # 兼容旧代码
+    def _load(self, fpath: str):
         """ 载入存档 """
         jt = Path(fpath).read_text(encoding="utf8")
         self._messages.add_many(*jsonLoads(jt))
