@@ -1,8 +1,6 @@
-from typing import Union
-
 
 class Rslice:
-    def __init__(self, core: Union[list, tuple, str]): self.core = core
+    def __init__(self, core: list|tuple|str): self.core = core
     
     def __len__(self): return len(self.core)
 

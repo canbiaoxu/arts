@@ -2,7 +2,7 @@
 
 Base95 是一种用 95 个可见的 ASCII 字符（含空格）表示任意二进制数据的编码方法。
 
-该实现使用了从空格（ASCII 32）到波浪符（ASCII 126）这 95 个字符来编码二进制数据，用 67 个字符表示 55 个字节，编码后的信息密度高于 Base64 编码（Base64 编码用 4 个字符表示 3 个字节）。
+该实现使用了从空格（ASCII 32）到波浪符（ASCII 126）这 95 个字符来编码二进制数据，编码后的信息密度高于 Base64 编码。
 
 # 作者
 
@@ -27,53 +27,54 @@ pip install base95
 ## 导入
 
 ```python
-from base95 import encode, decode
+from base95 import BaseEncoding
 ```
 
 ## 编码
 
 ```python
-bytestring: bytes = '君不见黄河之水天上来'.encode('utf8')  # 建构一个字节串
+base95 = BaseEncoding(95)
 
-encoded_text: str = encode(bytestring)  # 编码成 Base95
+bytestring: bytes = '黄河之水天上来'.encode('utf8')  # 建构一个字节串
+
+encoded_text: str = base95.encode(bytestring)  # 编码成 Base95
 ```
 
 ## 解码
 
 ```python
-decoded_bytes: bytes = decode(encoded_text)  # 解码成字节串
+decoded_bytes: bytes = base95.decode(encoded_text)  # 解码成字节串
 ```
 
-# 与 Base64、Base85 比较编码后的信息密度
+## 任意进制编码
 
-Base64 使用 4 个字符表示 3 个字节；
+通过上面的例子，你可能会想：使用 `BaseEncoding(n)` 是不是可以创建其它进制的编码方法？答案是：是的。
 
-Base85 使用 5 个字符表示 4 个字节；
-
-Base95 使用 67 个字符表示 55 个字节；
-
-在这三种编码方法下分别计算 0~30M 区间内的字节串编码后的字符累计数量，以比较这三种方法编码后的信息密度：
+你可以通过 `BaseEncoding(n)` 方式创建 2 ~ 95 进制的编码方法。例如：
 
 ```python
-import math
-
-char_unit_64 = 4
-char_unit_85 = 5
-char_unit_95 = 67
-
-byte_unit_64 = int(math.log(64, 2**8) * char_unit_64)  # 3
-byte_unit_85 = int(math.log(85, 2**8) * char_unit_85)  # 4
-byte_unit_95 = int(math.log(95, 2**8) * char_unit_95)  # 55
-
-size_64 = 0
-size_85 = 0
-size_95 = 0
-
-for text_size in range(1, 1024 * 30 + 1):  # 迭代 0~30M 区间
-    size_64 += math.ceil(text_size / byte_unit_64) * char_unit_64
-    size_85 += math.ceil(text_size / byte_unit_85) * char_unit_85
-    size_95 += math.ceil(text_size / byte_unit_95) * char_unit_95
-
-print(size_95 / size_64)  # 值为 0.9151834585321867 , 说明 Base95 比 base64 节省约 8.5% 的空间
-print(size_95 / size_85)  # 值为 0.976163916034696 , 说明 Base95 比 base85 节省约 2.4% 的空间
+base2 = BaseEncoding(2)
+base50 = BaseEncoding(50)
+base80 = BaseEncoding(80)
 ```
+
+## 直接导入常用的编码方法
+
+对于一些具有特别意义的编码方法，我们提供了直接导入的方式，而无须使用 `BaseEncoding(n)` 方式创建。
+
+这些编码方法是：
+
+* base95：使用了 ASCII 中的全部（95 个，含空格）可见字符；
+* base90：使用除【单引号、双引号、反引号(`)、空格、反斜杠】这 5 个可能影响阅读体验的字符以外的 90 个字符；
+* base62：仅使用 `0~9、a~z、A~Z` 这 62 个字符；
+* base10：仅使用 `0~9` 这 10 个字符。
+
+你可以直接导入并使用这些编码方法，例如：
+
+```python
+from base95 import base90
+
+base90.encode('黄河之水天上来'.encode('utf8'))
+```
+
+当然，你仍然可以通过 `BaseEncoding(90)` 这种方式使用这些编码方法，这两种方式是等价的。

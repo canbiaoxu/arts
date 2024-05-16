@@ -225,7 +225,7 @@ class Row:
             if type(value) is dict:
                 value = value.get(key[0], undefined)
                 value = parse_oodb_key(self, value)
-            else:  # dict 以外的其它类型，比如：list、str、int、float, undefined
+            else:  # dict 以外的其它类型，例如：list、str、int、float, undefined
                 value = undefined
                 break
         return default if value is undefined else value
