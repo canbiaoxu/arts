@@ -20,7 +20,7 @@ pip install oomysql
 
 # 教程 ([查看美化版](https://lcctoor.github.io/arts/arts/oomysql) 👈)
 
-本文将以最简洁的方式向你介绍核心知识，而不会让你被繁琐的术语所淹没。
+本文将以简洁的方式向你介绍核心知识，而不会让你被繁琐的术语所淹没。
 
 ## 导入
 

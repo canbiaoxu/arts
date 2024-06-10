@@ -1,4 +1,4 @@
-import re, os
+import os, platform, socket
 from math import ceil
 import hashlib
 from hashlib import shake_256
@@ -6,7 +6,6 @@ from typing import Any, List, Union, Literal
 import numpy as np
 from pathlib import Path
 from json import dumps as jsonDumps
-from json import loads as jsonLoads
 
 class missing_arguments_error(Exception): ...
 
@@ -134,25 +133,6 @@ class vbytes(ztype):
         if rtype in (vbytes, 'vbytes'): return vbytes(value.digest(rsize))
         raise ValueError(rtype)
 
-#################################################################################
-
-# def into_Fraction(*s, **kvs):
-#     if s and isinstance(s[0], vnum): return s[0].core
-#     return Fraction(*s, **kvs)
-
-# class vnum(ztype):
-#     ''' 可变数字
-#         1、 float 和 int 没必要拆成两种, 太麻烦了
-#         2、 解决浮点数精度问题
-#     '''
-#     core: Fraction
-    
-#     def __init__(self, numerator, denominator=undefined):
-#         if denominator is undefined:
-#             self.core = into_Fraction(numerator)
-#         else:
-#             self.core = Fraction(into_Fraction(numerator), into_Fraction(denominator))
-
 ##################################################################################
 
 def XpathGet(dic, i, keySize, keys):
@@ -262,7 +242,7 @@ class _CoolQueue:
 def group_data(data, group_size):
     return [data[group_size*(i-1): group_size*i] for i in range(1, ceil(len(data)/group_size)+1)]
 
-def json_chinese(data): return jsonDumps(data, ensure_ascii=False)
+def json_chinese(data, *, indent=None): return jsonDumps(data, ensure_ascii=False, indent=indent)
 
 def repair_pathclash(path):
     ''' 解决命名冲突 '''
@@ -296,3 +276,12 @@ def get_chrome_path():
         if Path(chrome).is_file():
             return chrome
     return None
+
+platform_system: Literal['linux', 'windows', 'darwin', 'java'] = platform.system().lower()
+
+def get_free_port():
+    sock = socket.socket()
+    sock.bind(('localhost', 0))
+    port = sock.getsockname()[1]
+    sock.close()
+    return port

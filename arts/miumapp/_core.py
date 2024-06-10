@@ -1,4 +1,4 @@
-import asyncio, socket, os, __main__
+import asyncio, os, __main__
 from time import time as timestamp
 from weakref import WeakKeyDictionary
 from os.path import abspath
@@ -8,7 +8,7 @@ from typing import Dict, Any
 from tornado.web import RequestHandler, Application
 from pyppeteer.launcher import Launcher, DEFAULT_ARGS
 from pyppeteer.page import Page
-from arts.cooltypes import json_chinese, get_chrome_path
+from arts.cooltypes import json_chinese, get_chrome_path, get_free_port
 
 
 # 使不会提示'缺少 Google API 密钥, 因此 Chromium 的部分功能将不可使用。'
@@ -131,8 +131,8 @@ class App:
         ''')
         if as_app:
             js_content.insert(-1, f'''
-                document.addEventListener('keydown', function(e) {{if (e.keyCode == 123) {{e.preventDefault()}}}})  // F12
-                document.addEventListener('keydown', function(e) {{if (e.keyCode == 116) {{e.preventDefault()}}}})  // F5
+                document.addEventListener('keydown', function(e) {{if (e.keyCode === 123) {{e.preventDefault()}}}})  // F12
+                document.addEventListener('keydown', function(e) {{if (e.keyCode === 116) {{e.preventDefault()}}}})  // F5
                 document.addEventListener('contextmenu', function(e) {{e.preventDefault()}})  // 右键
                 document.addEventListener('keydown', function(event) {{if (event.ctrlKey && (event.key === 's' || event.key === 'S')) {{event.preventDefault()}}}})  // Ctrl+S
             ''')
@@ -171,11 +171,7 @@ class App:
                     if data is not None: data = str(data)
                     return TorSelf.write( json_chinese(dict(code=code, msg=msg, data=data)) )
         
-        # 查找一个空闲端口
-        sock = socket.socket()
-        sock.bind(('localhost', 0))
-        self._server_port = sock.getsockname()[1]
-        sock.close()
+        self._server_port = get_free_port()
         Application(handlers=[('/callpy/?', callpy), ('/?', home_text)], debug=False).listen(port=self._server_port, address="localhost")
 
         await self.main()

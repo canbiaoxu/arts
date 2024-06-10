@@ -85,7 +85,7 @@ class BaseEncoding:
 
 
 # 常用进制
-base10 = BaseEncoding(10)
-base62 = BaseEncoding(62)
-base90 = BaseEncoding(90)
-base95 = BaseEncoding(95)
+base10 = BaseEncoding(10)  # 仅使用 `0~9` 这 10 个字符
+base62 = BaseEncoding(62)  # 仅使用 `0~9、a~z、A~Z` 这 62 个字符
+base90 = BaseEncoding(90)  # 使用除【单引号、双引号、反引号(`)、空格、反斜杠】这 5 个可能影响阅读体验的字符以外的 90 个字符
+base95 = BaseEncoding(95)  # 使用了 ASCII 中的全部（95 个，含空格）可见字符

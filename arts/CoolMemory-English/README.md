@@ -15,7 +15,6 @@ CoolMemory-English 是一个免费的记单词软件，它在传统的记单词�
 # 下载地址
 
 * [OneDrive](https://1drv.ms/f/s!AvKC1LvuVvx_gVZttKv6md5tgnOB) / Release / CoolMemory-English / v1.0 -binary -20231211.zip
-* [百度网盘](https://pan.baidu.com/s/1FaAz83Ima2uNE_I6Q9TDQg?pwd=nqt8)（提取码：nqt8） / Release / CoolMemory-English / v1.0 -binary -20231211.zip
 
 # 理论基础
 

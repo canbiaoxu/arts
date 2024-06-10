@@ -9,7 +9,7 @@ class Rslice:
         if isinstance(key, int):
             if key > 0: return core[key - 1]
             if key < 0: return core[key]
-            assert key != 0
+            raise IndexError(key)
         elif isinstance(key, slice):
             L, R, S = key.start, key.stop, key.step or 1
             tL, tR, tS = type(L), type(R), type(S)
