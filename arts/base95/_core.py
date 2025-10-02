@@ -17,7 +17,7 @@ assert get_unit(50) == (61, 43, 1.4186046512)  # 校验
 
 
 # global_chars
-global_chars = '''0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_~!#$%&@^?=*+-.:,;<>[]{}()|/ `'"\\'''
+global_chars = r'''0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_~!#$%&@^?=*+-.:,;<>[]{}()|/`'"\ '''
 char_indexes = dict(zip(global_chars, range(len(global_chars))))
 assert len(global_chars) == len(set(global_chars)) == 95
 assert set(global_chars.encode('utf8')) == set(range(32, 127))

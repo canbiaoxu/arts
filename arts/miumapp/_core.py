@@ -4,11 +4,11 @@ from weakref import WeakKeyDictionary
 from os.path import abspath
 from pathlib import Path
 from json import loads as json_loads
-from typing import Dict, Any
+from typing import Dict, Any, final
 from tornado.web import RequestHandler, Application
 from pyppeteer.launcher import Launcher, DEFAULT_ARGS
 from pyppeteer.page import Page
-from arts.cooltypes import json_chinese, get_chrome_path, get_free_port
+from arts.vtype import json_chinese, get_chrome_path, get_free_port
 
 
 # 使不会提示'缺少 Google API 密钥, 因此 Chromium 的部分功能将不可使用。'
@@ -94,6 +94,7 @@ class App:
         请在子类中覆盖此方法
         '''
     
+    @final
     async def create_window(self, *, url: str='', html: str='', title='', as_app=True, cache_dir: str|Path=None) -> BarePage:       
         cache_dir = Path(cache_dir or caches_tool.get_one_dir())
         cache_dir.mkdir(parents=True, exist_ok=True)
@@ -141,6 +142,7 @@ class App:
         await page.evaluateOnNewDocument(js_content)
         return page
 
+    @final
     async def start(self):
 
         class home_text(RequestHandler):

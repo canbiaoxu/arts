@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html class='ch_151 ch_152' style="background-color:black;"><head>
+<title>聊天艺术馆</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><base target='_blank'>
+<style>
+    * {vertical-align:middle; text-decoration:none; position:relative; padding:0; overflow:auto; outline:none; margin:0; font-size:1rem; font-family:'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing:border-box; border-width:0; border-style:solid;}
+    .ch_151 {width:100%; height:100%; display:block; background-color:white;}
+    .ch_154 {width:100%; height:100%; display:block; border-radius:2rem; background-color:rgb(235, 235, 235);}
+    .ch_166 {display:inline-block;}
+    .ch_179 {top:0.4rem; text-align:center; font-size:1.2rem; display:inline-block;}
+    .ch_169 {width:100%; height:4rem; grid-template-columns:3rem 1fr; display:inline-grid; column-gap:0.1rem; align-items:center;}
+    .ch_176 {display:inline-grid;}
+    .ch_181 {width:100%; padding:0 0 0 1rem; height:10rem; grid-template-columns:auto 1fr; display:inline-grid; column-gap:1rem; align-content:center;}
+    .ch_190 {width:100%; height:4rem; grid-template-columns:3rem 1fr; display:inline-grid; column-gap:0.1rem; align-items:center;}
+    .ch_196 {width:100%; grid-template-columns:1fr 1fr 1fr; display:inline-grid;}
+    .ch_167 {width:100%; scrollbar-width:none; padding:0 0.7rem 0 0.7rem; height:100%; grid-auto-flow:row; display:inline-grid; background-color:white; align-content:start; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    .ch_180 {width:100%; scrollbar-width:none; padding:0 0.7rem 0 0.7rem; height:100%; grid-auto-flow:row; display:inline-grid; background-color:white; align-content:start; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    .ch_212 {scrollbar-width:none; height:100%; grid-auto-flow:row; display:inline-grid; align-content:start; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    .ch_304 {scrollbar-width:none; height:100%; grid-auto-flow:row; display:inline-grid; align-content:start; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    .ch_168::-webkit-scrollbar {display:none;}
+    .ch_218 {padding:0.618em 1em 0.618em 1em; font-size:0.8rem; border-radius:3em; background-color:rgb(0, 179, 98);}
+    .ch_287 {padding:0.618em 1em 0.618em 1em; font-size:0.8rem; border-radius:3em; background-color:rgb(239, 239, 239);}
+    .ch_216:hover {background-color:rgb(0, 196, 108);}
+    .ch_289:hover {background-color:rgb(249, 249, 249);}
+    .ch_217:active {background-color:rgb(0, 143, 81);}
+    .ch_288:active {background-color:transparent;}
+    .ch_198 {padding:0.618em 1em 0.618em 1em; font-size:0.8rem; color:black; background-color:transparent;}
+    html[is_coarse_pointer="false"] .ch_199:not([is_current_nav="True"]):hover {color:rgb(52, 187, 52);}
+    .ch_197[is_current_nav="True"] {color:rgb(0, 197, 0);}
+    .ch_160 {white-space:nowrap; scrollbar-width:none; overflow-x:auto; display:inline-block; -ms-overflow-style:none;}
+    .ch_163:not(.ch_exec_goto_scrollLeft) {scroll-snap-type:x mandatory;}
+    .ch_162::-webkit-scrollbar {display:none;}
+    .ch_161 > * {white-space:normal;}
+    .ch_158 {white-space:nowrap; scrollbar-width:none; overflow-x:auto; display:inline-block; -ms-overflow-style:none;}
+    .ch_157:not(.ch_exec_goto_scrollLeft) {scroll-snap-type:x mandatory;}
+    .ch_156::-webkit-scrollbar {display:none;}
+    .ch_155 > * {white-space:normal;}
+    .ch_159 {width:100%; scroll-snap-align:start; overflow:auto; margin:0; height:100%; flex-wrap:wrap; display:inline-flex;}
+    .ch_164 {width:100%; scroll-snap-align:start; overflow:auto; margin:0; height:100%; grid-template-rows:auto 1fr; flex-wrap:wrap; display:inline-grid;}
+    .ch_205 {width:100%; scroll-snap-align:start; overflow:auto; margin:0; height:100%; grid-template-rows:auto 1fr auto; flex-wrap:wrap; display:inline-grid;}
+    .ch_276 {width:100%; scroll-snap-align:start; overflow:auto; margin:0; height:100%; grid-template-rows:auto auto 1fr; flex-wrap:wrap; display:inline-grid; background-color:white;}
+    .ch_175 {vertical-align:middle; display:inline-block;}
+    .ch_233 {vertical-align:baseline; display:inline-block;}
+    .ch_215 {white-space:pre-wrap; vertical-align:baseline; padding:0.75em; line-height:1.5; border-radius:0.75em;}
+    .ch_232 {white-space:pre-wrap; vertical-align:baseline; padding:0.75em 1.5em 0.75em 1.5em; overflow-wrap:break-word; line-height:1.75; border-radius:0.75em;}
+    .ch_281 {width:100%; white-space:pre-wrap; vertical-align:baseline; padding:1rem; overflow-wrap:break-word; line-height:1.75; height:100%; border-radius:0.75em;}
+    .ch_231 > * {vertical-align:baseline;}
+    .ch_186 {vertical-align:bottom; display:inline-block; color:rgba(0, 89, 255, 0.758);}
+    .ch_185:hover {color:rgb(0, 55, 255);}
+    .ch_187:visited {color:rgba(0, 89, 255, 0.758);}
+    html[is_x_screen="true"] .ch_153 {width:30%;}
+    .ch_165 > :nth-child(1) {text-align:center; padding:0.8rem 0 0.8rem 0;}
+    .ch_182 > :nth-child(1) {height:5rem;}
+    .ch_183 > :nth-child(2) {height:5rem; grid-template-rows:auto auto; align-content:space-around;}
+    .ch_184 > :nth-child(2) > :nth-child(1) {font-size:1.5rem;}
+    .ch_191:active {background-color:rgb(244, 244, 244);}
+    .ch_188 > :nth-child(1) {width:2.5rem; height:2.5rem;}
+    .ch_189 > :nth-child(2) {padding:0.5rem 5rem 0.5rem 0; height:100%; border-width:0 0 0.1rem 0; border-color:rgb(235, 235, 235); align-content:center;}
+    .ch_172:active {background-color:rgb(244, 244, 244);}
+    .ch_174 > :nth-child(1) {width:2.5rem; height:2.5rem;}
+    .ch_171 > :nth-child(2) {padding:0.5rem 5rem 0.5rem 0; height:100%; grid-template-rows:auto auto; border-width:0 0 0.1rem 0; border-color:rgb(235, 235, 235); align-content:center;}
+    .ch_173 > :nth-child(3) {right:0.8rem; position:absolute; font-size:0.8rem; color:rgb(152, 152, 152);}
+    .ch_170 > :nth-child(2) > :nth-child(2) {white-space:nowrap; overflow:hidden; font-size:0.8rem; color:rgb(152, 152, 152);}
+    .ch_209 > * {width:100%; margin:0.5rem 0 0.5rem 0; justify-items:center; height:max-content; grid-template-columns:3.5rem 1fr 3.5rem; align-items:start;}
+    .ch_211 > * > :nth-child(2) {padding:0.5em; min-height:2.5rem; max-width:100%; line-height:1.25; border-radius:0.3em;}
+    .ch_208 > * > img + pre {justify-self:left; background-color:white;}
+    .ch_210 > * > span + pre {justify-self:right; background-color:rgb(124, 218, 62);}
+    .ch_213 > * > img {width:2.5rem; height:2.5rem;}
+    .ch_214::-webkit-scrollbar {display:none;}
+    .ch_204 > :nth-child(1) {text-align:center; padding:0.8rem 0 0.8rem 0; background-color:rgb(244, 244, 244);}
+    .ch_203 > :nth-child(3) {width:100%; padding:0.3rem 1.5rem 0.3rem 1.5rem; grid-template-columns:1fr auto; column-gap:0.5rem; background-color:rgb(244, 244, 244); align-items:center;}
+    .ch_202 > :nth-child(1) > :nth-child(1) {transform:rotate(45deg); top:0.5rem; position:absolute; left:1rem; font-size:1.2rem;}
+    .ch_278 > :nth-child(1) {text-align:center; padding:0.8rem 0 0.8rem 0; background-color:rgb(244, 244, 244);}
+    .ch_277 > :nth-child(1) > :nth-child(1) {transform:rotate(45deg); top:0.5rem; position:absolute; left:1rem; font-size:1.2rem;}
+    .ch_299 > * {width:100%; padding:0 0.5rem 0 0; margin:2rem 0 0.5rem 0; height:max-content; grid-template-columns:3.5rem 1fr; align-items:start;}
+    .ch_303 > :nth-child(1) {width:100%; padding:0 0 0 0; margin:0;}
+    .ch_298 > * > img {width:2.5rem; justify-self:center; height:2.5rem;}
+    .ch_302 > * > :nth-child(2) > :nth-child(1) {padding:0 0.5em 0.5em 0; line-height:1; color:rgb(47, 74, 144); border-radius:0;}
+    .ch_297 > * > :nth-child(2) > :nth-child(2) {padding:0 0.5em 0.5em 0; min-height:2.5rem; max-width:100%; line-height:1.75; border-radius:0.3em;}
+    .ch_301 > * > :nth-child(2) > :nth-child(3) {width:100%; position:relative; margin:0 0 1rem 0; justify-content:start;}
+    .ch_296 > * > :nth-child(2) > :nth-child(3) > * {width:100%; margin:0 0 0.25rem 0;}
+    .ch_300 > * > :nth-child(2) > :nth-child(3) > * > * {object-fit:cover;}
+    .ch_283 a {vertical-align:baseline; color:rgba(0, 89, 255, 0.758);}
+    .ch_284 a:hover {color:rgb(0, 55, 255);}
+    .ch_282 a:visited {color:rgba(0, 89, 255, 0.758);}
+    .ch_201 {display:none;}
+    .ch_200 ~ * {display:none;}
+</style></head>
+<body class='ch_153 ch_154'>
+<script>
+"use strict";
+window.print = console.log
+                    if (1 + 1 === 2) {
+                        window.ch = new Proxy(
+                            new Map(),
+                            {get: (target, name) => target.get(name), set: (target, name, value) => target.set(name, value), has: (target, key) => target.has(key)}
+                        )
+                    }
+                    else {   window.ch = {}   }
+                    window.screen_type = window.innerWidth > window.innerHeight ? 'x' : 'y'
+                    document.documentElement.setAttribute('screen_type', window.screen_type)
+                    document.documentElement.setAttribute('is_x_screen', String(window.innerWidth > window.innerHeight))
+</script><div class='ch_155 ch_156 ch_157 ch_158' id=ch_17 style="height:100%; width:100%;"><div class='ch_159' style="display:inline-grid; grid-template-rows:1fr auto;"><div class='ch_160 ch_161 ch_162 ch_163' id=ch_128 style="height:100%;"><div class='ch_164 ch_165'><div class='ch_166'>聊天</div><div class='ch_167 ch_168' id=ch_10><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_30><img class='ch_175' src='static/JS小黄老师.jpg'><div class='ch_176'><div class='ch_166'>JS小黄老师</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_40><img class='ch_175' src='static/会说话的杰克.jpg'><div class='ch_176'><div class='ch_166'>会说话的杰克</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_46><img class='ch_175' src='static/鲁迅.jpg'><div class='ch_176'><div class='ch_166'>鲁迅</div><div class='ch_166'>什么是滑坡论证？</div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_52><img class='ch_175' src='static/刘德华.jpg'><div class='ch_176'><div class='ch_166'>刘德华</div><div class='ch_166'>唉··· 今天你就见到了</div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_58><img class='ch_175' src='static/项羽.jpg'><div class='ch_176'><div class='ch_166'>项羽</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_64><img class='ch_175' src='static/李连杰.jpg'><div class='ch_176'><div class='ch_166'>李连杰</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_70><img class='ch_175' src='static/楚门.jpg'><div class='ch_176'><div class='ch_166'>楚门</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_76><img class='ch_175' src='static/亚里士多德.jpg'><div class='ch_176'><div class='ch_166'>亚里士多德</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_82><img class='ch_175' src='static/霍金.jpg'><div class='ch_176'><div class='ch_166'>霍金</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_88><img class='ch_175' src='static/牛顿.jpg'><div class='ch_176'><div class='ch_166'>牛顿</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_94><img class='ch_175' src='static/爱因斯坦.jpg'><div class='ch_176'><div class='ch_166'>爱因斯坦</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_100><img class='ch_175' src='static/玻尔.jpg'><div class='ch_176'><div class='ch_166'>玻尔</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_106><img class='ch_175' src='static/岸本齐史.jpg'><div class='ch_176'><div class='ch_166'>岸本齐史</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_112><img class='ch_175' src='static/叔本华.jpg'><div class='ch_176'><div class='ch_166'>叔本华</div><div class='ch_166'></div></div><div class='ch_166'>刚刚</div></div></div></div><div class='ch_164 ch_165'><div class='ch_166'>发现</div><div class='ch_167 ch_168' id=ch_13><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' id=ch_177><div class='ch_179'>🌐</div><div class='ch_176'>动态</div></div><div class='ch_169 ch_170 ch_171 ch_172 ch_173 ch_174' style="color:rgb(167, 165, 165);"><div class='ch_179'>🎲</div><div class='ch_176'>小程序</div></div></div></div><div class='ch_159'><div class='ch_168 ch_180' id=ch_15><div class='ch_181 ch_182 ch_183 ch_184'><img class='ch_175' src='static/我.jpg'><div class='ch_176'><div class='ch_166'><a class='ch_185 ch_186 ch_187' href='/'>江南雨上</a></div><div class='ch_166'>艺术本天成，媒介偶显之。</div></div></div><div class='ch_188 ch_189 ch_190 ch_191'><div class='ch_179'>💰</div><div class='ch_176' id=ch_192>钱包</div></div><div class='ch_188 ch_189 ch_190 ch_191' style="color:rgb(167, 165, 165);"><div class='ch_179'>⚙️</div><div class='ch_176'>设置</div></div><div class='ch_188 ch_189 ch_190 ch_191' id=ch_194><div class='ch_179'>📃</div><div class='ch_176'>关于此项目</div></div></div></div></div><div class='ch_196' id=ch_118><button class='is_nav ch_197 ch_198 ch_199' is_current_nav='True'>💬<br/>聊天</button><button class='is_nav ch_197 ch_198 ch_199'>🌍<br/>发现</button><button class='is_nav ch_197 ch_198 ch_199'>👨‍💻<br/>我</button></div></div><span class='ch_200 ch_201' id=ch_19></span><div class='ch_202 ch_203 ch_204 ch_205' id=ch_32><div class='ch_166'>JS小黄老师<div class='ch_166' id=ch_206>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_28></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_219>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_42><div class='ch_166'>会说话的杰克<div class='ch_166' id=ch_221>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_38></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2 id=ch_137></textarea><button class='ch_216 ch_217 ch_218' id=ch_223>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_48><div class='ch_166'>鲁迅<div class='ch_166' id=ch_225>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_44></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2 id=ch_139></textarea><button class='ch_216 ch_217 ch_218' id=ch_227>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_54><div class='ch_166'>刘德华<div class='ch_166' id=ch_229>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_50><div class='ch_176'><img class='ch_175' src='static/刘德华.jpg'><pre class='ch_231 ch_232'>我长这么大，没见过这么嚣张的人</pre><span class='ch_233'></span></div><div class='ch_176'><span class='ch_233'></span><pre class='ch_231 ch_232'>唉··· 今天你就见到了</pre><img class='ch_175' src='static/我.jpg'></div></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_234>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_60><div class='ch_166'>项羽<div class='ch_166' id=ch_236>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_56></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_238>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_66><div class='ch_166'>李连杰<div class='ch_166' id=ch_240>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_62></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_242>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_72><div class='ch_166'>楚门<div class='ch_166' id=ch_244>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_68></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_246>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_78><div class='ch_166'>亚里士多德<div class='ch_166' id=ch_248>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_74></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_250>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_84><div class='ch_166'>霍金<div class='ch_166' id=ch_252>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_80></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_254>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_90><div class='ch_166'>牛顿<div class='ch_166' id=ch_256>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_86></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_258>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_96><div class='ch_166'>爱因斯坦<div class='ch_166' id=ch_260>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_92></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_262>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_102><div class='ch_166'>玻尔<div class='ch_166' id=ch_264>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_98></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_266>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_108><div class='ch_166'>岸本齐史<div class='ch_166' id=ch_268>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_104></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_270>发送</button></div></div><div class='ch_202 ch_203 ch_204 ch_205' id=ch_114><div class='ch_166'>叔本华<div class='ch_166' id=ch_272>∟</div></div><div class='ch_208 ch_209 ch_168 ch_210 ch_211 ch_212 ch_213' id=ch_110></div><div class='ch_176'><textarea class='ch_214 ch_215' rows=2></textarea><button class='ch_216 ch_217 ch_218' id=ch_274>发送</button></div></div><div class='ch_276 ch_277 ch_278' id=ch_141 style="grid-template-rows:auto 1fr;"><div class='ch_166'>关于此项目<div class='ch_166' id=ch_279>∟</div></div><pre class='ch_281 ch_231 ch_282 ch_283 ch_284'>
+<h1>作者</h1>
+姓名：许灿标
+作者相关链接：<a href='/'>主页</a> | <a href='https://github.com/canbiaoxu'>Github</a> | <a href='https://pypi.org/user/canbiaoxu'>PyPi</a> | <a href='/cdn/wechat_qrc.jpg'>微信</a> | <a href='mailto:canbiaoxu@outlook.com'>邮箱</a> | <a href='/cdn/donation_qrc_0rmb.jpg'>赞赏</a>
+</pre></div><div class='ch_276 ch_277 ch_278' id=ch_143><div class='ch_166'>钱包<div class='ch_166' id=ch_285>∟</div></div><div class='ch_176' style="background-color:rgb(38, 170, 82); justify-content:space-around; grid-template-columns:auto auto; border-radius:1rem; height:9rem; margin:0.5rem; align-content:center; align-items:center;"><div class='ch_176' style="grid-template-rows:1fr 1fr; color:white; height:5rem; width:7rem; justify-content:center; justify-items:center; text-align:center; align-content:center; align-items:center; border-radius:1rem;"><span class='ch_233' style="align-self:end;">余额</span><span class='ch_233' style="align-self:start;">¥499.00</span></div><button class='ch_287 ch_288 ch_289' id=ch_290>提现</button></div></div><div class='ch_276 ch_277 ch_278' id=ch_145 style="grid-template-rows:auto 1fr;"><div class='ch_166'>赞赏<div class='ch_166' id=ch_292>∟</div></div><div class='ch_176' style="grid-template-rows:auto auto; justify-content:center; align-content:space-evenly; justify-items:center; padding:1rem; text-align:center;"><img class='ch_175' src='/cdn/donation_qrc_0rmb.jpg' style="height:15rem;"><div class='ch_166' style="font-size:1.5rem;">感谢你进入到这里，这说明你对这个软件还是有一些兴趣的！如果你喜欢这个作品，就请支持一下吧！(^_^)</div></div></div><div class='ch_276 ch_277 ch_278' id=ch_149><div class='ch_166'>动态<div class='ch_166' id=ch_294>∟</div></div><div class='ch_296 ch_297 ch_168 ch_298 ch_299 ch_300 ch_301 ch_302 ch_303 ch_304' id=ch_147><img class='ch_175' src='static/动态封面.jpg'><div class='ch_176'><img class='ch_175' src='static/林宥嘉.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>林宥嘉</pre><pre class='ch_231 ch_232'>我发布了音乐</pre><div class='ch_166'><audio loading='lazy' controls src="/cdn/music/天将明 -林宥嘉.mp3"></audio></div></div></div><div class='ch_176'><img class='ch_175' src='static/李连杰.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>李连杰</pre><pre class='ch_231 ch_232'>我发布了短视频</pre><div class='ch_166'><video loading='lazy' controls><source src='/2022/李连杰[霍元甲]·兰亭序/1.mp4' type='video/mp4'></video></div></div></div><div class='ch_176'><img class='ch_175' src='static/项羽.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>项羽</pre><pre class='ch_231 ch_232'>我发布了短视频</pre><div class='ch_166'><video loading='lazy' controls><source src='/2024/秦时明月[项羽]·谪居/1.mp4' type='video/mp4'></video></div></div></div><div class='ch_176'><img class='ch_175' src='static/项羽.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>项羽</pre><pre class='ch_231 ch_232'>明天的鸿门宴不知道刘邦会不会来……</pre></div></div><div class='ch_176'><img class='ch_175' src='static/楚门.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>楚门</pre><pre class='ch_231 ch_232'>我发布了短视频</pre><div class='ch_166'><video loading='lazy' controls><source src='/2022/楚门的世界·五月雨/1.mp4' type='video/mp4'></video></div></div></div><div class='ch_176'><img class='ch_175' src='static/爱因斯坦.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>爱因斯坦</pre><pre class='ch_231 ch_232'>在这个充满未知的宇宙中，“上帝不会掷骰子”是我对那些随机性信徒的幽默回应。玻尔可能认为宇宙像个巨大的赌场，但我可不买账。宇宙中的每个角落都遵循着严格而精妙的规则，将宇宙的深奥之处简化为一场赌博，这不是天真就是单纯。</pre></div></div><div class='ch_176'><img class='ch_175' src='static/玻尔.jpg'><div class='ch_166'><pre class='ch_231 ch_232'>玻尔</pre><pre class='ch_231 ch_232'>在这个由无数概率编织而成的奇妙宇宙中，“上帝是个赌徒”是我对那些过分执着于确定性的朋友们的幽默抚慰。爱因斯坦先生似乎更喜欢他的宇宙像个精确无误的瑞士钟表，但我要说，亲爱的阿尔伯特，如果宇宙真的像你想象的那样毫无意外，那该有多无趣啊！所以，下次当你感叹“上帝不会掷骰子”时，也许上帝和我正在一起笑着掷下一枚骰子，而你所坚信的那个巨大的钟表，却在不知不觉中成了我们游戏的一部分。</pre></div></div></div></div></div><div class='ch_166' style="display:none;"><div class='ch_166' id=ch_23><div class='ch_176'><img class='ch_175' src='static/{speaker}.jpg'><pre class='ch_231 ch_232'>{content}</pre><span class='ch_233'></span></div></div><div class='ch_166' id=ch_25><div class='ch_176'><span class='ch_233'></span><pre class='ch_231 ch_232'>{content}</pre><img class='ch_175' src='static/{speaker}.jpg'></div></div></div><script>js_eval = (key) => eval(key)</script>
+<script>
+"use strict";
+
+document.documentElement.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))
+ch.ch_24 = document.getElementById("ch_23")
+ch.ch_26 = document.getElementById("ch_25")
+ch.ch_31 = document.getElementById("ch_30")
+ch.ch_33 = document.getElementById("ch_32")
+ch.ch_41 = document.getElementById("ch_40")
+ch.ch_43 = document.getElementById("ch_42")
+ch.ch_47 = document.getElementById("ch_46")
+ch.ch_49 = document.getElementById("ch_48")
+ch.ch_53 = document.getElementById("ch_52")
+ch.ch_55 = document.getElementById("ch_54")
+ch.ch_59 = document.getElementById("ch_58")
+ch.ch_61 = document.getElementById("ch_60")
+ch.ch_65 = document.getElementById("ch_64")
+ch.ch_67 = document.getElementById("ch_66")
+ch.ch_71 = document.getElementById("ch_70")
+ch.ch_73 = document.getElementById("ch_72")
+ch.ch_77 = document.getElementById("ch_76")
+ch.ch_79 = document.getElementById("ch_78")
+ch.ch_83 = document.getElementById("ch_82")
+ch.ch_85 = document.getElementById("ch_84")
+ch.ch_89 = document.getElementById("ch_88")
+ch.ch_91 = document.getElementById("ch_90")
+ch.ch_95 = document.getElementById("ch_94")
+ch.ch_97 = document.getElementById("ch_96")
+ch.ch_101 = document.getElementById("ch_100")
+ch.ch_103 = document.getElementById("ch_102")
+ch.ch_107 = document.getElementById("ch_106")
+ch.ch_109 = document.getElementById("ch_108")
+ch.ch_113 = document.getElementById("ch_112")
+ch.ch_115 = document.getElementById("ch_114")
+ch.ch_27 = new Map([[ch.ch_31, ch.ch_33], [ch.ch_33, ch.ch_31], [ch.ch_41, ch.ch_43], [ch.ch_43, ch.ch_41], [ch.ch_47, ch.ch_49], [ch.ch_49, ch.ch_47], [ch.ch_53, ch.ch_55], [ch.ch_55, ch.ch_53], [ch.ch_59, ch.ch_61], [ch.ch_61, ch.ch_59], [ch.ch_65, ch.ch_67], [ch.ch_67, ch.ch_65], [ch.ch_71, ch.ch_73], [ch.ch_73, ch.ch_71], [ch.ch_77, ch.ch_79], [ch.ch_79, ch.ch_77], [ch.ch_83, ch.ch_85], [ch.ch_85, ch.ch_83], [ch.ch_89, ch.ch_91], [ch.ch_91, ch.ch_89], [ch.ch_95, ch.ch_97], [ch.ch_97, ch.ch_95], [ch.ch_101, ch.ch_103], [ch.ch_103, ch.ch_101], [ch.ch_107, ch.ch_109], [ch.ch_109, ch.ch_107], [ch.ch_113, ch.ch_115], [ch.ch_115, ch.ch_113]])
+ch.ch_11 = document.getElementById("ch_10")
+ch.ch_135 = (chat_page, site, speaker, msg_text, clear_input=false) => {
+            chat_page.children[2].children[0].focus()
+            if (site === 'left') {
+                let row = ch.ch_24.firstElementChild.outerHTML.replace('{speaker}', speaker).replace('{content}', msg_text)
+                row = new DOMParser().parseFromString(row, 'text/html').body.firstChild
+                chat_page.children[1].appendChild(row)
+            }
+            else {
+                let row = ch.ch_26.firstElementChild.outerHTML.replace('{speaker}', speaker).replace('{content}', msg_text)
+                row = new DOMParser().parseFromString(row, 'text/html').body.firstChild
+                chat_page.children[1].appendChild(row)
+            }
+            chat_page.children[1].scrollTop += 99999
+            if (clear_input)
+                chat_page.children[2].children[0].value = ''
+            let nav = ch.ch_27.get(chat_page)
+            nav.children[1].children[1].innerHTML = msg_text
+            ch.ch_11.insertBefore(nav, ch.ch_11.firstChild)
+        }
+ch.ch_136 = (key) => {
+            let chat_page = ch.ch_33
+            ch.ch_135(chat_page, 'right', '我', key, true)
+            let value = ''
+            try {value = String(js_eval(key))} catch (e) {value = e.toString()}
+            ch.ch_135(chat_page, 'left', 'JS小黄老师', value)
+        }
+ch.ch_136("'你好呀！'")
+        ch.ch_136('1 + 1')
+        ch.ch_136('new Date()')
+        ch.ch_136("user = '小明'")
+        ch.ch_136("action = '喝水'")
+        ch.ch_136("user + action")
+ch.ch_138 = document.getElementById("ch_137")
+ch.ch_138.value =  "Hello, Jack!"
+ch.ch_140 = document.getElementById("ch_139")
+ch.ch_140.value =  "什么是滑坡论证？"
+ch.ch_119 = document.getElementById("ch_118")
+ch.ch_121 = Array.from(ch.ch_119.querySelectorAll('.is_nav'))
+ch.ch_122 = (navigation, navs) => {
+                return sync_value => {
+                    navigation.addEventListener('click',
+                        () => {
+                            let nav = event.target
+                            if (nav.classList.contains('is_nav'))
+                                {sync_value(String( navs.indexOf(nav)+1 ))}
+                        }
+                    )
+                }
+            }
+ch.ch_116 = (items, last_value) =>
+            {
+                let sync_value = value => {
+                    if (last_value !== value) {
+                        last_value = value
+                        for (let [beset_value, bijection_] of items) {
+                            if (bijection_ && bijection_.has(value))
+                                {beset_value(bijection_.get(value))}
+                            else
+                                {beset_value(value)}
+                        }
+                    }
+                }
+                return (bijection, outward_ignore_values=null) =>
+                    value => {
+                        if (outward_ignore_values && outward_ignore_values.includes(value)) {return null}
+                        if (bijection && bijection.has(value)) {value = bijection.get(value)}
+                        sync_value(value)
+                    }
+            }
+ch.ch_120 = (navigation, navs, value) => {
+            let index = Number(value)
+            if (Number.isInteger(index))  {  // 3.0、4.0 这种格式也会表现为 True
+                let nav = navs[parseInt(index) - 1]
+                if (nav) {
+                    for (let x of navs)
+                        { x.setAttribute('is_current_nav', 'False') }
+                    nav.setAttribute('is_current_nav', 'True')
+                    let nav_rect = nav.getBoundingClientRect()
+                    let navigation_rect = navigation.getBoundingClientRect()
+                    let distance = (nav_rect.left + nav_rect.right) / 2 - (navigation_rect.left + navigation_rect.right) / 2
+                    navigation.scrollLeft += distance
+                }
+            }
+        }
+ch.ch_123 = value => ch.ch_120(ch.ch_119, ch.ch_121, value)
+ch.ch_124 = new Map([])
+ch.ch_125 = [ch.ch_123, ch.ch_124]
+ch.ch_1 = new Map()
+ch.ch_2 = (obj, command) => {
+            if (! ch.ch_1.has(obj)) { ch.ch_1.set(obj, new Map()) }
+            let indexes = ch.ch_1.get(obj)
+            if (! indexes.has(command)) { indexes.set(command, 0) }
+            let new_index = indexes.get(command) + 1
+            indexes.set(command, new_index)
+            return new_index
+        }
+ch.ch_3 = (obj, command, index) => ch.ch_1.get(obj).get(command) === index
+ch.ch_4 = (func) => new Promise(resolve => requestAnimationFrame(() => {func(); resolve()}))
+ch.ch_6 = async (ele, scrollLeft, seconds=0) => {
+            let command_index = ch.ch_2(ele, 'scrollLeft')
+            if (seconds) {
+                let start_time = performance.now()  // 立即获取当前时间，以尽可能让时间准确
+                ele.classList.add('ch_exec_goto_scrollLeft')  // 立即设为 ch_exec_goto_scrollLeft
+                let milliseconds = seconds * 1000
+                let end_time = start_time + milliseconds
+                let start_scrollLeft = ele.scrollLeft
+                let distance = scrollLeft - start_scrollLeft
+                let gradient = distance / milliseconds  // 斜率
+                let state = {'finished': false}
+                let scroll = () => {
+                    let current_time = performance.now()
+                    if (current_time < end_time)
+                        {ele.scrollLeft = gradient * (current_time - start_time) + start_scrollLeft}  // y = k*x + b
+                    else
+                        {state['finished'] = true}
+                }
+                while (true) {
+                    if (! ch.ch_3(ele, 'scrollLeft', command_index)) {return null}
+                    await ch.ch_4(scroll)
+                    if (state['finished']) break
+                }
+                ele.classList.remove('ch_exec_goto_scrollLeft')
+                await ch.ch_4(() => {ele.scrollLeft = scrollLeft})  // 两个功能：确保最终位置正确、激活同步
+            }
+            else
+                await ch.ch_4(() => {ele.scrollLeft = scrollLeft})
+        }
+ch.ch_127 = (pages_box, current_index, scroll_seconds) =>
+                async value => {
+                    let index = Number(value)
+                    if (Number.isInteger(index))  {  // 3.0、4.0 这种格式也会表现为 True
+                        index = parseInt(index)  // 转化为 3、4 这种真正的整数
+                        if ( index !== current_index.get('current_index') ) {
+                            let page = pages_box.children[index - 1]
+                            if (page) {
+                                current_index.set('current_index', index)
+                                if (scroll_seconds)
+                                    await ch.ch_6(pages_box, page.offsetLeft, scroll_seconds)
+                                else
+                                    pages_box.scrollLeft = page.offsetLeft
+                            }
+                        }
+                    }
+                }
+ch.ch_129 = document.getElementById("ch_128")
+ch.ch_130 = new Map([["current_index", null]])
+ch.ch_132 = ch.ch_127(ch.ch_129, ch.ch_130, 0.2)
+ch.ch_133 = new Map([])
+ch.ch_134 = [ch.ch_132, ch.ch_133]
+ch.ch_117 = [ch.ch_125, ch.ch_134]
+ch.ch_126 = ch.ch_116(ch.ch_117, Symbol())
+ch.ch_122(ch.ch_119, ch.ch_121)(ch.ch_126(ch.ch_124, null))
+ch.ch_131 = (pages_box, current_index) => {
+                return sync_value => {
+                    pages_box.addEventListener('scroll',
+                        () => {
+                            if (! pages_box.classList.contains('ch_exec_goto_scrollLeft')) {
+                                let index = Math.round(pages_box.scrollLeft / pages_box.clientWidth) + 1
+                                if (index !== current_index.get('current_index')) {
+                                    current_index.set('current_index', index)
+                                    sync_value( String(index) )
+                                }
+                            }
+                        }
+                    )
+                }
+            }
+ch.ch_131(ch.ch_129, ch.ch_130)(ch.ch_126(ch.ch_133, null))
+ch.ch_18 = document.getElementById("ch_17")
+ch.ch_20 = document.getElementById("ch_19")
+ch.ch_21 = new Map([["is_scrolling", false]])
+ch.ch_22 = (pages_box, door, scroll_records) => {
+                let current_index = 0
+                let round_index = 0
+                let restore_scroll_records = () => scroll_records.set('is_scrolling', false)
+                let restore_scroll_records_task = null
+                let move_door = () => {
+                    // move_door
+                    let current_page = pages_box.children[round_index]
+                    pages_box.insertBefore(door, current_page.nextElementSibling)
+                    // restore_scroll_records
+                    restore_scroll_records()  // 最好放在 move_door 后面, 以保持流程有序
+                }
+                let move_door_task = null
+                pages_box.addEventListener('scroll',
+                    () => {
+                        clearTimeout(restore_scroll_records_task)  // clearTimeout(null) 不会报错
+                        clearTimeout(move_door_task)
+                        scroll_records.set('is_scrolling', true)  // 防跳屏措施
+                        let index = pages_box.scrollLeft / pages_box.clientWidth
+                        let trunc_index = Math.trunc(index)
+                        round_index = Math.round(index)
+                        if (round_index !== current_index) current_index = round_index
+                        if (index - trunc_index < 0.02) {  // 右滑到右边缘处, 把屏幕分成50份。越小越允许用户手指停留
+                            move_door_task = setTimeout(move_door, 50)  // 0.05秒, 对应屏幕刷新率为20HZ。越小越早走完流程, 但不能小于 async_goto_scrollLeft 的刷新频率
+                        }
+                        else {
+                            restore_scroll_records_task = setTimeout(restore_scroll_records, 50)
+                        }
+                    }
+                )
+            }
+ch.ch_22(ch.ch_18, ch.ch_20, ch.ch_21)
+ch.ch_14 = document.getElementById("ch_13")
+ch.ch_16 = document.getElementById("ch_15")
+ch.ch_29 = document.getElementById("ch_28")
+ch.ch_39 = document.getElementById("ch_38")
+ch.ch_45 = document.getElementById("ch_44")
+ch.ch_51 = document.getElementById("ch_50")
+ch.ch_57 = document.getElementById("ch_56")
+ch.ch_63 = document.getElementById("ch_62")
+ch.ch_69 = document.getElementById("ch_68")
+ch.ch_75 = document.getElementById("ch_74")
+ch.ch_81 = document.getElementById("ch_80")
+ch.ch_87 = document.getElementById("ch_86")
+ch.ch_93 = document.getElementById("ch_92")
+ch.ch_99 = document.getElementById("ch_98")
+ch.ch_105 = document.getElementById("ch_104")
+ch.ch_111 = document.getElementById("ch_110")
+ch.ch_148 = document.getElementById("ch_147")
+ch.ch_12 = (ele, px) => {
+                    ele.scrollTop += px
+                    try {event.preventDefault()} catch (e) {}  // 阻止其它默认行为
+                }
+ch.ch_11.addEventListener('wheel', async () => {ch.ch_12(ch.ch_11, event.deltaY)})
+ch.ch_34 = async (pages_box, index, scroll_seconds) =>
+                    await ch.ch_6(pages_box, pages_box.clientWidth * (index - 1), scroll_seconds)
+ch.ch_142 = document.getElementById("ch_141")
+ch.ch_144 = document.getElementById("ch_143")
+ch.ch_146 = document.getElementById("ch_145")
+ch.ch_150 = document.getElementById("ch_149")
+ch.ch_35 = async (page) => {
+                await new Promise(resolve => requestAnimationFrame(
+                    () => {
+                        let pages_box = page.parentElement
+                        let current_index = Math.round(pages_box.scrollLeft / pages_box.clientWidth)
+                        let current_page = pages_box.children[current_index]
+                        pages_box.insertBefore(page, current_page.nextElementSibling)
+                        resolve()
+                    }
+                ))
+            }
+ch.ch_36 = async (pages_box, relative_index, scroll_seconds) =>
+                    await ch.ch_6(pages_box, pages_box.scrollLeft + pages_box.clientWidth * relative_index, scroll_seconds)
+ch.ch_31.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_33)
+ch.ch_12(ch.ch_29, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_41.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_43)
+ch.ch_12(ch.ch_39, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_47.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_49)
+ch.ch_12(ch.ch_45, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_53.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_55)
+ch.ch_12(ch.ch_51, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_59.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_61)
+ch.ch_12(ch.ch_57, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_65.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_67)
+ch.ch_12(ch.ch_63, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_71.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_73)
+ch.ch_12(ch.ch_69, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_77.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_79)
+ch.ch_12(ch.ch_75, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_83.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_85)
+ch.ch_12(ch.ch_81, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_89.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_91)
+ch.ch_12(ch.ch_87, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_95.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_97)
+ch.ch_12(ch.ch_93, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_101.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_103)
+ch.ch_12(ch.ch_99, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_107.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_109)
+ch.ch_12(ch.ch_105, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_113.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_115)
+ch.ch_12(ch.ch_111, 99999)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_14.addEventListener('wheel', async () => {ch.ch_12(ch.ch_14, event.deltaY)})
+ch.ch_178 = document.getElementById("ch_177")
+ch.ch_178.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_150)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_16.addEventListener('wheel', async () => {ch.ch_12(ch.ch_16, event.deltaY)})
+ch.ch_193 = document.getElementById("ch_192")
+ch.ch_193.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_144)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_195 = document.getElementById("ch_194")
+ch.ch_195.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 1, 0)
+await ch.ch_35(ch.ch_142)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_37 = async (pages_box, door, scroll_seconds) => {
+                await ch.ch_6(pages_box, pages_box.scrollLeft + pages_box.clientWidth * -1, scroll_seconds)
+            }
+ch.ch_207 = document.getElementById("ch_206")
+ch.ch_207.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_29.addEventListener('wheel', async () => {ch.ch_12(ch.ch_29, event.deltaY)})
+ch.ch_220 = document.getElementById("ch_219")
+ch.ch_220.addEventListener('click', async () => {{
+                let chat_page = ch.ch_33
+                ch.ch_136(chat_page.children[2].children[0].value)
+            }})
+ch.ch_222 = document.getElementById("ch_221")
+ch.ch_222.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_39.addEventListener('wheel', async () => {ch.ch_12(ch.ch_39, event.deltaY)})
+ch.ch_224 = document.getElementById("ch_223")
+ch.ch_224.addEventListener('click', async () => {{
+                let chat_page = ch.ch_43
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+                
+                let say = () => {window.speechSynthesis.speak(new SpeechSynthesisUtterance(key))}
+                let row = ch.ch_24.firstElementChild.outerHTML.replace('{speaker}', '会说话的杰克').replace('{content}', '🔊' + key.length + ' ')
+                row = new DOMParser().parseFromString(row, 'text/html').body.firstChild
+                row.children[1].addEventListener('click', say)
+                chat_page.children[1].appendChild(row)
+                say()
+
+                chat_page.children[1].scrollTop += 99999
+                let nav = ch.ch_27.get(chat_page)
+                nav.children[1].children[1].innerHTML = key
+                ch.ch_11.insertBefore(nav, ch.ch_11.firstChild)
+            }})
+ch.ch_226 = document.getElementById("ch_225")
+ch.ch_226.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_45.addEventListener('wheel', async () => {ch.ch_12(ch.ch_45, event.deltaY)})
+ch.ch_228 = document.getElementById("ch_227")
+ch.ch_228.addEventListener('click', async () => {{
+                let chat_page = ch.ch_49
+                let key = chat_page.children[2].children[0].value
+                let value = '一见短袖子，立刻想到白臂膊，立刻想到全裸体，立刻想到生殖器，立刻想到性交，立刻想到杂交，立刻想到私生子。'
+                ch.ch_135(chat_page, 'right', '我', key, true)
+                let nav = ch.ch_27.get(chat_page)
+                if (key.includes('什么是滑坡论证')) {
+                    let row = ch.ch_24.firstElementChild.outerHTML.replace('{speaker}', '鲁迅').replace('{content}', '')
+                    row = new DOMParser().parseFromString(row, 'text/html').body.firstChild
+                    let pre = row.children[1]
+                    chat_page.children[1].appendChild(row)
+                    async function input_() {
+                        await new Promise(resolve => setTimeout(resolve, 1000))
+                        for (let t of value) {
+                            pre.innerHTML += t
+                            chat_page.children[1].scrollTop += 99999
+                            await new Promise(resolve => setTimeout(resolve, 200))
+                        }
+                        nav.children[1].children[1].innerHTML = value
+                    }
+                    input_()
+                }
+                else
+                    nav.children[1].children[1].innerHTML = key
+                ch.ch_11.insertBefore(nav, ch.ch_11.firstChild)
+            }})
+ch.ch_230 = document.getElementById("ch_229")
+ch.ch_230.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_51.addEventListener('wheel', async () => {ch.ch_12(ch.ch_51, event.deltaY)})
+ch.ch_235 = document.getElementById("ch_234")
+ch.ch_235.addEventListener('click', async () => {{
+                let chat_page = ch.ch_55
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_237 = document.getElementById("ch_236")
+ch.ch_237.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_57.addEventListener('wheel', async () => {ch.ch_12(ch.ch_57, event.deltaY)})
+ch.ch_239 = document.getElementById("ch_238")
+ch.ch_239.addEventListener('click', async () => {{
+                let chat_page = ch.ch_61
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_241 = document.getElementById("ch_240")
+ch.ch_241.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_63.addEventListener('wheel', async () => {ch.ch_12(ch.ch_63, event.deltaY)})
+ch.ch_243 = document.getElementById("ch_242")
+ch.ch_243.addEventListener('click', async () => {{
+                let chat_page = ch.ch_67
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_245 = document.getElementById("ch_244")
+ch.ch_245.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_69.addEventListener('wheel', async () => {ch.ch_12(ch.ch_69, event.deltaY)})
+ch.ch_247 = document.getElementById("ch_246")
+ch.ch_247.addEventListener('click', async () => {{
+                let chat_page = ch.ch_73
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_249 = document.getElementById("ch_248")
+ch.ch_249.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_75.addEventListener('wheel', async () => {ch.ch_12(ch.ch_75, event.deltaY)})
+ch.ch_251 = document.getElementById("ch_250")
+ch.ch_251.addEventListener('click', async () => {{
+                let chat_page = ch.ch_79
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_253 = document.getElementById("ch_252")
+ch.ch_253.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_81.addEventListener('wheel', async () => {ch.ch_12(ch.ch_81, event.deltaY)})
+ch.ch_255 = document.getElementById("ch_254")
+ch.ch_255.addEventListener('click', async () => {{
+                let chat_page = ch.ch_85
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_257 = document.getElementById("ch_256")
+ch.ch_257.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_87.addEventListener('wheel', async () => {ch.ch_12(ch.ch_87, event.deltaY)})
+ch.ch_259 = document.getElementById("ch_258")
+ch.ch_259.addEventListener('click', async () => {{
+                let chat_page = ch.ch_91
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_261 = document.getElementById("ch_260")
+ch.ch_261.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_93.addEventListener('wheel', async () => {ch.ch_12(ch.ch_93, event.deltaY)})
+ch.ch_263 = document.getElementById("ch_262")
+ch.ch_263.addEventListener('click', async () => {{
+                let chat_page = ch.ch_97
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_265 = document.getElementById("ch_264")
+ch.ch_265.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_99.addEventListener('wheel', async () => {ch.ch_12(ch.ch_99, event.deltaY)})
+ch.ch_267 = document.getElementById("ch_266")
+ch.ch_267.addEventListener('click', async () => {{
+                let chat_page = ch.ch_103
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_269 = document.getElementById("ch_268")
+ch.ch_269.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_105.addEventListener('wheel', async () => {ch.ch_12(ch.ch_105, event.deltaY)})
+ch.ch_271 = document.getElementById("ch_270")
+ch.ch_271.addEventListener('click', async () => {{
+                let chat_page = ch.ch_109
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_273 = document.getElementById("ch_272")
+ch.ch_273.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_111.addEventListener('wheel', async () => {ch.ch_12(ch.ch_111, event.deltaY)})
+ch.ch_275 = document.getElementById("ch_274")
+ch.ch_275.addEventListener('click', async () => {{
+                let chat_page = ch.ch_115
+                let key = chat_page.children[2].children[0].value
+                ch.ch_135(chat_page, 'right', '我', key, true)
+            }})
+ch.ch_280 = document.getElementById("ch_279")
+ch.ch_280.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_286 = document.getElementById("ch_285")
+ch.ch_286.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_291 = document.getElementById("ch_290")
+ch.ch_291.addEventListener('click', async () => {await ch.ch_34(ch.ch_18, 2, 0)
+await ch.ch_35(ch.ch_146)
+await ch.ch_36(ch.ch_18, 1, 0.2)})
+ch.ch_293 = document.getElementById("ch_292")
+ch.ch_293.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_295 = document.getElementById("ch_294")
+ch.ch_295.addEventListener('click', async () => {ch.ch_37(ch.ch_18, ch.ch_20, 0.2)})
+ch.ch_148.addEventListener('wheel', async () => {ch.ch_12(ch.ch_148, event.deltaY)})
+
+</script>
+</body>
+</html>

@@ -1,33 +1,25 @@
-# 项目描述
+# 描述
 
 Base95 是一种用 95 个可见的 ASCII 字符（含空格）表示任意二进制数据的编码方法。
 
 该实现使用了从空格（ASCII 32）到波浪符（ASCII 126）这 95 个字符来编码二进制数据，编码后的信息密度高于 Base64 编码。
 
-# 作者
-
-[江南雨上](mailto:lcctoor@outlook.com)
-
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
-
-# Bug提交、功能提议
-
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+[源码](https://github.com/canbiaoxu/arts/tree/main/arts/base95)
 
 # 安装
 
-```
-pip install base95
+```bash
+pip install arts
 ```
 
-# 教程 ([查看美化版](https://lcctoor.github.io/arts/arts/base95) 👈)
+# 教程
 
 本文将以简洁的方式向你介绍核心知识，而不会让你被繁琐的术语所淹没。
 
 ## 导入
 
 ```python
-from base95 import BaseEncoding
+from arts.base95 import BaseEncoding
 ```
 
 ## 编码

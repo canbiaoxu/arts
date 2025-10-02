@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class='ch_42 ch_43 ch_44 ch_45'><head>
+<title>FreeWord</title><link rel='icon' href='https://word.freeing.wiki/icon.png' type='image/x-icon'>
+<style>
+            @keyframes tip_click1 {
+                0% {background-color: rgb(102, 205, 170);}
+                100% {background-color: rgb(102, 205, 170);}
+            }
+            @keyframes tip_click2 {
+                0% {background-color: rgb(102, 205, 170);}
+                100% {background-color: rgb(102, 205, 170);}
+            }
+            button[tip_click="1"] {animation: tip_click1 0.3s;}
+            button[tip_click="2"] {animation: tip_click2 0.3s;}
+            
+</style>
+<script src='tts.js'>
+"use strict";
+
+</script><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><base target='_blank'>
+<style>
+    * {vertical-align:middle; text-decoration:none; position:relative; padding:0; overflow:auto; outline:none; margin:0; font-size:1rem; font-family:'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing:border-box; border-width:0; border-style:solid;}
+    .ch_53 {font-weight:bold; font-size:2rem;}
+    .ch_45 {width:100%; padding:0.618rem; height:100vh; display:block; background-color:rgb(210, 210, 210);}
+    .w10000[show_state="question"] .ch_52 {color:transparent;}
+    .w10000[judgment="wrong"] .ch_58, .w10000[judgment="done_wrong"] .ch_58 {color:red;}
+    .ch_50 {width:100%; height:100%; display:block; border-radius:1rem; background-size:cover; background-color:white;}
+    .w10000[judgment="done_right"] .ch_55 {color:green;}
+    .ch_70 {display:inline-block;}
+    .ch_51 {display:inline-grid;}
+    .ch_63 {width:100%; height:100%; grid-template-rows:auto 1fr; gap:1.5rem; display:inline-grid;}
+    .ch_71 {padding:0.618em 1em 0.618em 1em; margin:0 0.25rem 0 0.25rem; font-size:0.8rem; border-radius:0.5em; background-color:rgb(239, 239, 239);}
+    .ch_73:hover {background-color:rgb(249, 249, 249);}
+    .ch_72:active {background-color:transparent;}
+    .ch_61 {padding:0.1em 0.3em; font-size:0.8rem; color:gray; background-color:transparent;}
+    .ch_75 {padding:0; font-size:1.0rem; color:black; background-color:transparent;}
+    .ch_59 {vertical-align:baseline; display:inline-block;}
+    .ch_66 {white-space:pre-wrap; vertical-align:baseline; scrollbar-width:none; padding:0; overflow-wrap:break-word; overflow:hidden; max-width:100%; line-height:1.1; justify-self:center; border-radius:0; -ms-overflow-style:none;}
+    .ch_69 {width:min(50rem, 100%); white-space:pre-wrap; visibility:hidden; vertical-align:baseline; padding:1rem 1.2rem; overflow-wrap:break-word; line-height:1.75; justify-self:center; font-size:0.9rem; border-radius:0.75em; border:rgb(255, 174, 0) 0.1rem solid;}
+    .ch_64 > * {vertical-align:baseline;}
+    .ch_56 {width:min(50rem, 100%); text-align:center; padding:0.1em; font-weight:bold; font-size:2rem; display:inline-block; border-width:0 0 0.1rem 0; border-color:rgb(159, 159, 159); background-color:transparent;}
+    .ch_54:hover {border-color:rgb(200, 200, 200);}
+    .ch_57:focus {border-color:rgb(118, 118, 118);}
+    * {scrollbar-width:none; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    *::-webkit-scrollbar {display:none;}
+    .ch_60:hover {color:rgb(233, 156, 79);}
+    .ch_62:active {color:rgb(233, 156, 79);}
+    .ch_76:hover {color:rgb(233, 156, 79);}
+    .ch_74:active {color:rgb(233, 156, 79);}
+    .ch_67::before {font-weight:700; content:"AI释义：";}
+    .w10000[show_state="answer"] .ch_68 {visibility:visible;}
+    .ch_65::-webkit-scrollbar {display:none;}
+</style></head>
+<body class='ch_50 w10000' id=ch_13>
+<script>
+"use strict";
+window.print = console.log
+                    if (1 + 1 === 2) {
+                        window.ch = new Proxy(
+                            new Map(),
+                            {get: (target, name) => target.get(name), set: (target, name, value) => target.set(name, value), has: (target, key) => target.has(key)}
+                        )
+                    }
+                    else {   window.ch = {}   }
+                    window.screen_type = window.innerWidth > window.innerHeight ? 'x' : 'y'
+                    document.documentElement.setAttribute('screen_type', window.screen_type)
+                    document.documentElement.setAttribute('is_x_screen', String(window.innerWidth > window.innerHeight))
+</script><div class='ch_51' style="padding:1.5rem 0.618rem 0.618rem 0.618rem; align-content:flex-start; justify-items:center; row-gap:1.5rem; height:100%; width:100%; grid-template-rows:auto auto auto 1fr auto;"><h1 class='ch_52 ch_53' id=ch_25></h1><input class='ch_54 ch_55 ch_56 ch_57 ch_58' autocomplete='off' id=ch_23><span class='ch_59'><button class='ch_60 ch_61 ch_62' id=ch_17><audio type='audio/mpeg' id=ch_46></audio></button><button class='ch_60 ch_61 ch_62' id=ch_19><audio type='audio/mpeg' id=ch_48></audio></button></span><div class='ch_63'><pre class='ch_64 ch_65 ch_66' id=ch_21></pre><pre class='ch_64 ch_67 ch_68 ch_69' id=ch_15></pre></div><div class='ch_51' style="width:100%; justify-content:center; grid-template-columns:1fr auto 1fr; column-gap:0.5rem;"><div class='ch_70' style="width:100%; text-align:left;"></div><div class='ch_70' style="width:100%; text-align:center;"><button class='ch_71 ch_72 ch_73' style="visibility:hidden; width:1rem; padding:0;"></button><button class='ch_71 ch_72 ch_73' value='tobottom' id=ch_35>置底(2)</button><button class='ch_71 ch_72 ch_73' style="visibility:hidden; width:1rem; padding:0;"></button><button class='ch_71 ch_72 ch_73' value='master' id=ch_37>已掌握(4)</button><button class='ch_71 ch_72 ch_73' value='forget' id=ch_31>不记得(5)</button><button class='ch_71 ch_72 ch_73' value='remember' id=ch_29>记得(6)</button><button class='ch_71 ch_72 ch_73' style="visibility:hidden; width:1rem; padding:0;"></button><button class='ch_71 ch_72 ch_73' id=ch_33>显示答案(8)</button></div><div class='ch_51' style="width:100%; align-items:center; justify-content:end; grid-template-columns:auto auto auto;"><button class='ch_74 ch_75 ch_76' play_type='美' title='自动发音' id=ch_27>🔊[美]</button><button class='ch_71 ch_72 ch_73' style="visibility:hidden; width:1rem; padding:0;"></button></div></div></div>
+<script>
+"use strict";
+
+document.documentElement.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))
+ch.ch_18 = document.getElementById("ch_17")
+ch.ch_20 = document.getElementById("ch_19")
+ch.ch_22 = document.getElementById("ch_21")
+ch.ch_26 = document.getElementById("ch_25")
+ch.ch_14 = document.getElementById("ch_13")
+ch.ch_24 = document.getElementById("ch_23")
+ch.ch_47 = document.getElementById("ch_46")
+ch.ch_10 = new Map([])
+ch.ch_11 = async () => {
+            let word = ch.ch_10.get('current_word')
+            await window.tts.speak(word, '美', 1.0, true)
+        }
+ch.ch_49 = document.getElementById("ch_48")
+ch.ch_12 = async () => {
+            let word = ch.ch_10.get('current_word')
+            await window.tts.speak(word, '英', 1.0, true)
+        }
+ch.ch_16 = document.getElementById("ch_15")
+ch.ch_41 = async (is_feedback=false) => {
+            let previous_state = null
+            if (is_feedback) {
+                let target = event.target
+                if (target.getAttribute('tip_click') === '1') {
+                    target.setAttribute('tip_click', '2')
+                }
+                else {
+                    target.setAttribute('tip_click', '1')
+                }
+                previous_state = target.value
+            }
+            let word = (await window.english.feedback_and_fetch(previous_state=previous_state)).word
+            window.request_ai_answer_then_save(word)
+            let url = `https://word.freeing.wiki/groups/${word[0]}/${word}/word.json`
+            let res = await (await fetch(url)).json()
+            res['meanings_text'] = Object.entries(res['meanings']).map(([k, v]) => `${k}. ${v.join('；')}`).join('\n\n')
+            ch.ch_14.setAttribute('show_state', 'question')  // 单词先消失
+            ch.ch_16.textContent = ''
+            ch.ch_18.textContent = `美 ${res['AmE']} 🔊`  // 然后修改音标显示
+            ch.ch_20.textContent = `英 ${res['BrE']} 🔊`
+            ch.ch_22.textContent = res['meanings_text']  // 然后修改中文显示
+            ch.ch_24.value = ''  // 然后清空输入字符
+            ch.ch_14.setAttribute('judgment', '')  // 然后让打勾消失
+            ch.ch_14.setAttribute('first_result', '')
+            ch.ch_26.textContent = word
+            ch.ch_10.set('current_word', word)
+            if (ch.ch_28.getAttribute('play_type') === '美') {await ch.ch_11()}
+            else if (ch.ch_28.getAttribute('play_type') === '英') {await ch.ch_12()}
+            ch.ch_24.focus()
+        }
+window.show_first_word = async () => {
+            await ch.ch_41()
+        }
+ch.ch_36 = document.getElementById("ch_35")
+ch.ch_38 = document.getElementById("ch_37")
+ch.ch_32 = document.getElementById("ch_31")
+ch.ch_30 = document.getElementById("ch_29")
+ch.ch_34 = document.getElementById("ch_33")
+ch.ch_39 = async () => {
+            let value = ch.ch_24.value
+            let last = value.slice(-1)
+            if (last === ' ') {
+                ch.ch_24.value = value.replace(' ', '')
+                let first_result = ch.ch_14.getAttribute('first_result')
+                if (first_result === 'right') {ch.ch_30.click()}
+                else if (first_result === 'wrong') {ch.ch_32.click()}
+                else {ch.ch_34.click(); ch.ch_14.setAttribute('first_result', 'wrong')}
+            }
+            else {
+                ch.ch_24.value = value = value.replace(/\d/g, "")
+                let length = value.length
+                let j_word_value = ch.ch_26.textContent
+                if (j_word_value.slice(0, length) === value) {
+                    if (length === j_word_value.length) {
+                        ch.ch_14.setAttribute('judgment', 'done_right')
+                        if (! ch.ch_14.getAttribute('first_result')) {  // 由于输入可以删除某些字符再重新输入, 因此记录第一次答题结果
+                            if (ch.ch_14.getAttribute('show_state') === 'answer') {  // 分析是否查看了答案
+                                ch.ch_14.setAttribute('first_result', 'wrong')
+                            }
+                            else {
+                                ch.ch_16.textContent = (await window.read_ai_answer(ch.ch_10.get('current_word') || '')) || ''
+                                ch.ch_14.setAttribute('show_state', 'answer')
+                                ch.ch_14.setAttribute('first_result', 'right')
+                            }
+                        }
+                    }
+                    else {
+                        ch.ch_14.setAttribute('judgment', 'inputting')
+                    }
+                }
+                else {
+                    if (length === j_word_value.length) {
+                        ch.ch_14.setAttribute('judgment', 'done_wrong')
+                    }
+                    else {
+                        ch.ch_14.setAttribute('judgment', 'wrong')
+                    }
+                }
+                if ('0123456789'.includes(last))  {
+                    switch (last) {
+                        case '2':
+                            ch.ch_36.click()
+                            break
+                        case '4':
+                            ch.ch_38.click()
+                            break
+                        case '5':
+                            ch.ch_32.click()
+                            break
+                        case '6':
+                            ch.ch_30.click()
+                            break
+                        case '8':
+                            ch.ch_34.click()
+                            if (! ch.ch_14.getAttribute('first_result')) {ch.ch_14.setAttribute('first_result', 'wrong')}
+                            break
+                        case '9':
+                            await ch.ch_11()
+                            break
+                        case '0':
+                            await ch.ch_12()
+                            break
+                    }
+                }
+            }
+        }
+ch.ch_24.addEventListener('input', async () => {await ch.ch_39()})
+ch.ch_24.addEventListener('keydown', async () => {if (event.key === 'Enter') {
+            let first_result = ch.ch_14.getAttribute('first_result')
+            if (first_result === 'right') {ch.ch_30.click()}
+            else if (first_result === 'wrong') {ch.ch_32.click()}
+            else {ch.ch_34.click(); ch.ch_14.setAttribute('first_result', 'wrong')}
+        }})
+ch.ch_18.addEventListener('click', async () => {await ch.ch_11()})
+ch.ch_20.addEventListener('click', async () => {await ch.ch_12()})
+ch.ch_36.addEventListener('click', async () => {ch.ch_41(true)})
+ch.ch_38.addEventListener('click', async () => {ch.ch_41(true)})
+ch.ch_32.addEventListener('click', async () => {ch.ch_41(true)})
+ch.ch_30.addEventListener('click', async () => {ch.ch_41(true)})
+ch.ch_40 = async () => {
+            let target = ch.ch_34
+            if (target.getAttribute('tip_click') === '1') {
+                target.setAttribute('tip_click', '2')
+            }
+            else {
+                target.setAttribute('tip_click', '1')
+            }
+            ch.ch_16.textContent = (await window.read_ai_answer(ch.ch_10.get('current_word') || '')) || ''
+            ch.ch_14.setAttribute('show_state', 'answer')
+            ch.ch_24.focus()
+        }
+ch.ch_34.addEventListener('click', async () => {await ch.ch_40()})
+ch.ch_28 = document.getElementById("ch_27")
+ch.ch_28.addEventListener('click', async () => {if (ch.ch_28.getAttribute('play_type') === '美') {
+                ch.ch_28.setAttribute("play_type", '英')
+                ch.ch_28.textContent = '🔊[英]'
+            }
+            else if (ch.ch_28.getAttribute('play_type') === '英') {
+                ch.ch_28.setAttribute("play_type", 'False')
+                ch.ch_28.textContent = '🔇'
+            }
+            else {
+                ch.ch_28.setAttribute("play_type", '美')
+                ch.ch_28.textContent = '🔊[美]'
+            }})
+
+</script>
+</body>
+<script src='memory.js'>
+"use strict";
+
+</script>
+</html>

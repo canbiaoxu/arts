@@ -1,11 +1,24 @@
-# 项目描述
+# 自由艺术站
 
-这里是本人的原创艺术作品展示中心，内容包含短视频、文章、图片、观点、编程教程、开源软件。
+这是一个艺术作品展示中心，内容包含想法、文章、游戏、短视频、图片、生活记事、软件、编程教程。
 
-# 作者信息
+# 浏览内容
 
-昵称：江南雨上
+[https://canbiaoxu.com/](https://canbiaoxu.com/)
 
-[主页](https://lcctoor.github.io/arts/) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
+# 邀请贡献
 
-# [查看展示](https://lcctoor.github.io/arts/) 👈
+欢迎有志之士一起新增或修订内容，完善这个艺术站。
+
+贡献步骤：
+
+1. Fork仓库。
+2. 新增或修订内容。
+3. 提交Commit并推送到你的仓库。
+4. 发起PR说明修改内容。
+
+# 交流
+
+添加我的微信，并备注“进群”，拉你进微信交流群：
+
+<img src="arts/cdn/wechat_qrc.jpg" alt="微信二维码" style="width: 15rem;" />

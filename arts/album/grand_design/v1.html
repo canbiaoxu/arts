@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class='ch_85 ch_86' id=ch_43 thunder_switch='' gold_switch='' style="background-color:black;"><head>
+<title>大设计</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><base target='_blank'>
+<style>
+    * {vertical-align:middle; text-decoration:none; position:relative; padding:0; overflow:auto; outline:none; margin:0; font-size:1rem; font-family:'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing:border-box; border-width:0; border-style:solid;}
+    .ch_85 {width:100%; height:100%; display:block; background-color:white;}
+    .ch_89 {width:100%; position:relative; overflow:hidden; height:100%; display:block; background-color:white;}
+    .ch_96 {z-index:200; position:absolute; padding:0; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_100 {z-index:300; width:88px; position:absolute; padding:0; overflow:hidden; margin:0; height:168px; display:inline-block; border-width:0; border-radius:0;}
+    .ch_101 {z-index:400; position:absolute; padding:0; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_104 {z-index:250; width:49px; position:absolute; padding:0; overflow:hidden; margin:0; height:27px; display:inline-block; border-width:0; border-radius:0;}
+    .ch_116 {display:inline-block;}
+    .ch_92 {z-index:50; width:200%; position:absolute; padding:0; overflow:hidden; margin:0; height:5rem; grid-template-columns:1fr 1fr 1fr 1fr; display:inline-grid; border-width:0; border-radius:0; align-items:center;}
+    .ch_105 {z-index:500; position:absolute; padding:0; overflow:hidden; margin:0; justify-items:center; justify-content:start; grid-template-rows:1.8rem auto; grid-template-columns:auto 1.8rem auto auto 1fr; display:inline-grid; column-gap:0.1rem; border-width:0; border-radius:0; align-items:center; align-content:center;}
+    .ch_119 {z-index:500; row-gap:0.1rem; position:absolute; padding:0; margin:0; justify-items:end; grid-template-rows:auto auto; display:inline-grid; border-width:0; border-radius:0;}
+    .ch_111:active {color:rgb(255, 17, 0);}
+    .ch_93 {vertical-align:middle; display:inline-block;}
+    .ch_97 {vertical-align:middle; position:relative; pointer-events:none; display:inline-block;}
+    .ch_95 {z-index:75; white-space:pre-wrap; vertical-align:baseline; position:absolute; padding:0; overflow-wrap:break-word; max-width:25rem; margin:0; line-height:1.75; border-width:0; border-radius:0;}
+    .ch_94 > * {vertical-align:baseline;}
+    * {user-select:none; scrollbar-width:none; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    *::-webkit-scrollbar {display:none;}
+    .ch_90 > * {width:100%;}
+    html[thunder_switch=''] .ch_91 {visibility:hidden;}
+    .ch_102 > img {top:-10px; left:0px; height:50px;}
+    html[gold_switch=''] .ch_103 {visibility:hidden;}
+    .ch_99 > img {top:-10px; left:-42px; height:180px;}
+    html[gold_switch='1'] .ch_98 {pointer-events:none;}
+    .ch_107 > * {font-size:1.4rem; color:red;}
+    .ch_108 > :nth-child(6) {grid-column:1 / 6; font-size:1rem; display:none; color:gray;}
+    .ch_106:hover > :nth-child(6) {display:inline-block;}
+    .ch_118 > :nth-child(2) {font-size:1rem; display:none; color:gray;}
+    .ch_117:hover > :nth-child(2) {display:inline-block;}
+    .ch_112:hover {border-color:red;}
+    html[gold_switch=''] .ch_113 {background-color:rgb(34, 153, 232);}
+    html[gold_switch='1'] .ch_109 {background-color:rgb(239, 194, 59);}
+    html[thunder_switch=''] .ch_121 {background-color:rgb(34, 153, 232);}
+    html[thunder_switch='1'] .ch_120 {background-color:rgb(239, 194, 59);}
+    .ch_110 {z-index:600; padding:0.2rem; margin:0; justify-self:end; font-size:0.8rem; color:black; border-width:0.1rem; border-radius:0; border-color:transparent; background-color:transparent; align-self:center;}
+</style></head>
+<body class='ch_87 ch_88 ch_89'>
+<script>
+"use strict";
+
+                    window.print = console.log
+                    if (1 + 1 === 2) {
+                        window.ch = new Proxy(
+                            new Map(),
+                            {get: (target, name) => target.get(name), set: (target, name, value) => target.set(name, value), has: (target, key) => target.has(key)}
+                        )
+                    }
+                    else {   window.ch = {}   }
+                
+</script><div class='ch_90 ch_91 ch_92' id=ch_63 style="left:0; top:0;"><img class='ch_93' src='static/雷电.gif' style="transform:rotate(-20deg);"><img class='ch_93' src='static/雷电.gif' style="transform:scaleX(-1) scaleY(1) rotate(-20deg);"><img class='ch_93' src='static/雷电.gif' style="transform:rotate(-20deg);"><img class='ch_93' src='static/雷电.gif' style="transform:scaleX(-1) scaleY(1) rotate(-20deg);"></div><pre class='ch_94 ch_95' id=ch_57 style="left:10px; top:100px;">
+这是一个简约的世界模拟图景，它复现了自然界中生物间的基本互动规律。
+
+在这个模拟中：
+
+蚊子：遵循着其生存的本能 —— 吸血，因此它如影随形地萦绕在女孩的身侧；
+
+女孩：遵循着基本的生活需求 —— 进食，故而总是不由自主地靠近食物；
+
+食物：每隔 6 秒钟自动随机移动到一个新的位置；
+
+你，作为这个世界的幕后操控者，<strong>可用鼠标拖动蚊子、女孩、食物穿梭于虚拟空间的每一个角落，</strong>在它们毫无防备与察觉之下，悄无声息地操控这个世界的流转。
+</pre><div class='ch_96' id=ch_14 style="left:900px; top:200px;"><img class='ch_97' src='static/食物.png' style="height:100px;"></div><div class='ch_98 ch_99 ch_100' id=ch_50 style="left:600px; top:200px;"><img class='ch_97' src='static/女孩.gif'></div><div class='ch_101' id=ch_23 style="left:300px; top:200px;"><img class='ch_97' src='static/蚊子.gif' style="height:50px;"></div><div class='ch_102 ch_103 ch_104' state='1' id=ch_72 style="left:200px; top:600px;"><img class='ch_97' src='static/金子.gif'></div><div class='ch_102 ch_103 ch_104' state='1' id=ch_77 style="left:400px; top:600px;"><img class='ch_97' src='static/金子.gif'></div><div class='ch_102 ch_103 ch_104' state='1' id=ch_81 style="left:600px; top:600px;"><img class='ch_97' src='static/金子.gif'></div><div class='ch_105 ch_106 ch_107 ch_108' id=ch_30 style="left:10px; top:10px;"><button class='ch_109 ch_110 ch_111 ch_112 ch_113' id=ch_114>寻宝模式</button><img class='ch_93' src='static/金币.gif' style="height:35px;"><div class='ch_116'>$</div><div class='ch_116' id=ch_70>0</div><div class='ch_116'></div><div class='ch_116'>启用寻宝模式后：1、你无法直接通过鼠标拖动女孩移动；2、你需要策略性地拖动食物来引导女孩经过金币，从而拾取金币。</div></div><div class='ch_117 ch_118 ch_119' id=ch_37 style="right:10px; top:10px;"><button class='ch_120 ch_121 ch_110 ch_111 ch_112' id=ch_122>雷电</button><div class='ch_116' style="max-width:10rem;">启用雷电后，当蚊子接触到雷电时，会瞬间被电毙，并于 10 秒后复活。</div></div>
+<script>
+"use strict";
+
+document.documentElement.setAttribute('is_x_screen', String(window.innerWidth > window.innerHeight))
+document.documentElement.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))
+ch.ch_15 = document.getElementById("ch_14")
+ch.ch_24 = document.getElementById("ch_23")
+ch.ch_31 = document.getElementById("ch_30")
+ch.ch_38 = document.getElementById("ch_37")
+ch.ch_51 = document.getElementById("ch_50")
+ch.ch_58 = document.getElementById("ch_57")
+ch.ch_16 = (ele, key, reference=null) => {
+                reference = reference || ele
+                return sync_value => {
+                    let info = new Map()
+                    ele.addEventListener('mousedown', () => {
+                        if ((! key) || key.has(event.button)) {{
+                            info.set('mousedown_style', Object.assign({}, reference.style))
+                            info.set('mousedown_event', event)
+                            info.set('is_mouse_down', 'true')
+                        }}
+                    })
+                    document.documentElement.addEventListener('mouseup', () => {
+                        if ((! key) || key.has(event.button)) {{ info.set('is_mouse_down', '') }}
+                    })
+                    document.documentElement.addEventListener('mousemove', () => {
+                        if (info.get('is_mouse_down')) {
+                            info.set('mousemove_event', event)
+                            sync_value([info])
+                        }
+                    })
+                }
+            }
+ch.ch_12 = (items, last_value) =>
+            {
+                let sync_value = value => {
+                    if (last_value !== value) {
+                        last_value = value
+                        for (let [beset_value, bijection_] of items) {
+                            if (bijection_ && bijection_.has(value))
+                                {beset_value(bijection_.get(value))}
+                            else
+                                {beset_value(value)}
+                        }
+                    }
+                }
+                return bijection =>
+                    value => {
+                        if (bijection && bijection.has(value)) {value = bijection.get(value)}
+                        sync_value(value)
+                    }
+            }
+ch.ch_19 = ele =>
+            value => {
+                let info = value[0]
+                let mousedown_style = info.get('mousedown_style')
+                let mousedown_event = info.get('mousedown_event')
+                let mousemove_event = info.get('mousemove_event')
+                ele.style.left = parseInt(mousedown_style.left) + mousemove_event.pageX - mousedown_event.pageX + 'px'
+                ele.style.top = parseInt(mousedown_style.top) + mousemove_event.pageY - mousedown_event.pageY + 'px'
+            }
+ch.ch_54 = new Map([])
+ch.ch_55 = [ch.ch_19(ch.ch_51), ch.ch_54]
+ch.ch_49 = [ch.ch_55]
+ch.ch_52 = new Map([])
+ch.ch_53 = ch.ch_12(ch.ch_49, Symbol())
+ch.ch_16(ch.ch_51, null, null)(ch.ch_53(ch.ch_52))
+ch.ch_61 = new Map([])
+ch.ch_62 = [ch.ch_19(ch.ch_58), ch.ch_61]
+ch.ch_56 = [ch.ch_62]
+ch.ch_59 = new Map([])
+ch.ch_60 = ch.ch_12(ch.ch_56, Symbol())
+ch.ch_16(ch.ch_58, null, null)(ch.ch_60(ch.ch_59))
+ch.ch_8 = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+ch.ch_67 = (ele, style_name) => {
+                let styles = Object.assign({}, ele.style)
+                return sync_value => {
+                    new ch.ch_8(
+                        (records, _) => {
+                            let value = ele.style[style_name]
+                            if (styles[style_name] !== value) {
+                                styles[style_name] = value
+                                sync_value(value)
+                            }
+                        }
+                    ).observe(ele, { attributes:true, attributeFilter:['style'] })
+                }
+            }
+ch.ch_71 = document.getElementById("ch_70")
+ch.ch_46 = document.getElementById("ch_43")
+ch.ch_73 = document.getElementById("ch_72")
+ch.ch_78 = document.getElementById("ch_77")
+ch.ch_82 = document.getElementById("ch_81")
+ch.ch_74 = gold => {
+            let people = ch.ch_51.getBoundingClientRect()
+            let self = gold.getBoundingClientRect()
+            let dx = (self.width + people.width) / 2
+            let dy = (self.height + people.height) / 2
+            return value => {
+                let people = ch.ch_51.getBoundingClientRect()
+                let self = gold.getBoundingClientRect()
+                if (
+                    Math.abs((self.left + self.right) / 2 - (people.left + people.right) / 2) < dx
+                ) {
+                    if (
+                        Math.abs((self.top + self.bottom) / 2 - (people.top + people.bottom) / 2) < dy
+                    ) {
+                        gold.setAttribute('state', '2')
+                        if (ch.ch_46.getAttribute('gold_switch')) { ch.ch_71.textContent = String(parseInt(ch.ch_71.textContent) + 10) }
+                    }
+                }
+            }
+        }
+ch.ch_75 = new Map([])
+ch.ch_76 = [ch.ch_74(ch.ch_73), ch.ch_75]
+ch.ch_79 = new Map([])
+ch.ch_80 = [ch.ch_74(ch.ch_78), ch.ch_79]
+ch.ch_83 = new Map([])
+ch.ch_84 = [ch.ch_74(ch.ch_82), ch.ch_83]
+ch.ch_66 = [ch.ch_76, ch.ch_80, ch.ch_84]
+ch.ch_68 = new Map([])
+ch.ch_69 = ch.ch_12(ch.ch_66, Symbol())
+ch.ch_67(ch.ch_51, "left")(ch.ch_69(ch.ch_68))
+ch.ch_20 = new Map([])
+ch.ch_21 = [ch.ch_19(ch.ch_15), ch.ch_20]
+ch.ch_13 = [ch.ch_21]
+ch.ch_17 = new Map([])
+ch.ch_18 = ch.ch_12(ch.ch_13, Symbol())
+ch.ch_16(ch.ch_15, null, null)(ch.ch_18(ch.ch_17))
+ch.ch_27 = new Map([])
+ch.ch_28 = [ch.ch_19(ch.ch_24), ch.ch_27]
+ch.ch_22 = [ch.ch_28]
+ch.ch_25 = new Map([])
+ch.ch_26 = ch.ch_12(ch.ch_22, Symbol())
+ch.ch_16(ch.ch_24, null, null)(ch.ch_26(ch.ch_25))
+ch.ch_34 = new Map([])
+ch.ch_35 = [ch.ch_19(ch.ch_31), ch.ch_34]
+ch.ch_29 = [ch.ch_35]
+ch.ch_32 = new Map([])
+ch.ch_33 = ch.ch_12(ch.ch_29, Symbol())
+ch.ch_16(ch.ch_31, null, null)(ch.ch_33(ch.ch_32))
+ch.ch_41 = new Map([])
+ch.ch_42 = [ch.ch_19(ch.ch_38), ch.ch_41]
+ch.ch_36 = [ch.ch_42]
+ch.ch_39 = new Map([])
+ch.ch_40 = ch.ch_12(ch.ch_36, Symbol())
+ch.ch_16(ch.ch_38, null, null)(ch.ch_40(ch.ch_39))
+ch.ch_4 = (func) => new Promise(resolve => requestAnimationFrame(() => {func(); resolve()}))
+ch.ch_5 = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
+ch.ch_10 = async (items, seconds=0, interval=0, stop=null) => {
+            if (seconds) {
+                let start_time = performance.now()  // 立即获取当前时间，以尽可能让时间准确
+                let milliseconds = seconds * 1000
+                let end_time = start_time + milliseconds
+                for (let item of items) {
+                    item['start_value'] = await item['get_value']()
+                    item['distance'] = item['end_value'] - item['start_value']
+                    item['gradient'] = item['distance'] / milliseconds
+                }
+                let finished = false
+                let scroll = async () => {
+                    let current_time = performance.now()
+                    if (current_time < end_time) {
+                        for (let item of items) {
+                            if (! item['stop'] && (! item['continue'] || await item['continue']())) {
+                                await item['set_value'](item['gradient'] * (current_time - start_time) + item['start_value'])
+                            }
+                            else {item['stop'] = true}
+                        }
+                    }
+                    else {finished = true}
+                }
+                while (! finished) {
+                    if (stop && await stop()) { return }
+                    await ch.ch_4(scroll)
+                    if (interval) { await ch.ch_5(interval) }
+                }
+            }
+            if (stop && await stop()) { return }
+            for (let item of items) {
+                if (! item['stop'] && (! item['continue'] || await item['continue']())) {
+                    await item['set_value'](item['end_value'])  // 无论 seconds 是否为空值都须要执行，以确保最终位置正确
+                }
+            }
+        }
+ch.ch_11 = (a, b) => a + (b - a) * Math.random()
+ch.ch_64 = document.getElementById("ch_63")
+ch.ch_65 = async (ele, wavelength, period=0, interval=0, aim=null, limit=false, is_gold=false, is_thunder=false, thunder_element=null) => {
+            let self_width = null
+            while (! self_width) {
+                self_width = ele.clientWidth
+                await ch.ch_5(0.1)
+            }
+            let self_height = ele.clientHeight
+            let total_width = self_width + window.innerWidth
+            let total_height = self_height + window.innerHeight
+
+            let stop_value = false
+            ele.addEventListener('mousedown', () => { stop_value = true })
+            document.documentElement.addEventListener('mouseup', () => { stop_value = false })
+            let creat_stop = () => {
+                let cache = false
+                return () => {
+                    if ((! cache) && stop_value) {cache = true}
+                    return cache
+                }
+            }
+
+            let get_x_value = () => (parseInt(ele.style.left) + self_width) % total_width
+            let set_x_value = value => ele.style.left = ((value >= 0) ? (value % total_width - self_width) : (value % total_width + total_width - self_width)) + 'px'
+            let get_y_value = () => (parseInt(ele.style.top) + self_height) % total_height
+            let set_y_value = value => ele.style.top = ((value >= 0) ? (value % total_height - self_height) : (value % total_height + total_height - self_height)) + 'px'
+
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {
+                    await ch.ch_5(0.2)
+                    continue
+                }
+                let items = null
+                if (is_gold) {
+                    if (ele.getAttribute('state') === '1') {
+                        await ch.ch_5(0.2)
+                        continue
+                    }
+                    items = [
+                        {
+                            'get_value': get_y_value,
+                            'set_value': set_y_value,
+                            'end_value': parseInt(ele.style.top) + self_height - 100,
+                        },
+                    ]
+                    await ch.ch_10(items, 0.5, 0, stop); if (interval) await ch.ch_5(interval)
+                    ele.style.visibility = 'hidden'
+                    await ch.ch_5(2)
+                    items = [
+                        {
+                            'get_value': get_x_value,
+                            'set_value': set_x_value,
+                            'end_value': self_width + ch.ch_11(10, window.innerWidth - self_width - 10),
+                        },
+                        {
+                            'get_value': get_y_value,
+                            'set_value': set_y_value,
+                            'end_value': self_height + ch.ch_11(10, window.innerHeight - self_height - 10),
+                        },
+                    ]
+                    await ch.ch_10(items, 0, 0, stop); if (interval) await ch.ch_5(interval)
+                    ele.style.visibility = ''
+                    ele.setAttribute('state', '1')
+                }
+                else if (is_thunder) {
+                    items = [
+                        {
+                            'get_value': () => parseInt(ele.style.left),
+                            'set_value': value => ele.style.left = ((value >= -window.innerWidth) ? value : (value + window.innerWidth)) + 'px',
+                            'end_value': parseInt(ele.style.left) - window.innerWidth,
+                        },
+                    ]
+                    await ch.ch_10(items, period, 0, stop); if (interval) await ch.ch_5(interval)
+                }
+                else {
+                    if (limit) {
+                        items = [
+                            {
+                                'get_value': get_x_value,
+                                'set_value': set_x_value,
+                                'end_value': self_width + ch.ch_11(10, window.innerWidth - self_width - 10),
+                            },
+                            {
+                                'get_value': get_y_value,
+                                'set_value': set_y_value,
+                                'end_value': self_height + ch.ch_11(10, window.innerHeight - self_height - 10),
+                            },
+                        ]
+                        await ch.ch_10(items, period, 0, stop); if (interval) await ch.ch_5(interval)
+                    }
+                    else {
+                        if (aim) {
+                            let rect = aim.getBoundingClientRect()
+                            items = [
+                                {
+                                    'get_value': get_x_value,
+                                    'set_value': set_x_value,
+                                    'end_value': self_width + ch.ch_11(rect.left - self_width, rect.right),
+                                },
+                                {
+                                    'get_value': get_y_value,
+                                    'set_value': set_y_value,
+                                    'end_value': self_height + ch.ch_11(rect.top - self_height, rect.bottom),
+                                },
+                            ]
+                        }
+                        else {
+                            items = [
+                                {
+                                    'get_value': get_x_value,
+                                    'set_value': set_x_value,
+                                    'end_value': parseInt(ele.style.left) + self_width + ch.ch_11(wavelength[0], wavelength[1]),
+                                },
+                                {
+                                    'get_value': get_y_value,
+                                    'set_value': set_y_value,
+                                    'end_value': parseInt(ele.style.top) + self_height + ch.ch_11(wavelength[0], wavelength[1]),
+                                },
+                            ]
+                        }
+                        if (thunder_element && document.documentElement.getAttribute('thunder_switch')) {
+                            let fall = false
+                            let stop_2 = () => {
+                                let value_1 = stop()
+                                fall = fall || ( parseInt(ele.style.top) + 22.5 < parseInt(thunder_element.clientHeight) )
+                                return value_1 || fall
+                            }
+                            await ch.ch_10(items, period, 0, stop_2)
+                            if (fall) {
+                                await ch.ch_5(0.25)
+                                items = [
+                                    {
+                                        'get_value': get_y_value,
+                                        'set_value': set_y_value,
+                                        'end_value': self_height + window.innerHeight - 5,
+                                    },
+                                ]
+                                await ch.ch_10(items, 0.9, 0)
+                                await ch.ch_5(10)
+                            }
+                            else {
+                                if (interval) await ch.ch_5(interval)
+                            }
+                        }
+                        else {
+                            await ch.ch_10(items, period, 0, stop); if (interval) await ch.ch_5(interval)
+                        }
+                    }
+                }
+            }
+        }
+ch.ch_65(ch.ch_64, [-700, 700], 40, 0, null, false, false, true, null)
+ch.ch_65(ch.ch_15, [-700, 700], 2, 6, null, true, false, false, null)
+ch.ch_65(ch.ch_51, [-180, 100], 3, 0, ch.ch_15, false, false, false, null)
+ch.ch_65(ch.ch_24, [-50, 180], 1, 0, ch.ch_51, false, false, false, ch.ch_64)
+ch.ch_65(ch.ch_73, [-700, 700], 2, 0, null, false, true, false, null)
+ch.ch_65(ch.ch_78, [-700, 700], 2, 0, null, false, true, false, null)
+ch.ch_65(ch.ch_82, [-700, 700], 2, 0, null, false, true, false, null)
+ch.ch_7 = (ele, name, value) => {
+            try {ele.setAttribute(name, value)} catch (e) {}
+            try {ele[name] = value} catch (e) {}
+        }
+ch.ch_44 = new Map([["v", -1]])
+ch.ch_48 = new Map([["v", -1]])
+ch.ch_45 = (values, i) => {
+            let total = values.length
+            return () => {
+                i.set('v', i.get('v') + 1)
+                return values[i.get('v') % total]
+            }
+        }
+ch.ch_47 = (ele, name, polling) => {
+                    ch.ch_7(ele, name, polling())
+                }
+ch.ch_115 = document.getElementById("ch_114")
+ch.ch_115.addEventListener('click', async () => {ch.ch_47(ch.ch_46, "gold_switch", ch.ch_45(["1", ""], ch.ch_48))})
+ch.ch_123 = document.getElementById("ch_122")
+ch.ch_123.addEventListener('click', async () => {ch.ch_47(ch.ch_46, "thunder_switch", ch.ch_45(["1", ""], ch.ch_44))})
+
+</script>
+</body>
+</html>

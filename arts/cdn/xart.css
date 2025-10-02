@@ -1,0 +1,188 @@
+* {
+    vertical-align: baseline;
+    text-decoration: none;
+    padding: 0;
+    outline: none;
+    margin: 0;
+    font-family: 'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+html {position: relative; background-color: white;}
+
+body {position: relative; margin: 0.5rem 1.25rem;}
+body > * {margin: 0.5rem 0;}
+
+pre {white-space: pre-wrap; font-size: 1rem; line-height: 1.75;}
+
+author {
+    vertical-align: bottom;
+    color: gray;
+    font-size: 0.85rem;
+}
+
+author > a {
+    vertical-align: bottom;
+    font-size: 0.85rem;
+}
+
+h1, h2, h3, h4, h5, h6 {display: inline-block;}
+
+h1, mintitle {
+    width: 100%;
+    text-align: center;
+    font-family: cursive;
+    /* color: rgb(225, 172, 12); */
+    color: rgb(0, 153, 255);
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: rgb(15, 210, 41);
+}
+
+green {color: rgb(15, 210, 41);}
+orange {color: rgb(255, 136, 0);}
+
+.ch_15 {
+    display: inline-grid;
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    grid-template-columns: repeat(auto-fill, 12rem);
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.ch_15 > * {width: 100%; height: 12rem; position: relative;}
+.ch_15 > * > * {width: 100%; height: 100%; object-fit: cover;}  /*object-fit: cover; 填满，超出部分裁剪掉*/
+
+.ch_16 {
+    display: inline-grid;
+    position: relative;
+    width: 100%;
+    grid-auto-flow: row;
+    row-gap: 0.2rem;
+    justify-items: center;
+}
+.ch_16 > *:not(audio) {position:relative; max-width: 70%; max-height: 30rem;}
+
+audio {width: 100%;}
+
+note {
+    font-size: 1rem; line-height: 1.75;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+}
+
+strong {
+    font-size: 1rem; line-height: 1.75;
+}
+
+.go_home {display: inline-block; color: rgba(0, 89, 255, 0.758); padding: 0; margin: 0; border: none; background: none; font-size: 1rem;}
+.go_home:hover {color: rgb(0, 55, 255);}
+.go_home:visited {color: rgba(0, 89, 255, 0.758);}
+
+a {
+    display: inline-block;
+    font-size: 1rem;
+    vertical-align: bottom;
+    color: rgb(0, 136, 255);
+}
+
+img, video {vertical-align: middle;}
+
+people {
+    display: inline-grid;
+    width: 100%;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+people > .portrait {
+    height: 2.5rem;
+    width: 2.5rem;
+    grid-row: 1 / 4;
+}
+
+username {
+    color: rgb(47, 74, 144);
+    line-height: 1;
+}
+
+publish_time {
+    color: gray;
+    font-size: 0.85rem;
+}
+
+cover {
+    display: inline-block;
+    margin: 0 -1.25rem -1rem -1.25rem;
+    width: calc(100% + 2.5rem);
+    transform: translateY(-1rem);
+    background-size: cover;
+    display: inline-grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+}
+
+cover > :nth-child(1) {
+    text-shadow: black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em, black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em, black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em, black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 0.075em;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: rgb(225, 172, 12);
+    -webkit-font-smoothing: antialiased;
+    margin: 5rem 0 2rem 0;
+}
+
+cover > :nth-child(2) {
+    font-size: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5em;
+    border-radius: 0.4rem;
+}
+
+cover > :nth-child(3) {
+    margin: 3rem 0 3rem 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5em;
+    border-radius: 0.4rem;
+}
+
+code, c {
+    background-color: rgb(207, 207, 207);
+}
+
+textarea.code {
+    background-color: black;
+    color: white;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    height: 1rem;
+    resize: none;
+}
+
+quote {
+    border-left: 4px solid #ccc;
+    padding-left: 16px;
+    margin: 0 0 -1.5em 0;
+    color: #555;
+}
+
+.inline {
+    display: inline;
+    word-break: break-all;
+}

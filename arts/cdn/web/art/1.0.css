@@ -1,0 +1,303 @@
+* {
+    vertical-align: middle;
+    text-decoration: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    position: relative;
+    border-width: 0;
+}
+
+html {
+    body {
+        margin: 0.5rem 1.25rem;
+        background-color: white;
+
+        &>* {
+            margin: 0.5rem 0;
+        }
+    }
+
+    text {
+        white-space: pre-wrap;
+        font-size: 1rem;
+        line-height: 1.75;
+
+        &>* {
+            margin-top: 1.75rem;
+        }
+
+        &> :nth-child(1) {
+            margin-top: 0;
+        }
+
+        row_gap {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 0;
+            height: 0;
+
+            &+* {
+                /* 抵消 {margin-top: 1.75rem;} */
+                margin-top: 0;
+            }
+        }
+
+        cover {
+            /* cover是专门为X阅读会配置的样式 */
+            display: inline-block;
+            margin: 0 -1.25rem -1rem -1.25rem;
+            width: calc(100% + 2.5rem);
+            transform: translateY(-1rem);
+            background-size: cover;
+            display: inline-grid;
+            grid-template-rows: auto auto auto;
+            justify-items: center;
+
+            &> :nth-child(1) {
+                text-shadow: black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em, black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em, black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em, black 0px -0.1em 0.2em, black 0.1em 0px 0.2em, black 0px 0.1em 0.2em, black -0.1em 0px 0.2em;
+                text-align: center;
+                line-height: 1.5;
+                letter-spacing: 0.075em;
+                font-weight: 700;
+                font-size: 1.75rem;
+                color: rgb(225, 172, 12);
+                -webkit-font-smoothing: antialiased;
+                margin: 5rem 0 2rem 0;
+            }
+
+            &> :nth-child(2) {
+                font-size: 0.8rem;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                padding: 0.5em;
+                border-radius: 0.4rem;
+            }
+
+            &> :nth-child(3) {
+                margin: 3rem 0 3rem 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                padding: 0.5em;
+                border-radius: 0.4rem;
+            }
+        }
+
+        orange {
+            color: rgb(255, 136, 0);
+            vertical-align: baseline;
+        }
+
+        green {
+            color: rgb(15, 210, 41);
+            vertical-align: baseline;
+        }
+
+        quote {
+            display: block;
+            border-left: 0.25rem solid #ccc;
+            padding-left: 0.75rem;
+            color: #555;
+            margin: 1rem 0;
+        }
+
+        discussion {
+            display: grid;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            background-color: #f0f0f0;
+            grid-auto-flow: row;
+            gap: 0.5rem;
+        }
+
+        people {
+            display: inline-grid;
+            width: 100%;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto auto;
+            align-items: start;
+            column-gap: 0.5rem;
+
+            &>.portrait {
+                height: 2.5rem;
+                width: 2.5rem;
+                grid-row: 1 / 4;
+            }
+
+            &>name {
+                color: rgb(0, 116, 194);
+                line-height: 1;
+                margin-bottom: 0.5rem;
+            }
+
+            &>time {
+                color: gray;
+                font-size: 0.85rem;
+            }
+        }
+
+        .static {
+            display: grid;
+            /* inline-grid类型的外边距不会合并 */
+            width: 100%;
+            gap: 0.25rem;
+            margin: 0.75rem 0;
+            align-items: center;
+
+            html[screen_type='x'] & {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            html[screen_type='y'] & {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            &>* {
+                width: 100%;
+                aspect-ratio: 1;
+                /* aspect-ratio是宽高比 */
+                object-fit: cover;
+            }
+        }
+
+        .row_static {
+            display: grid;
+            grid-auto-flow: row;
+            margin: 0.75rem 0;
+            gap: 0.75rem;
+            width: 100%;
+
+            &>*:not(audio) {
+                background-color: #f0f0f0;
+            }
+
+            &>audio {
+                /* &::-webkit-media-controls-panel,
+                &::-webkit-media-controls-enclosure {
+                    border-radius: 0;
+                } */
+            }
+
+            html[screen_type='x'] & {
+                justify-items: start;
+
+                &>*:not(audio) {
+                    max-width: 100%;
+                    max-height: 30rem;
+                }
+
+                &>audio {
+                    width: 40%;
+                }
+            }
+
+            html[screen_type='y'] & {
+                justify-items: left;
+
+                &>*:not(audio) {
+                    max-width: 100%;
+                    max-height: 30rem;
+                }
+
+                &>audio {
+                    width: 100%;
+                }
+            }
+        }
+
+        a {
+            display: inline-block;
+            font-size: 1rem;
+            color: rgb(0, 136, 255);
+            /* 让链接字符与emoji表情(👈)在垂直方向对齐 */
+            vertical-align: bottom;
+
+            &:visited {
+                color: rgb(0, 136, 255);
+            }
+
+            &:hover {
+                color: rgb(255, 111, 0);
+            }
+        }
+
+        go_home {
+            width: 100;
+            display: grid;
+            justify-content: left;
+            margin: 0;
+
+            &>button {
+                padding-top: 1rem;
+                color: rgb(0, 136, 255);
+                border: none;
+                background: none;
+                font-size: 1rem;
+
+                &:visited {
+                    color: rgb(0, 136, 255);
+                }
+
+                &:hover {
+                    color: rgb(255, 111, 0);
+                }
+            }
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: rgb(0, 153, 255);
+            line-height: 1.5;
+            padding: 2rem 0;
+
+            &+* {
+                margin-top: 0;
+            }
+        }
+
+        mini_title {
+            width: 100%;
+            color: rgb(0, 153, 255);
+        }
+
+        h2 {
+            width: 100%;
+            text-align: center;
+            color: rgb(15, 210, 41);
+            margin: 2rem 0;
+        }
+
+        code {
+            display: grid;
+            width: 100%;
+            margin: 0.75rem 0;
+            justify-items: center;
+
+            &>textarea {
+                white-space: nowrap;
+                background-color: rgb(32, 32, 32);
+                color: rgb(244, 216, 80);
+                display: block;
+                font-size: 1rem;
+                line-height: 1.75;
+                border: solid 0.2rem #cecdcd;
+
+                html[screen_type='x'] & {
+                    width: 70%;
+                }
+
+                html[screen_type='y'] & {
+                    width: 100%;
+                }
+            }
+        }
+
+        c {
+            background-color: rgb(207, 207, 207);
+        }
+    }
+}

@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html class='ch_1052 ch_1053 ch_1054 ch_1055' trackaim='' id=ch_582><head>
+<title>大设计</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><base target='_blank'>
+<style>
+    * {vertical-align:middle; text-decoration:none; position:relative; padding:0; overflow:auto; outline:none; margin:0; font-size:1rem; font-family:'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing:border-box; border-width:0; border-style:solid;}
+    .ch_1053 {width:100%; height:100%; display:block; background-size:cover; background-image:url('static/太空1.gif'); background-color:white;}
+    .ch_1060 {width:100%; overflow:hidden; height:100%; display:block;}
+    .ch_1061 {position:relative; overflow:visible; display:inline-block;}
+    .ch_1064 {z-index:100; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1066 {z-index:200; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1067 {z-index:255; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1068 {z-index:257; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1069 {z-index:250; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1070 {z-index:260; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1071 {z-index:300; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1072 {z-index:400; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1073 {z-index:500; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1074 {z-index:287; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1075 {z-index:265; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1076 {z-index:280; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1077 {z-index:270; position:absolute; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1088 {display:inline-block;}
+    .ch_1089 {position:relative; padding:0; overflow:hidden; margin:0; display:inline-block; border-width:0; border-radius:0;}
+    .ch_1063 {row-gap:1px; position:absolute; justify-items:center; grid-template-rows:repeat(21, 1fr); grid-template-columns:repeat(40, 1fr); display:inline-grid; column-gap:1px; background-color:white; align-items:center;}
+    .ch_1080 {z-index:600; top:0.5rem; right:1rem; position:absolute; padding:0; margin:0; left:1rem; justify-self:left; justify-content:left; grid-auto-flow:column; display:inline-grid; column-gap:2rem; border-radius:0.2rem; border:0.1rem rgb(239, 194, 59) solid; background-color:rgba(0, 0, 0, 0.7);}
+    .ch_1081 {justify-items:center; grid-auto-flow:column; display:inline-grid; column-gap:0.1rem; color:red; align-items:center;}
+    .ch_1083 {z-index:700; padding:0.2rem; margin:0; justify-self:end; font-size:0.8rem; color:white; border-width:0.1rem; border-radius:0; border-color:transparent; background-color:transparent; align-self:center;}
+    .ch_1094 {z-index:700; padding:0.2rem; margin:0; justify-self:end; font-size:0.8rem; color:black; border-width:0.1rem; border-radius:0; border-color:transparent; background-color:rgb(34, 153, 232); align-self:center;}
+    .ch_1082:active {color:rgb(255, 17, 0);}
+    .ch_1065 {vertical-align:middle; pointer-events:none; display:inline-block;}
+    .ch_1087 {white-space:pre-wrap; vertical-align:baseline; padding:0.75em 1.5em 0.75em 1.5em; overflow-wrap:break-word; line-height:1.75; border-radius:0.75em;}
+    .ch_1086 > * {vertical-align:baseline;}
+    * {user-select:none; scrollbar-width:none; -ms-overflow-style:none  /* 对 IE 和 Edge 隐藏滚动条 */;}
+    *::-webkit-scrollbar {display:none;}
+    .ch_1062 > * {width:4px; height:4px; border-radius:25%; background-color:rgb(240, 240, 240);}
+    .ch_1084:hover {border-color:red;}
+    .ch_1095[switch='1'] {background-color:rgb(239, 194, 59);}
+    html[trackaim=''] .ch_1090 {visibility:hidden;}
+    .ch_1078 * {font-size:1rem;}
+    .ch_1085 {white-space:pre-wrap; vertical-align:baseline; top:2.8rem; right:1rem; position:fixed; padding:0.75em 1.5em 0.75em 1.5em; overflow-wrap:break-word; line-height:1.75; left:1rem; justify-items:center; display:none; color:white; bottom:1rem; border-radius:0.75em; background-color:rgba(0, 0, 0, 0.9); align-items:center;}
+    .ch_1079 > *:hover > pre {display:grid;}
+    .ch_1091 {z-index:700; padding:0.2rem; margin:0 0 0 0.3rem; justify-self:end; font-size:0.8rem; color:black; border-width:0.1rem; border-radius:1rem; border-color:transparent; background-color:rgb(16, 189, 105); align-self:center;}
+</style></head>
+<body class='ch_1060' id=ch_1056>
+<script>
+"use strict";
+window.print = console.log
+                    if (1 + 1 === 2) {
+                        window.ch = new Proxy(
+                            new Map(),
+                            {get: (target, name) => target.get(name), set: (target, name, value) => target.set(name, value), has: (target, key) => target.has(key)}
+                        )
+                    }
+                    else {   window.ch = {}   }
+                    window.screen_type = window.innerWidth > window.innerHeight ? 'x' : 'y'
+                    document.documentElement.setAttribute('screen_type', window.screen_type)
+                    document.documentElement.setAttribute('is_x_screen', String(window.innerWidth > window.innerHeight))
+</script><div class='ch_1061' id=ch_567 style="left:0px; top:0px;"><div class='ch_1062 ch_1063' id=ch_569 style="left:-4096px; top:-2160px; width:8192px; height:4320px;"></div><div class='ch_1064' id=ch_13 name='树' style="left:2311px; top:-474px;"><img class='ch_1065' src='static/树1.gif' style="height:631.8000000000001px; margin:-37.800000000000004px -67.5px -54.0px -67.5px;"></div><div class='ch_1064' id=ch_25 name='树' style="left:-1356px; top:141px;"><img class='ch_1065' src='static/树1.gif' style="height:631.8000000000001px; margin:-37.800000000000004px -67.5px -54.0px -67.5px;"></div><div class='ch_1064' id=ch_33 name='树' style="left:-1552px; top:31px;"><img class='ch_1065' src='static/树2.gif' style="height:604.8000000000001px; margin:-37.800000000000004px -108.0px -27.0px -54.0px;"></div><div class='ch_1064' id=ch_41 name='树' style="left:1149px; top:326px;"><img class='ch_1065' src='static/树2.gif' style="height:604.8000000000001px; margin:-37.800000000000004px -108.0px -27.0px -54.0px;"></div><div class='ch_1064' id=ch_49 name='树' style="left:-1394px; top:-155px;"><img class='ch_1065' src='static/树3.gif' style="height:707.3999999999999px; margin:-81.0px -54.0px -86.4px -54.0px;"></div><div class='ch_1064' id=ch_57 name='树' style="left:2474px; top:314px;"><img class='ch_1065' src='static/树3.gif' style="height:707.3999999999999px; margin:-81.0px -54.0px -86.4px -54.0px;"></div><div class='ch_1064' id=ch_65 name='树' style="left:540px; top:213px;"><img class='ch_1065' src='static/树4.gif' style="height:626.4000000000001px; margin:-64.8px -21.6px -21.6px -64.8px;"></div><div class='ch_1064' id=ch_73 name='树' style="left:653px; top:-944px;"><img class='ch_1065' src='static/树4.gif' style="height:626.4000000000001px; margin:-64.8px -21.6px -21.6px -64.8px;"></div><div class='ch_1064' id=ch_81 name='树' style="left:-2226px; top:491px;"><img class='ch_1065' src='static/树5.gif' style="height:780.3px; margin:-126.89999999999999px -186.29999999999998px -113.39999999999999px -135.0px;"></div><div class='ch_1064' id=ch_89 name='树' style="left:-2197px; top:-462px;"><img class='ch_1065' src='static/树5.gif' style="height:780.3px; margin:-126.89999999999999px -186.29999999999998px -113.39999999999999px -135.0px;"></div><div class='ch_1066' id=ch_97 name='房子' style="left:-200px; top:-270px;"><img class='ch_1065' src='static/房子1.gif' style="height:492.48px; margin:-69.48px -39.6px -62.99999999999999px -48.24px;"></div><div class='ch_1066' id=ch_105 name='房子' style="left:1670px; top:1234px;"><img class='ch_1065' src='static/房子1.gif' style="height:492.48px; margin:-69.48px -39.6px -62.99999999999999px -48.24px;"></div><div class='ch_1066' id=ch_113 name='房子' style="left:1303px; top:-348px;"><img class='ch_1065' src='static/房子1.gif' style="height:492.48px; margin:-69.48px -39.6px -62.99999999999999px -48.24px;"></div><div class='ch_1066' id=ch_121 name='房子' style="left:-2436px; top:670px;"><img class='ch_1065' src='static/房子1.gif' style="height:492.48px; margin:-69.48px -39.6px -62.99999999999999px -48.24px;"></div><div class='ch_1066' id=ch_129 name='房子' style="left:-461px; top:1122px;"><img class='ch_1065' src='static/房子1.gif' style="height:492.48px; margin:-69.48px -39.6px -62.99999999999999px -48.24px;"></div><div class='ch_1067' id=ch_137 name='摊主' style="left:1982px; top:-578px;"><img class='ch_1065' src='static/摊主1.gif' style="height:242.1px; margin:-30.6px -21.599999999999998px -31.499999999999996px -21.599999999999998px;"></div><div class='ch_1067' id=ch_145 name='摊主' style="left:3582px; top:-1027px;"><img class='ch_1065' src='static/摊主1.gif' style="height:242.1px; margin:-30.6px -21.599999999999998px -31.499999999999996px -21.599999999999998px;"></div><div class='ch_1067' id=ch_153 name='摊主' style="left:-1080px; top:-1777px;"><img class='ch_1065' src='static/摊主1.gif' style="height:242.1px; margin:-30.6px -21.599999999999998px -31.499999999999996px -21.599999999999998px;"></div><div class='ch_1067' id=ch_161 name='摊主' style="left:1810px; top:-1356px;"><img class='ch_1065' src='static/摊主1.gif' style="height:242.1px; margin:-30.6px -21.599999999999998px -31.499999999999996px -21.599999999999998px;"></div><div class='ch_1068' id=ch_169 name='广场舞' style="left:2382px; top:-1042px;"><img class='ch_1065' src='static/广场舞1.gif' style="height:270.0px; margin:-37.8px -91.8px -52.199999999999996px -72.0px;"></div><div class='ch_1069' id=ch_177 name='花' style="left:2716px; top:-1962px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_185 name='花' style="left:-2984px; top:-628px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_193 name='花' style="left:1646px; top:-1785px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_201 name='花' style="left:-2259px; top:805px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_209 name='花' style="left:-2313px; top:1846px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_217 name='花' style="left:1475px; top:498px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_225 name='花' style="left:947px; top:1711px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_233 name='花' style="left:1191px; top:759px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_241 name='花' style="left:3006px; top:1296px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_249 name='花' style="left:2012px; top:-1273px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_257 name='花' style="left:-489px; top:1426px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_265 name='花' style="left:754px; top:390px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_273 name='花' style="left:-2178px; top:1142px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_281 name='花' style="left:-276px; top:799px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_289 name='花' style="left:-986px; top:909px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1069' id=ch_297 name='花' style="left:-3000px; top:-10px;"><img class='ch_1065' src='static/花5.png' style="height:90px; margin:-0px -0px -0px -0px;"></div><div class='ch_1070' id=ch_305 name='农民' style="left:-1171px; top:973px;"><img class='ch_1065' src='static/农民1.gif' style="height:180px; margin:-0px -18.0px -0px -0px;"></div><div class='ch_1070' id=ch_313 name='农民' style="left:-1039px; top:275px;"><img class='ch_1065' src='static/农民1.gif' style="height:180px; margin:-0px -18.0px -0px -0px;"></div><div class='ch_1070' id=ch_321 name='农民' style="left:2220px; top:271px;"><img class='ch_1065' src='static/农民1.gif' style="height:180px; margin:-0px -18.0px -0px -0px;"></div><div class='ch_1070' id=ch_329 name='农民' style="left:2678px; top:-1677px;"><img class='ch_1065' src='static/农民2.gif' style="height:187.20000000000002px; margin:-3.6px -9.0px -3.6px -9.0px;"></div><div class='ch_1070' id=ch_337 name='农民' style="left:2582px; top:252px;"><img class='ch_1065' src='static/农民2.gif' style="height:187.20000000000002px; margin:-3.6px -9.0px -3.6px -9.0px;"></div><div class='ch_1070' id=ch_345 name='农民' style="left:2163px; top:376px;"><img class='ch_1065' src='static/农民2.gif' style="height:187.20000000000002px; margin:-3.6px -9.0px -3.6px -9.0px;"></div><div class='ch_1070' id=ch_353 name='农民' style="left:-3227px; top:-258px;"><img class='ch_1065' src='static/农民3.gif' style="height:194.4px; margin:-5.3999999999999995px -9.0px -9.0px -9.0px;"></div><div class='ch_1070' id=ch_361 name='农民' style="left:-2595px; top:-594px;"><img class='ch_1065' src='static/农民3.gif' style="height:194.4px; margin:-5.3999999999999995px -9.0px -9.0px -9.0px;"></div><div class='ch_1070' id=ch_369 name='农民' style="left:-1184px; top:-981px;"><img class='ch_1065' src='static/农民3.gif' style="height:194.4px; margin:-5.3999999999999995px -9.0px -9.0px -9.0px;"></div><div class='ch_1070' id=ch_377 name='农民' style="left:-3322px; top:-1375px;"><img class='ch_1065' src='static/农民5.gif' style="height:194.4px; margin:-12.600000000000001px -6.300000000000001px -1.8px -9.0px;"></div><div class='ch_1070' id=ch_385 name='农民' style="left:-713px; top:-649px;"><img class='ch_1065' src='static/农民5.gif' style="height:194.4px; margin:-12.600000000000001px -6.300000000000001px -1.8px -9.0px;"></div><div class='ch_1070' id=ch_393 name='农民' style="left:-2709px; top:-418px;"><img class='ch_1065' src='static/农民5.gif' style="height:194.4px; margin:-12.600000000000001px -6.300000000000001px -1.8px -9.0px;"></div><div class='ch_1070' id=ch_401 name='农民' style="left:-3054px; top:-1659px;"><img class='ch_1065' src='static/农民6.gif' style="height:331.2px; margin:-61.2px -27.0px -90.0px -36.0px;"></div><div class='ch_1070' id=ch_409 name='农民' style="left:2603px; top:-861px;"><img class='ch_1065' src='static/农民6.gif' style="height:331.2px; margin:-61.2px -27.0px -90.0px -36.0px;"></div><div class='ch_1070' id=ch_417 name='农民' style="left:-3723px; top:-1615px;"><img class='ch_1065' src='static/农民6.gif' style="height:331.2px; margin:-61.2px -27.0px -90.0px -36.0px;"></div><div class='ch_1071' id=ch_425 state='1' name='金子' style="left:-2735px; top:413px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_433 state='1' name='金子' style="left:2584px; top:-424px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_441 state='1' name='金子' style="left:853px; top:-1942px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_449 state='1' name='金子' style="left:-3064px; top:-1002px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_457 state='1' name='金子' style="left:-3953px; top:-1608px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_465 state='1' name='金子' style="left:3102px; top:985px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_473 state='1' name='金子' style="left:230px; top:105px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_481 state='1' name='金子' style="left:3338px; top:-624px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_489 state='1' name='金子' style="left:1487px; top:1919px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_497 state='1' name='金子' style="left:2888px; top:-1200px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_505 state='1' name='金子' style="left:1946px; top:-455px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_513 state='1' name='金子' style="left:660px; top:103px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_521 state='1' name='金子' style="left:2747px; top:791px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_529 state='1' name='金子' style="left:150px; top:1499px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1071' id=ch_537 state='1' name='金子' style="left:1642px; top:-1157px;"><img class='ch_1065' src='static/金子.gif' style="height:58.3875px; margin:-14.850000000000001px -1.7550000000000001px -16.5375px -1.2149999999999999px;"></div><div class='ch_1072' id=ch_545 name='淘金者' style="left:200px; top:-90px; z-index:9001;"><img class='ch_1065' src='static/女孩.gif' style="height:197.54999999999998px; margin:-12.15px -55.8px -5.3999999999999995px -46.800000000000004px;"></div><div class='ch_1073' id=ch_553 name='小蓝鸟' style="left:-25px; top:70px; z-index:9002;"><img class='ch_1065' src='static/燕子3.gif' style="height:46.30499999999999px; margin:-1.125px -6.75px -0.18px -0.9px;"></div><div class='ch_1072' id=ch_639 name='人物' style="left:350px; top:-90px;"><img class='ch_1065' src='static/人1.gif' style="height:200.7px; margin:-16.2px -59.400000000000006px -4.5px -46.800000000000004px;"></div><div class='ch_1072' id=ch_648 name='人物' style="left:350px; top:-90px;"><img class='ch_1065' src='static/人1.gif' style="height:200.7px; margin:-16.2px -59.400000000000006px -4.5px -46.800000000000004px;"></div><div class='ch_1072' id=ch_656 name='人物' style="left:350px; top:-90px;"><img class='ch_1065' src='static/人1.gif' style="height:200.7px; margin:-16.2px -59.400000000000006px -4.5px -46.800000000000004px;"></div><div class='ch_1072' id=ch_664 name='人物' style="left:350px; top:-90px;"><img class='ch_1065' src='static/人1.gif' style="height:200.7px; margin:-16.2px -59.400000000000006px -4.5px -46.800000000000004px;"></div><div class='ch_1072' id=ch_672 name='人物' style="left:350px; top:-90px;"><img class='ch_1065' src='static/人1.gif' style="height:200.7px; margin:-16.2px -59.400000000000006px -4.5px -46.800000000000004px;"></div><div class='ch_1074' id=ch_680 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_689 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_697 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_705 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_713 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_721 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_729 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1074' id=ch_737 name='狗' style="left:-170px; top:0px;"><img class='ch_1065' src='static/狗1.gif' style="height:155.25px; margin:-22.5px -22.5px -42.75px -13.5px;"></div><div class='ch_1075' id=ch_745 name='农民' style="left:-170px; top:110px;"><img class='ch_1065' src='static/行走的农民1.gif' style="height:190.8px; margin:-7.2px -37.8px -3.6px -39.6px;"></div><div class='ch_1075' id=ch_753 name='农民' style="left:0px; top:110px;"><img class='ch_1065' src='static/行走的农民2.gif' style="height:216.00000000000003px; margin:-12.600000000000001px -27.9px -23.400000000000002px -4.5px;"></div><div class='ch_1075' id=ch_762 name='农民' style="left:-170px; top:110px;"><img class='ch_1065' src='static/行走的农民1.gif' style="height:190.8px; margin:-7.2px -37.8px -3.6px -39.6px;"></div><div class='ch_1075' id=ch_770 name='农民' style="left:0px; top:110px;"><img class='ch_1065' src='static/行走的农民2.gif' style="height:216.00000000000003px; margin:-12.600000000000001px -27.9px -23.400000000000002px -4.5px;"></div><div class='ch_1075' id=ch_778 name='农民' style="left:-170px; top:110px;"><img class='ch_1065' src='static/行走的农民1.gif' style="height:190.8px; margin:-7.2px -37.8px -3.6px -39.6px;"></div><div class='ch_1075' id=ch_786 name='农民' style="left:0px; top:110px;"><img class='ch_1065' src='static/行走的农民2.gif' style="height:216.00000000000003px; margin:-12.600000000000001px -27.9px -23.400000000000002px -4.5px;"></div><div class='ch_1075' id=ch_794 name='农民' style="left:-170px; top:110px;"><img class='ch_1065' src='static/行走的农民1.gif' style="height:190.8px; margin:-7.2px -37.8px -3.6px -39.6px;"></div><div class='ch_1075' id=ch_802 name='农民' style="left:0px; top:110px;"><img class='ch_1065' src='static/行走的农民2.gif' style="height:216.00000000000003px; margin:-12.600000000000001px -27.9px -23.400000000000002px -4.5px;"></div><div class='ch_1076' id=ch_810 name='燕子' style="left:100px; top:0px;"><img class='ch_1065' src='static/燕子1.gif' style="height:98.10000000000001px; margin:-4.5px -10.08px -3.6px -11.025px;"></div><div class='ch_1076' id=ch_818 name='燕子' style="left:100px; top:0px;"><img class='ch_1065' src='static/燕子2.gif' style="height:123.75px; margin:-24.750000000000004px -21.599999999999998px -9.0px -20.7px;"></div><div class='ch_1076' id=ch_826 name='燕子' style="left:100px; top:0px;"><img class='ch_1065' src='static/燕子3.gif' style="height:92.60999999999999px; margin:-2.25px -13.5px -0.36px -1.8px;"></div><div class='ch_1076' id=ch_835 name='燕子' style="left:100px; top:0px;"><img class='ch_1065' src='static/燕子1.gif' style="height:98.10000000000001px; margin:-4.5px -10.08px -3.6px -11.025px;"></div><div class='ch_1076' id=ch_843 name='燕子' style="left:100px; top:0px;"><img class='ch_1065' src='static/燕子2.gif' style="height:123.75px; margin:-24.750000000000004px -21.599999999999998px -9.0px -20.7px;"></div><div class='ch_1076' id=ch_851 name='燕子' style="left:100px; top:0px;"><img class='ch_1065' src='static/燕子3.gif' style="height:92.60999999999999px; margin:-2.25px -13.5px -0.36px -1.8px;"></div><div class='ch_1077' id=ch_859 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_868 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_876 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_884 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_892 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_900 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_908 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_916 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_924 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_932 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_940 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_948 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_956 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_964 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_972 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_980 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_988 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_996 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_1004 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_1012 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_1020 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div><div class='ch_1077' id=ch_1028 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶3.gif' style="height:57.824999999999996px; margin:-7.2px -7.874999999999999px -5.625px -4.05px;"></div><div class='ch_1077' id=ch_1036 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶2.gif' style="height:60.525px; margin:-7.425000000000001px -5.3999999999999995px -8.1px -7.425000000000001px;"></div><div class='ch_1077' id=ch_1044 name='蝴蝶' style="left:0px; top:0px;"><img class='ch_1065' src='static/蝴蝶1.gif' style="height:86.85px; margin:-17.1px -4.95px -24.750000000000004px -4.95px;"></div></div><div class='ch_1078 ch_1079 ch_1080'><div class='ch_1081'><button class='ch_1082 ch_1083 ch_1084'>游戏说明</button><pre class='ch_1085 ch_1086'><pre class='ch_1087 ch_1086'>这是一个简约的世界模拟图景，它复现了自然界中生物的简化的活动规律。
+
+「缩放画面」：滚动鼠标中键（同CAD）
+「拖动画面」：点住鼠标中键，然后移动鼠标（同CAD）
+「拖动对象（如：人物、动物、植物）」：把鼠标移动到目标对象，点住鼠标左键，然后移动鼠标
+「跟踪对象」：把鼠标移动到目标对象，单击鼠标右键（注意：1、程序默认跟踪女孩，可手动取消跟踪。2、对于移动速度较快的对象，需要足够快的手速才能成功点击。）
+「取消跟踪对象」：点击状态栏的「取消跟踪」按钮
+「播放/暂停背景音乐」：点击状态栏的「BGM」按钮
+
+淘金者：一个锲而不舍的淘金女孩，她会前往每个金矿的位置收集这些金矿；
+小蓝鸟：作为淘金者的好朋友，它如影随形地陪伴在「淘金者」的身侧；
+蝴蝶：在各「花」对象之间停留和往返；
+燕子：在各「树」对象之间停留和往返；
+狗：作为人类的忠实朋友，狗将会往返于「人」对象和「房屋」对象之间以帮助人类传递讯息；
+
+你，作为这个世界的幕后操控者，<strong>可用鼠标拖动任何对象穿梭于虚拟空间的每一个角落，</strong>在它们毫无防备与察觉之下，悄无声息地操控这个世界的流转。</pre></pre></div><div class='ch_1081'><div class='ch_1088' style="overflow:hidden;"><div class='ch_1089' id=ch_561 style="left:0px; top:-2.5px;"><img class='ch_1065' src='static/金币.gif' style="height:33.6px; margin:-7.800000000000001px -6.8999999999999995px -5.8px -7.5px;"></div></div><div class='ch_1088'>$</div><div class='ch_1088' id=ch_599>0</div></div><div class='ch_1081'><button class='ch_1082 ch_1083 ch_1084'>跟踪:</button><div class='ch_1088' id='trackaim_name'></div><button class='ch_1082 ch_1084 ch_1090 ch_1091' id=ch_1092>取消跟踪</button></div><div class='ch_1081'><button class='ch_1082 ch_1094 ch_1095 ch_1084' switch='' id=ch_563>BGM</button><audio src='static/BGM.mp3' loop='true' id=ch_565></audio></div></div>
+<script>
+"use strict";
+
+document.documentElement.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))
+document.addEventListener('contextmenu', () => event.preventDefault())
+ch.ch_4 = (func) => new Promise(resolve => requestAnimationFrame(() => {func(); resolve()}))
+ch.ch_5 = (seconds) => new Promise(resolve => setTimeout(resolve, seconds * 1000))
+ch.ch_573 = async (items, seconds=0, interval=0, stop=null) => {
+            if (seconds) {
+                let start_time = performance.now()  // 立即获取当前时间，以尽可能让时间准确
+                let milliseconds = seconds * 1000
+                let end_time = start_time + milliseconds
+                for (let item of items) {
+                    item['start_value'] = await item['get_value']()
+                    item['distance'] = item['end_value'] - item['start_value']
+                    item['gradient'] = item['distance'] / milliseconds
+                }
+                let finished = false
+                let scroll = async () => {
+                    let current_time = performance.now()
+                    if (current_time < end_time) {
+                        for (let item of items) {
+                            if (! item['stop'] && (! item['continue'] || await item['continue']())) {
+                                await item['set_value'](item['gradient'] * (current_time - start_time) + item['start_value'])
+                            }
+                            else {item['stop'] = true}
+                        }
+                    }
+                    else {finished = true}
+                }
+                while (! finished) {
+                    if (stop && await stop()) { return }
+                    await ch.ch_4(scroll)
+                    if (interval) { await ch.ch_5(interval) }
+                }
+            }
+            if (stop && await stop()) { return }
+            for (let item of items) {
+                if (! item['stop'] && (! item['continue'] || await item['continue']())) {
+                    await item['set_value'](item['end_value'])  // 无论 seconds 是否为空值都须要执行，以确保最终位置正确
+                }
+            }
+        }
+ch.ch_572 = (a, b) => a + (b - a) * Math.random()
+ch.ch_570 = document.getElementById("ch_569")
+ch.ch_571 = async ele => {
+            let layer = ch.ch_570
+            let [self_width, self_height, layer_width, layer_height] = [null, null, null, null]
+            while (true) {
+                self_width = ele.clientWidth
+                self_height = ele.clientHeight
+                layer_width = layer.clientWidth
+                layer_height = layer.clientHeight
+                if (self_width && self_height && layer_width && layer_height) { break }
+                await ch.ch_5(0.1)
+            }
+            let total_width = self_width + layer_width
+            let total_height = self_height + layer_height
+
+            let stop_value = false
+            ele.addEventListener('mousedown', () => { if (event.button === 0) {stop_value = true} })
+            document.documentElement.addEventListener('mouseup', () => { stop_value = false })
+            let creat_stop = () => {
+                let cache = false
+                return () => {
+                    if ((! cache) && stop_value) {cache = true}
+                    return cache
+                }
+            }
+            
+            let get_x0 = () => parseInt(layer.style.left) - self_width
+            let get_y0 = () => parseInt(layer.style.top) - self_height
+            let get_x_end = () => parseInt(layer.style.left) + layer_width
+            let get_y_end = () => parseInt(layer.style.top) + layer_height
+
+            let get_x_value = () => parseInt(ele.style.left) - get_x0()
+            let set_x_value = value => ele.style.left = ((value >= 0) ? (get_x0() + value % total_width) : (get_x_end() + value % total_width)) + 'px'
+            let get_y_value = () => parseInt(ele.style.top) - get_y0()
+            let set_y_value = value => ele.style.top = ((value >= 0) ? (get_y0() + value % total_height) : (get_y_end() + value % total_height)) + 'px'
+            return [
+                self_width, self_height, layer_width, layer_height,
+                creat_stop,
+                get_x0, get_y0, get_x_end, get_y_end,
+                get_x_value, set_x_value, get_y_value, set_y_value
+            ]
+        }
+ch.ch_640 = document.getElementById("ch_639")
+ch.ch_649 = document.getElementById("ch_648")
+ch.ch_657 = document.getElementById("ch_656")
+ch.ch_665 = document.getElementById("ch_664")
+ch.ch_673 = document.getElementById("ch_672")
+ch.ch_647 = async (ele, wavelength, period=0, interval=0, img_forward='') => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                let items = [
+                    {
+                        'get_value': get_x_value,
+                        'set_value': set_x_value,
+                        'end_value': get_x_value() + ch.ch_572(wavelength[0], wavelength[1]),
+                    },
+                    {
+                        'get_value': get_y_value,
+                        'set_value': set_y_value,
+                        'end_value': get_y_value() + ch.ch_572(wavelength[0], wavelength[1]),
+                    },
+                ]
+                if (img_forward === 'left') {
+                    if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                }
+                else if (img_forward === 'right') {
+                    if (items[0]['end_value'] < get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                }
+                await ch.ch_573(items, period, 0, stop); if (interval) await ch.ch_5(interval)
+            }
+        }
+ch.ch_647(ch.ch_640, [-3000, 3000], 15, 0, "left")
+ch.ch_647(ch.ch_649, [-3000, 3000], 15, 0, "left")
+ch.ch_647(ch.ch_657, [-3000, 3000], 15, 0, "left")
+ch.ch_647(ch.ch_665, [-3000, 3000], 15, 0, "left")
+ch.ch_647(ch.ch_673, [-3000, 3000], 15, 0, "left")
+ch.ch_306 = document.getElementById("ch_305")
+ch.ch_314 = document.getElementById("ch_313")
+ch.ch_322 = document.getElementById("ch_321")
+ch.ch_330 = document.getElementById("ch_329")
+ch.ch_338 = document.getElementById("ch_337")
+ch.ch_346 = document.getElementById("ch_345")
+ch.ch_354 = document.getElementById("ch_353")
+ch.ch_362 = document.getElementById("ch_361")
+ch.ch_370 = document.getElementById("ch_369")
+ch.ch_378 = document.getElementById("ch_377")
+ch.ch_386 = document.getElementById("ch_385")
+ch.ch_394 = document.getElementById("ch_393")
+ch.ch_402 = document.getElementById("ch_401")
+ch.ch_410 = document.getElementById("ch_409")
+ch.ch_418 = document.getElementById("ch_417")
+ch.ch_98 = document.getElementById("ch_97")
+ch.ch_106 = document.getElementById("ch_105")
+ch.ch_114 = document.getElementById("ch_113")
+ch.ch_122 = document.getElementById("ch_121")
+ch.ch_130 = document.getElementById("ch_129")
+ch.ch_637 = [ch.ch_306, ch.ch_314, ch.ch_322, ch.ch_330, ch.ch_338, ch.ch_346, ch.ch_354, ch.ch_362, ch.ch_370, ch.ch_378, ch.ch_386, ch.ch_394, ch.ch_402, ch.ch_410, ch.ch_418, ch.ch_98, ch.ch_106, ch.ch_114, ch.ch_122, ch.ch_130]
+ch.ch_681 = document.getElementById("ch_680")
+ch.ch_690 = document.getElementById("ch_689")
+ch.ch_698 = document.getElementById("ch_697")
+ch.ch_706 = document.getElementById("ch_705")
+ch.ch_714 = document.getElementById("ch_713")
+ch.ch_722 = document.getElementById("ch_721")
+ch.ch_730 = document.getElementById("ch_729")
+ch.ch_738 = document.getElementById("ch_737")
+ch.ch_688 = async ele => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            let get_items = aim => [
+                {
+                    'get_value': get_x_value,
+                    'set_value': set_x_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.left) - self_width,
+                        parseInt(aim.style.left) + aim.clientWidth
+                    ) - get_x0(),
+                },
+                {
+                    'get_value': get_y_value,
+                    'set_value': set_y_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.top) - self_height,
+                        parseInt(aim.style.top) + aim.clientHeight
+                    ) - get_y0(),
+                },
+            ]
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                let aim = ch.ch_637[Math.floor(Math.random() * ch.ch_637.length)]
+                let distance = Math.sqrt(
+                    Math.pow(
+                        parseInt(aim.style.left) - parseInt(ele.style.left),
+                        2
+                    ) +
+                    Math.pow(
+                        parseInt(aim.style.top) - parseInt(ele.style.top),
+                        2
+                    )
+                )
+                let items = get_items(aim)
+                if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                await ch.ch_573(items, distance * 0.01, 0, stop)
+                await ch.ch_5(ch.ch_572(0, 3))
+                if (stop()) {continue}
+                await ch.ch_5(ch.ch_572(0, 3))
+                for (let i of (new Array(3).fill(null))) {
+                    if (stop()) {continue}
+                    let items = get_items(aim)
+                    if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                    await ch.ch_573(items, 1, 0, stop)
+                    await ch.ch_5(ch.ch_572(0, 3))
+                    if (stop()) {continue}
+                    await ch.ch_5(ch.ch_572(0, 3))
+                }
+            }
+        }
+ch.ch_688(ch.ch_681)
+ch.ch_688(ch.ch_690)
+ch.ch_688(ch.ch_698)
+ch.ch_688(ch.ch_706)
+ch.ch_688(ch.ch_714)
+ch.ch_688(ch.ch_722)
+ch.ch_688(ch.ch_730)
+ch.ch_688(ch.ch_738)
+ch.ch_746 = document.getElementById("ch_745")
+ch.ch_754 = document.getElementById("ch_753")
+ch.ch_763 = document.getElementById("ch_762")
+ch.ch_771 = document.getElementById("ch_770")
+ch.ch_779 = document.getElementById("ch_778")
+ch.ch_787 = document.getElementById("ch_786")
+ch.ch_795 = document.getElementById("ch_794")
+ch.ch_803 = document.getElementById("ch_802")
+ch.ch_761 = async ele => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            let get_items = aim => [
+                {
+                    'get_value': get_x_value,
+                    'set_value': set_x_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.left) - self_width,
+                        parseInt(aim.style.left) + aim.clientWidth
+                    ) - get_x0(),
+                },
+                {
+                    'get_value': get_y_value,
+                    'set_value': set_y_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.top) - self_height,
+                        parseInt(aim.style.top) + aim.clientHeight
+                    ) - get_y0(),
+                },
+            ]
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                let aim = ch.ch_637[Math.floor(Math.random() * ch.ch_637.length)]
+                let distance = Math.sqrt(
+                    Math.pow(
+                        parseInt(aim.style.left) - parseInt(ele.style.left),
+                        2
+                    ) +
+                    Math.pow(
+                        parseInt(aim.style.top) - parseInt(ele.style.top),
+                        2
+                    )
+                )
+                let items = get_items(aim)
+                if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                await ch.ch_573(items, distance * 0.007, 0, stop)
+                await ch.ch_5(ch.ch_572(0, 3))
+                if (stop()) {continue}
+                await ch.ch_5(ch.ch_572(0, 3))
+                for (let i of (new Array(2).fill(null))) {
+                    if (stop()) {continue}
+                    let items = get_items(aim)
+                    if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                    await ch.ch_573(items, 1, 0, stop)
+                    await ch.ch_5(ch.ch_572(0, 3))
+                    if (stop()) {continue}
+                    await ch.ch_5(ch.ch_572(0, 3))
+                }
+            }
+        }
+ch.ch_761(ch.ch_746)
+ch.ch_761(ch.ch_754)
+ch.ch_761(ch.ch_763)
+ch.ch_761(ch.ch_771)
+ch.ch_761(ch.ch_779)
+ch.ch_761(ch.ch_787)
+ch.ch_761(ch.ch_795)
+ch.ch_761(ch.ch_803)
+ch.ch_14 = document.getElementById("ch_13")
+ch.ch_26 = document.getElementById("ch_25")
+ch.ch_34 = document.getElementById("ch_33")
+ch.ch_42 = document.getElementById("ch_41")
+ch.ch_50 = document.getElementById("ch_49")
+ch.ch_58 = document.getElementById("ch_57")
+ch.ch_66 = document.getElementById("ch_65")
+ch.ch_74 = document.getElementById("ch_73")
+ch.ch_82 = document.getElementById("ch_81")
+ch.ch_90 = document.getElementById("ch_89")
+ch.ch_638 = [ch.ch_14, ch.ch_26, ch.ch_34, ch.ch_42, ch.ch_50, ch.ch_58, ch.ch_66, ch.ch_74, ch.ch_82, ch.ch_90]
+ch.ch_811 = document.getElementById("ch_810")
+ch.ch_819 = document.getElementById("ch_818")
+ch.ch_827 = document.getElementById("ch_826")
+ch.ch_836 = document.getElementById("ch_835")
+ch.ch_844 = document.getElementById("ch_843")
+ch.ch_852 = document.getElementById("ch_851")
+ch.ch_834 = async (ele, img_forward='') => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            let get_items = aim => [
+                {
+                    'get_value': get_x_value,
+                    'set_value': set_x_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.left) - self_width,
+                        parseInt(aim.style.left) + aim.clientWidth
+                    ) - get_x0(),
+                },
+                {
+                    'get_value': get_y_value,
+                    'set_value': set_y_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.top) - self_height,
+                        parseInt(aim.style.top) + aim.clientHeight / 2  // 燕子停留在树的上半部分
+                    ) - get_y0(),
+                },
+            ]
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                let aim = ch.ch_638[Math.floor(Math.random() * ch.ch_638.length)]
+                let distance = Math.sqrt(
+                    Math.pow(
+                        parseInt(aim.style.left) - parseInt(ele.style.left),
+                        2
+                    ) +
+                    Math.pow(
+                        parseInt(aim.style.top) - parseInt(ele.style.top),
+                        2
+                    )
+                )
+                let items = get_items(aim)
+                if (img_forward === 'left') {
+                    if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                }
+                else if (img_forward === 'right') {
+                    if (items[0]['end_value'] < get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                }
+                await ch.ch_573(items, distance * 0.01, 0, stop)
+                await ch.ch_5(ch.ch_572(1, 4))
+                if (stop()) {continue}
+                await ch.ch_5(ch.ch_572(1, 4))
+                for (let i of (new Array(3).fill(null))) {
+                    if (stop()) {continue}
+                    let items = get_items(aim)
+                    if (img_forward === 'left') {
+                        if (items[0]['end_value'] > get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                    }
+                    else if (img_forward === 'right') {
+                        if (items[0]['end_value'] < get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                    }
+                    await ch.ch_573(items, 1, 0, stop)
+                    await ch.ch_5(ch.ch_572(1, 4))
+                    if (stop()) {continue}
+                    await ch.ch_5(ch.ch_572(1, 4))
+                }
+            }
+        }
+ch.ch_834(ch.ch_811, "left")
+ch.ch_834(ch.ch_819, "left")
+ch.ch_834(ch.ch_827, "right")
+ch.ch_834(ch.ch_836, "left")
+ch.ch_834(ch.ch_844, "left")
+ch.ch_834(ch.ch_852, "right")
+ch.ch_178 = document.getElementById("ch_177")
+ch.ch_186 = document.getElementById("ch_185")
+ch.ch_194 = document.getElementById("ch_193")
+ch.ch_202 = document.getElementById("ch_201")
+ch.ch_210 = document.getElementById("ch_209")
+ch.ch_218 = document.getElementById("ch_217")
+ch.ch_226 = document.getElementById("ch_225")
+ch.ch_234 = document.getElementById("ch_233")
+ch.ch_242 = document.getElementById("ch_241")
+ch.ch_250 = document.getElementById("ch_249")
+ch.ch_258 = document.getElementById("ch_257")
+ch.ch_266 = document.getElementById("ch_265")
+ch.ch_274 = document.getElementById("ch_273")
+ch.ch_282 = document.getElementById("ch_281")
+ch.ch_290 = document.getElementById("ch_289")
+ch.ch_298 = document.getElementById("ch_297")
+ch.ch_574 = [ch.ch_178, ch.ch_186, ch.ch_194, ch.ch_202, ch.ch_210, ch.ch_218, ch.ch_226, ch.ch_234, ch.ch_242, ch.ch_250, ch.ch_258, ch.ch_266, ch.ch_274, ch.ch_282, ch.ch_290, ch.ch_298]
+ch.ch_860 = document.getElementById("ch_859")
+ch.ch_869 = document.getElementById("ch_868")
+ch.ch_877 = document.getElementById("ch_876")
+ch.ch_885 = document.getElementById("ch_884")
+ch.ch_893 = document.getElementById("ch_892")
+ch.ch_901 = document.getElementById("ch_900")
+ch.ch_909 = document.getElementById("ch_908")
+ch.ch_917 = document.getElementById("ch_916")
+ch.ch_925 = document.getElementById("ch_924")
+ch.ch_933 = document.getElementById("ch_932")
+ch.ch_941 = document.getElementById("ch_940")
+ch.ch_949 = document.getElementById("ch_948")
+ch.ch_957 = document.getElementById("ch_956")
+ch.ch_965 = document.getElementById("ch_964")
+ch.ch_973 = document.getElementById("ch_972")
+ch.ch_981 = document.getElementById("ch_980")
+ch.ch_989 = document.getElementById("ch_988")
+ch.ch_997 = document.getElementById("ch_996")
+ch.ch_1005 = document.getElementById("ch_1004")
+ch.ch_1013 = document.getElementById("ch_1012")
+ch.ch_1021 = document.getElementById("ch_1020")
+ch.ch_1029 = document.getElementById("ch_1028")
+ch.ch_1037 = document.getElementById("ch_1036")
+ch.ch_1045 = document.getElementById("ch_1044")
+ch.ch_867 = async ele => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            let get_items = aim => [
+                {
+                    'get_value': get_x_value,
+                    'set_value': set_x_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.left) - self_width,
+                        parseInt(aim.style.left) + aim.clientWidth
+                    ) - get_x0(),
+                },
+                {
+                    'get_value': get_y_value,
+                    'set_value': set_y_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.top) - self_height,
+                        parseInt(aim.style.top) + aim.clientHeight
+                    ) - get_y0(),
+                },
+            ]
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                let aim = ch.ch_574[Math.floor(Math.random() * ch.ch_574.length)]
+                let distance = Math.sqrt(
+                    Math.pow(
+                        parseInt(aim.style.left) - parseInt(ele.style.left),
+                        2
+                    ) +
+                    Math.pow(
+                        parseInt(aim.style.top) - parseInt(ele.style.top),
+                        2
+                    )
+                )
+                await ch.ch_573(get_items(aim), distance * 0.01, 0, stop)
+                await ch.ch_5(ch.ch_572(1, 4))
+                if (stop()) {continue}
+                await ch.ch_5(ch.ch_572(1, 4))
+                for (let i of (new Array(5).fill(null))) {
+                    if (stop()) {continue}
+                    await ch.ch_573(get_items(aim), 1, 0, stop)
+                    await ch.ch_5(ch.ch_572(1, 4))
+                    if (stop()) {continue}
+                    await ch.ch_5(ch.ch_572(1, 4))
+                }
+            }
+        }
+ch.ch_867(ch.ch_860)
+ch.ch_867(ch.ch_869)
+ch.ch_867(ch.ch_877)
+ch.ch_867(ch.ch_885)
+ch.ch_867(ch.ch_893)
+ch.ch_867(ch.ch_901)
+ch.ch_867(ch.ch_909)
+ch.ch_867(ch.ch_917)
+ch.ch_867(ch.ch_925)
+ch.ch_867(ch.ch_933)
+ch.ch_867(ch.ch_941)
+ch.ch_867(ch.ch_949)
+ch.ch_867(ch.ch_957)
+ch.ch_867(ch.ch_965)
+ch.ch_867(ch.ch_973)
+ch.ch_867(ch.ch_981)
+ch.ch_867(ch.ch_989)
+ch.ch_867(ch.ch_997)
+ch.ch_867(ch.ch_1005)
+ch.ch_867(ch.ch_1013)
+ch.ch_867(ch.ch_1021)
+ch.ch_867(ch.ch_1029)
+ch.ch_867(ch.ch_1037)
+ch.ch_867(ch.ch_1045)
+ch.ch_18 = new Map([[0, ""]])
+ch.ch_28 = new Map([[0, ""]])
+ch.ch_36 = new Map([[0, ""]])
+ch.ch_44 = new Map([[0, ""]])
+ch.ch_52 = new Map([[0, ""]])
+ch.ch_60 = new Map([[0, ""]])
+ch.ch_68 = new Map([[0, ""]])
+ch.ch_76 = new Map([[0, ""]])
+ch.ch_84 = new Map([[0, ""]])
+ch.ch_92 = new Map([[0, ""]])
+ch.ch_100 = new Map([[0, ""]])
+ch.ch_108 = new Map([[0, ""]])
+ch.ch_116 = new Map([[0, ""]])
+ch.ch_124 = new Map([[0, ""]])
+ch.ch_132 = new Map([[0, ""]])
+ch.ch_138 = document.getElementById("ch_137")
+ch.ch_140 = new Map([[0, ""]])
+ch.ch_146 = document.getElementById("ch_145")
+ch.ch_148 = new Map([[0, ""]])
+ch.ch_154 = document.getElementById("ch_153")
+ch.ch_156 = new Map([[0, ""]])
+ch.ch_162 = document.getElementById("ch_161")
+ch.ch_164 = new Map([[0, ""]])
+ch.ch_170 = document.getElementById("ch_169")
+ch.ch_172 = new Map([[0, ""]])
+ch.ch_180 = new Map([[0, ""]])
+ch.ch_188 = new Map([[0, ""]])
+ch.ch_196 = new Map([[0, ""]])
+ch.ch_204 = new Map([[0, ""]])
+ch.ch_212 = new Map([[0, ""]])
+ch.ch_220 = new Map([[0, ""]])
+ch.ch_228 = new Map([[0, ""]])
+ch.ch_236 = new Map([[0, ""]])
+ch.ch_244 = new Map([[0, ""]])
+ch.ch_252 = new Map([[0, ""]])
+ch.ch_260 = new Map([[0, ""]])
+ch.ch_268 = new Map([[0, ""]])
+ch.ch_276 = new Map([[0, ""]])
+ch.ch_284 = new Map([[0, ""]])
+ch.ch_292 = new Map([[0, ""]])
+ch.ch_300 = new Map([[0, ""]])
+ch.ch_308 = new Map([[0, ""]])
+ch.ch_316 = new Map([[0, ""]])
+ch.ch_324 = new Map([[0, ""]])
+ch.ch_332 = new Map([[0, ""]])
+ch.ch_340 = new Map([[0, ""]])
+ch.ch_348 = new Map([[0, ""]])
+ch.ch_356 = new Map([[0, ""]])
+ch.ch_364 = new Map([[0, ""]])
+ch.ch_372 = new Map([[0, ""]])
+ch.ch_380 = new Map([[0, ""]])
+ch.ch_388 = new Map([[0, ""]])
+ch.ch_396 = new Map([[0, ""]])
+ch.ch_404 = new Map([[0, ""]])
+ch.ch_412 = new Map([[0, ""]])
+ch.ch_420 = new Map([[0, ""]])
+ch.ch_426 = document.getElementById("ch_425")
+ch.ch_428 = new Map([[0, ""]])
+ch.ch_434 = document.getElementById("ch_433")
+ch.ch_436 = new Map([[0, ""]])
+ch.ch_442 = document.getElementById("ch_441")
+ch.ch_444 = new Map([[0, ""]])
+ch.ch_450 = document.getElementById("ch_449")
+ch.ch_452 = new Map([[0, ""]])
+ch.ch_458 = document.getElementById("ch_457")
+ch.ch_460 = new Map([[0, ""]])
+ch.ch_466 = document.getElementById("ch_465")
+ch.ch_468 = new Map([[0, ""]])
+ch.ch_474 = document.getElementById("ch_473")
+ch.ch_476 = new Map([[0, ""]])
+ch.ch_482 = document.getElementById("ch_481")
+ch.ch_484 = new Map([[0, ""]])
+ch.ch_490 = document.getElementById("ch_489")
+ch.ch_492 = new Map([[0, ""]])
+ch.ch_498 = document.getElementById("ch_497")
+ch.ch_500 = new Map([[0, ""]])
+ch.ch_506 = document.getElementById("ch_505")
+ch.ch_508 = new Map([[0, ""]])
+ch.ch_514 = document.getElementById("ch_513")
+ch.ch_516 = new Map([[0, ""]])
+ch.ch_522 = document.getElementById("ch_521")
+ch.ch_524 = new Map([[0, ""]])
+ch.ch_530 = document.getElementById("ch_529")
+ch.ch_532 = new Map([[0, ""]])
+ch.ch_538 = document.getElementById("ch_537")
+ch.ch_540 = new Map([[0, ""]])
+ch.ch_546 = document.getElementById("ch_545")
+ch.ch_548 = new Map([[0, ""]])
+ch.ch_554 = document.getElementById("ch_553")
+ch.ch_556 = new Map([[0, ""]])
+ch.ch_568 = document.getElementById("ch_567")
+ch.ch_576 = new Map([[1, ""]])
+ch.ch_591 = new Map([[0, ""]])
+ch.ch_642 = new Map([[0, ""]])
+ch.ch_651 = new Map([[0, ""]])
+ch.ch_659 = new Map([[0, ""]])
+ch.ch_667 = new Map([[0, ""]])
+ch.ch_675 = new Map([[0, ""]])
+ch.ch_683 = new Map([[0, ""]])
+ch.ch_692 = new Map([[0, ""]])
+ch.ch_700 = new Map([[0, ""]])
+ch.ch_708 = new Map([[0, ""]])
+ch.ch_716 = new Map([[0, ""]])
+ch.ch_724 = new Map([[0, ""]])
+ch.ch_732 = new Map([[0, ""]])
+ch.ch_740 = new Map([[0, ""]])
+ch.ch_748 = new Map([[0, ""]])
+ch.ch_756 = new Map([[0, ""]])
+ch.ch_765 = new Map([[0, ""]])
+ch.ch_773 = new Map([[0, ""]])
+ch.ch_781 = new Map([[0, ""]])
+ch.ch_789 = new Map([[0, ""]])
+ch.ch_797 = new Map([[0, ""]])
+ch.ch_805 = new Map([[0, ""]])
+ch.ch_813 = new Map([[0, ""]])
+ch.ch_821 = new Map([[0, ""]])
+ch.ch_829 = new Map([[0, ""]])
+ch.ch_838 = new Map([[0, ""]])
+ch.ch_846 = new Map([[0, ""]])
+ch.ch_854 = new Map([[0, ""]])
+ch.ch_862 = new Map([[0, ""]])
+ch.ch_871 = new Map([[0, ""]])
+ch.ch_879 = new Map([[0, ""]])
+ch.ch_887 = new Map([[0, ""]])
+ch.ch_895 = new Map([[0, ""]])
+ch.ch_903 = new Map([[0, ""]])
+ch.ch_911 = new Map([[0, ""]])
+ch.ch_919 = new Map([[0, ""]])
+ch.ch_927 = new Map([[0, ""]])
+ch.ch_935 = new Map([[0, ""]])
+ch.ch_943 = new Map([[0, ""]])
+ch.ch_951 = new Map([[0, ""]])
+ch.ch_959 = new Map([[0, ""]])
+ch.ch_967 = new Map([[0, ""]])
+ch.ch_975 = new Map([[0, ""]])
+ch.ch_983 = new Map([[0, ""]])
+ch.ch_991 = new Map([[0, ""]])
+ch.ch_999 = new Map([[0, ""]])
+ch.ch_1007 = new Map([[0, ""]])
+ch.ch_1015 = new Map([[0, ""]])
+ch.ch_1023 = new Map([[0, ""]])
+ch.ch_1031 = new Map([[0, ""]])
+ch.ch_1039 = new Map([[0, ""]])
+ch.ch_1047 = new Map([[0, ""]])
+ch.ch_19 = (ele, key, reference=null) => {
+                reference = reference || ele
+                return sync_value => {
+                    let info = new Map()
+                    ele.addEventListener('mousedown', () => {
+                        if ((! key) || key.has(event.button)) {{
+                            info.set('mousedown_style', Object.assign({}, reference.style))
+                            info.set('mousedown_event', event)
+                            info.set('is_mouse_down', 'true')
+                        }}
+                    })
+                    document.documentElement.addEventListener('mouseup', () => {
+                        if ((! key) || key.has(event.button)) {{ info.set('is_mouse_down', '') }}
+                    })
+                    document.documentElement.addEventListener('mousemove', () => {
+                        if (info.get('is_mouse_down')) {
+                            info.set('mousemove_event', event)
+                            sync_value([info])
+                        }
+                    })
+                }
+            }
+ch.ch_16 = (items, last_value) =>
+            {
+                let sync_value = value => {
+                    if (last_value !== value) {
+                        last_value = value
+                        for (let [beset_value, bijection_] of items) {
+                            if (bijection_ && bijection_.has(value))
+                                {beset_value(bijection_.get(value))}
+                            else
+                                {beset_value(value)}
+                        }
+                    }
+                }
+                return (bijection, outward_ignore_values=null) =>
+                    value => {
+                        if (outward_ignore_values && outward_ignore_values.includes(value)) {return null}
+                        if (bijection && bijection.has(value)) {value = bijection.get(value)}
+                        sync_value(value)
+                    }
+            }
+ch.ch_10 = 0.75
+ch.ch_22 = (ele, is_layer=false) =>
+            value => {
+                let info = value[0]
+                let mousedown_style = info.get('mousedown_style')
+                let mousedown_event = info.get('mousedown_event')
+                let mousemove_event = info.get('mousemove_event')
+                if (is_layer) {
+                    ele.style.left = parseInt(mousedown_style.left) + (mousemove_event.pageX - mousedown_event.pageX) + 'px'
+                    ele.style.top = parseInt(mousedown_style.top) + (mousemove_event.pageY - mousedown_event.pageY) + 'px'
+                }
+                else {
+                    ele.style.left = parseInt(mousedown_style.left) + (mousemove_event.pageX - mousedown_event.pageX) / ch.ch_10 + 'px'
+                    ele.style.top = parseInt(mousedown_style.top) + (mousemove_event.pageY - mousedown_event.pageY) / ch.ch_10 + 'px'
+                }
+            }
+ch.ch_579 = new Map([])
+ch.ch_580 = [ch.ch_22(ch.ch_568, true), ch.ch_579]
+ch.ch_575 = [ch.ch_580]
+ch.ch_577 = new Map([])
+ch.ch_578 = ch.ch_16(ch.ch_575, Symbol())
+ch.ch_19(ch.ch_568, ch.ch_576, ch.ch_568)(ch.ch_578(ch.ch_577, null))
+ch.ch_583 = document.getElementById("ch_582")
+ch.ch_584 = ele => {
+                return sync_value => {
+                    ele.addEventListener('wheel', () => {
+                        sync_value(event)
+                    })
+                }
+            }
+ch.ch_1057 = document.getElementById("ch_1056")
+ch.ch_1058 = window.innerWidth / 2
+ch.ch_1059 = window.innerHeight / 2
+ch.ch_587 = () => {
+            let [x, y, left, top, just_scale] = Array(5).fill(null)
+            ch.ch_568.style.transformOrigin = 'left top'
+            return value => {
+                let event = value
+                let x_ = event.clientX
+                let y_ = event.clientY
+                if (x_ !== x || y_ !== y) {
+                    x = x_
+                    y = y_
+                    left = parseInt(ch.ch_568.style.left)
+                    top = parseInt(ch.ch_568.style.top)
+                    just_scale = ch.ch_10
+                }
+                let x1 = x - left
+                let y1 = y - top
+                ch.ch_10 = Math.max(0.01, ch.ch_10 - event.deltaY / 1500)
+                ch.ch_568.style.transform = `scale(${ ch.ch_10 })`
+                ch.ch_568.style.left = x - x1 / just_scale * ch.ch_10 + 'px'  // ch.ch_568.style.left = left - (x1 / just_scale * ch.ch_10 - x1) + 'px'
+                ch.ch_568.style.top = y - y1 / just_scale * ch.ch_10 + 'px'  // ch.ch_568.style.top = top - (y1 / just_scale * ch.ch_10 - y1)  + 'px'
+            }
+        }
+ch.ch_588 = new Map([])
+ch.ch_589 = [ch.ch_587(), ch.ch_588]
+ch.ch_581 = [ch.ch_589]
+ch.ch_585 = new Map([])
+ch.ch_586 = ch.ch_16(ch.ch_581, Symbol())
+ch.ch_584(ch.ch_583)(ch.ch_586(ch.ch_585, null))
+ch.ch_594 = new Map([])
+ch.ch_595 = [ch.ch_22(ch.ch_546, false), ch.ch_594]
+ch.ch_590 = [ch.ch_595]
+ch.ch_592 = new Map([])
+ch.ch_593 = ch.ch_16(ch.ch_590, Symbol())
+ch.ch_19(ch.ch_546, ch.ch_591, null)(ch.ch_593(ch.ch_592, null))
+ch.ch_8 = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+ch.ch_602 = (ele, style_name) => {
+                let styles = Object.assign({}, ele.style)
+                return sync_value => {
+                    new ch.ch_8(
+                        (records, _) => {
+                            let value = ele.style[style_name]
+                            if (styles[style_name] !== value) {
+                                styles[style_name] = value
+                                sync_value(value)
+                            }
+                        }
+                    ).observe(ele, { attributes:true, attributeFilter:['style'] })
+                }
+            }
+ch.ch_600 = document.getElementById("ch_599")
+ch.ch_605 = gold => {
+            return value => {
+                let people = ch.ch_546.getBoundingClientRect()
+                let self = gold.getBoundingClientRect()
+                if (
+                    Math.abs((self.left + self.right) / 2 - (people.left + people.right) / 2) < (self.width + people.width) / 2
+                ) {
+                    if (
+                        Math.abs((self.top + self.bottom) / 2 - (people.top + people.bottom) / 2) < (self.height + people.height) / 2
+                    ) {
+                        gold.setAttribute('state', '2')
+                        ch.ch_600.textContent = String(parseInt(ch.ch_600.textContent) + 10)
+                    }
+                }
+            }
+        }
+ch.ch_606 = new Map([])
+ch.ch_607 = [ch.ch_605(ch.ch_426), ch.ch_606]
+ch.ch_609 = new Map([])
+ch.ch_610 = [ch.ch_605(ch.ch_434), ch.ch_609]
+ch.ch_611 = new Map([])
+ch.ch_612 = [ch.ch_605(ch.ch_442), ch.ch_611]
+ch.ch_613 = new Map([])
+ch.ch_614 = [ch.ch_605(ch.ch_450), ch.ch_613]
+ch.ch_615 = new Map([])
+ch.ch_616 = [ch.ch_605(ch.ch_458), ch.ch_615]
+ch.ch_617 = new Map([])
+ch.ch_618 = [ch.ch_605(ch.ch_466), ch.ch_617]
+ch.ch_619 = new Map([])
+ch.ch_620 = [ch.ch_605(ch.ch_474), ch.ch_619]
+ch.ch_621 = new Map([])
+ch.ch_622 = [ch.ch_605(ch.ch_482), ch.ch_621]
+ch.ch_623 = new Map([])
+ch.ch_624 = [ch.ch_605(ch.ch_490), ch.ch_623]
+ch.ch_625 = new Map([])
+ch.ch_626 = [ch.ch_605(ch.ch_498), ch.ch_625]
+ch.ch_627 = new Map([])
+ch.ch_628 = [ch.ch_605(ch.ch_506), ch.ch_627]
+ch.ch_629 = new Map([])
+ch.ch_630 = [ch.ch_605(ch.ch_514), ch.ch_629]
+ch.ch_631 = new Map([])
+ch.ch_632 = [ch.ch_605(ch.ch_522), ch.ch_631]
+ch.ch_633 = new Map([])
+ch.ch_634 = [ch.ch_605(ch.ch_530), ch.ch_633]
+ch.ch_635 = new Map([])
+ch.ch_636 = [ch.ch_605(ch.ch_538), ch.ch_635]
+ch.ch_601 = [ch.ch_607, ch.ch_610, ch.ch_612, ch.ch_614, ch.ch_616, ch.ch_618, ch.ch_620, ch.ch_622, ch.ch_624, ch.ch_626, ch.ch_628, ch.ch_630, ch.ch_632, ch.ch_634, ch.ch_636]
+ch.ch_603 = new Map([])
+ch.ch_604 = ch.ch_16(ch.ch_601, Symbol())
+ch.ch_602(ch.ch_546, "left")(ch.ch_604(ch.ch_603, null))
+ch.ch_23 = new Map([])
+ch.ch_24 = [ch.ch_22(ch.ch_14, false), ch.ch_23]
+ch.ch_17 = [ch.ch_24]
+ch.ch_20 = new Map([])
+ch.ch_21 = ch.ch_16(ch.ch_17, Symbol())
+ch.ch_19(ch.ch_14, ch.ch_18, null)(ch.ch_21(ch.ch_20, null))
+ch.ch_31 = new Map([])
+ch.ch_32 = [ch.ch_22(ch.ch_26, false), ch.ch_31]
+ch.ch_27 = [ch.ch_32]
+ch.ch_29 = new Map([])
+ch.ch_30 = ch.ch_16(ch.ch_27, Symbol())
+ch.ch_19(ch.ch_26, ch.ch_28, null)(ch.ch_30(ch.ch_29, null))
+ch.ch_39 = new Map([])
+ch.ch_40 = [ch.ch_22(ch.ch_34, false), ch.ch_39]
+ch.ch_35 = [ch.ch_40]
+ch.ch_37 = new Map([])
+ch.ch_38 = ch.ch_16(ch.ch_35, Symbol())
+ch.ch_19(ch.ch_34, ch.ch_36, null)(ch.ch_38(ch.ch_37, null))
+ch.ch_47 = new Map([])
+ch.ch_48 = [ch.ch_22(ch.ch_42, false), ch.ch_47]
+ch.ch_43 = [ch.ch_48]
+ch.ch_45 = new Map([])
+ch.ch_46 = ch.ch_16(ch.ch_43, Symbol())
+ch.ch_19(ch.ch_42, ch.ch_44, null)(ch.ch_46(ch.ch_45, null))
+ch.ch_55 = new Map([])
+ch.ch_56 = [ch.ch_22(ch.ch_50, false), ch.ch_55]
+ch.ch_51 = [ch.ch_56]
+ch.ch_53 = new Map([])
+ch.ch_54 = ch.ch_16(ch.ch_51, Symbol())
+ch.ch_19(ch.ch_50, ch.ch_52, null)(ch.ch_54(ch.ch_53, null))
+ch.ch_63 = new Map([])
+ch.ch_64 = [ch.ch_22(ch.ch_58, false), ch.ch_63]
+ch.ch_59 = [ch.ch_64]
+ch.ch_61 = new Map([])
+ch.ch_62 = ch.ch_16(ch.ch_59, Symbol())
+ch.ch_19(ch.ch_58, ch.ch_60, null)(ch.ch_62(ch.ch_61, null))
+ch.ch_71 = new Map([])
+ch.ch_72 = [ch.ch_22(ch.ch_66, false), ch.ch_71]
+ch.ch_67 = [ch.ch_72]
+ch.ch_69 = new Map([])
+ch.ch_70 = ch.ch_16(ch.ch_67, Symbol())
+ch.ch_19(ch.ch_66, ch.ch_68, null)(ch.ch_70(ch.ch_69, null))
+ch.ch_79 = new Map([])
+ch.ch_80 = [ch.ch_22(ch.ch_74, false), ch.ch_79]
+ch.ch_75 = [ch.ch_80]
+ch.ch_77 = new Map([])
+ch.ch_78 = ch.ch_16(ch.ch_75, Symbol())
+ch.ch_19(ch.ch_74, ch.ch_76, null)(ch.ch_78(ch.ch_77, null))
+ch.ch_87 = new Map([])
+ch.ch_88 = [ch.ch_22(ch.ch_82, false), ch.ch_87]
+ch.ch_83 = [ch.ch_88]
+ch.ch_85 = new Map([])
+ch.ch_86 = ch.ch_16(ch.ch_83, Symbol())
+ch.ch_19(ch.ch_82, ch.ch_84, null)(ch.ch_86(ch.ch_85, null))
+ch.ch_95 = new Map([])
+ch.ch_96 = [ch.ch_22(ch.ch_90, false), ch.ch_95]
+ch.ch_91 = [ch.ch_96]
+ch.ch_93 = new Map([])
+ch.ch_94 = ch.ch_16(ch.ch_91, Symbol())
+ch.ch_19(ch.ch_90, ch.ch_92, null)(ch.ch_94(ch.ch_93, null))
+ch.ch_103 = new Map([])
+ch.ch_104 = [ch.ch_22(ch.ch_98, false), ch.ch_103]
+ch.ch_99 = [ch.ch_104]
+ch.ch_101 = new Map([])
+ch.ch_102 = ch.ch_16(ch.ch_99, Symbol())
+ch.ch_19(ch.ch_98, ch.ch_100, null)(ch.ch_102(ch.ch_101, null))
+ch.ch_111 = new Map([])
+ch.ch_112 = [ch.ch_22(ch.ch_106, false), ch.ch_111]
+ch.ch_107 = [ch.ch_112]
+ch.ch_109 = new Map([])
+ch.ch_110 = ch.ch_16(ch.ch_107, Symbol())
+ch.ch_19(ch.ch_106, ch.ch_108, null)(ch.ch_110(ch.ch_109, null))
+ch.ch_119 = new Map([])
+ch.ch_120 = [ch.ch_22(ch.ch_114, false), ch.ch_119]
+ch.ch_115 = [ch.ch_120]
+ch.ch_117 = new Map([])
+ch.ch_118 = ch.ch_16(ch.ch_115, Symbol())
+ch.ch_19(ch.ch_114, ch.ch_116, null)(ch.ch_118(ch.ch_117, null))
+ch.ch_127 = new Map([])
+ch.ch_128 = [ch.ch_22(ch.ch_122, false), ch.ch_127]
+ch.ch_123 = [ch.ch_128]
+ch.ch_125 = new Map([])
+ch.ch_126 = ch.ch_16(ch.ch_123, Symbol())
+ch.ch_19(ch.ch_122, ch.ch_124, null)(ch.ch_126(ch.ch_125, null))
+ch.ch_135 = new Map([])
+ch.ch_136 = [ch.ch_22(ch.ch_130, false), ch.ch_135]
+ch.ch_131 = [ch.ch_136]
+ch.ch_133 = new Map([])
+ch.ch_134 = ch.ch_16(ch.ch_131, Symbol())
+ch.ch_19(ch.ch_130, ch.ch_132, null)(ch.ch_134(ch.ch_133, null))
+ch.ch_143 = new Map([])
+ch.ch_144 = [ch.ch_22(ch.ch_138, false), ch.ch_143]
+ch.ch_139 = [ch.ch_144]
+ch.ch_141 = new Map([])
+ch.ch_142 = ch.ch_16(ch.ch_139, Symbol())
+ch.ch_19(ch.ch_138, ch.ch_140, null)(ch.ch_142(ch.ch_141, null))
+ch.ch_151 = new Map([])
+ch.ch_152 = [ch.ch_22(ch.ch_146, false), ch.ch_151]
+ch.ch_147 = [ch.ch_152]
+ch.ch_149 = new Map([])
+ch.ch_150 = ch.ch_16(ch.ch_147, Symbol())
+ch.ch_19(ch.ch_146, ch.ch_148, null)(ch.ch_150(ch.ch_149, null))
+ch.ch_159 = new Map([])
+ch.ch_160 = [ch.ch_22(ch.ch_154, false), ch.ch_159]
+ch.ch_155 = [ch.ch_160]
+ch.ch_157 = new Map([])
+ch.ch_158 = ch.ch_16(ch.ch_155, Symbol())
+ch.ch_19(ch.ch_154, ch.ch_156, null)(ch.ch_158(ch.ch_157, null))
+ch.ch_167 = new Map([])
+ch.ch_168 = [ch.ch_22(ch.ch_162, false), ch.ch_167]
+ch.ch_163 = [ch.ch_168]
+ch.ch_165 = new Map([])
+ch.ch_166 = ch.ch_16(ch.ch_163, Symbol())
+ch.ch_19(ch.ch_162, ch.ch_164, null)(ch.ch_166(ch.ch_165, null))
+ch.ch_175 = new Map([])
+ch.ch_176 = [ch.ch_22(ch.ch_170, false), ch.ch_175]
+ch.ch_171 = [ch.ch_176]
+ch.ch_173 = new Map([])
+ch.ch_174 = ch.ch_16(ch.ch_171, Symbol())
+ch.ch_19(ch.ch_170, ch.ch_172, null)(ch.ch_174(ch.ch_173, null))
+ch.ch_183 = new Map([])
+ch.ch_184 = [ch.ch_22(ch.ch_178, false), ch.ch_183]
+ch.ch_179 = [ch.ch_184]
+ch.ch_181 = new Map([])
+ch.ch_182 = ch.ch_16(ch.ch_179, Symbol())
+ch.ch_19(ch.ch_178, ch.ch_180, null)(ch.ch_182(ch.ch_181, null))
+ch.ch_191 = new Map([])
+ch.ch_192 = [ch.ch_22(ch.ch_186, false), ch.ch_191]
+ch.ch_187 = [ch.ch_192]
+ch.ch_189 = new Map([])
+ch.ch_190 = ch.ch_16(ch.ch_187, Symbol())
+ch.ch_19(ch.ch_186, ch.ch_188, null)(ch.ch_190(ch.ch_189, null))
+ch.ch_199 = new Map([])
+ch.ch_200 = [ch.ch_22(ch.ch_194, false), ch.ch_199]
+ch.ch_195 = [ch.ch_200]
+ch.ch_197 = new Map([])
+ch.ch_198 = ch.ch_16(ch.ch_195, Symbol())
+ch.ch_19(ch.ch_194, ch.ch_196, null)(ch.ch_198(ch.ch_197, null))
+ch.ch_207 = new Map([])
+ch.ch_208 = [ch.ch_22(ch.ch_202, false), ch.ch_207]
+ch.ch_203 = [ch.ch_208]
+ch.ch_205 = new Map([])
+ch.ch_206 = ch.ch_16(ch.ch_203, Symbol())
+ch.ch_19(ch.ch_202, ch.ch_204, null)(ch.ch_206(ch.ch_205, null))
+ch.ch_215 = new Map([])
+ch.ch_216 = [ch.ch_22(ch.ch_210, false), ch.ch_215]
+ch.ch_211 = [ch.ch_216]
+ch.ch_213 = new Map([])
+ch.ch_214 = ch.ch_16(ch.ch_211, Symbol())
+ch.ch_19(ch.ch_210, ch.ch_212, null)(ch.ch_214(ch.ch_213, null))
+ch.ch_223 = new Map([])
+ch.ch_224 = [ch.ch_22(ch.ch_218, false), ch.ch_223]
+ch.ch_219 = [ch.ch_224]
+ch.ch_221 = new Map([])
+ch.ch_222 = ch.ch_16(ch.ch_219, Symbol())
+ch.ch_19(ch.ch_218, ch.ch_220, null)(ch.ch_222(ch.ch_221, null))
+ch.ch_231 = new Map([])
+ch.ch_232 = [ch.ch_22(ch.ch_226, false), ch.ch_231]
+ch.ch_227 = [ch.ch_232]
+ch.ch_229 = new Map([])
+ch.ch_230 = ch.ch_16(ch.ch_227, Symbol())
+ch.ch_19(ch.ch_226, ch.ch_228, null)(ch.ch_230(ch.ch_229, null))
+ch.ch_239 = new Map([])
+ch.ch_240 = [ch.ch_22(ch.ch_234, false), ch.ch_239]
+ch.ch_235 = [ch.ch_240]
+ch.ch_237 = new Map([])
+ch.ch_238 = ch.ch_16(ch.ch_235, Symbol())
+ch.ch_19(ch.ch_234, ch.ch_236, null)(ch.ch_238(ch.ch_237, null))
+ch.ch_247 = new Map([])
+ch.ch_248 = [ch.ch_22(ch.ch_242, false), ch.ch_247]
+ch.ch_243 = [ch.ch_248]
+ch.ch_245 = new Map([])
+ch.ch_246 = ch.ch_16(ch.ch_243, Symbol())
+ch.ch_19(ch.ch_242, ch.ch_244, null)(ch.ch_246(ch.ch_245, null))
+ch.ch_255 = new Map([])
+ch.ch_256 = [ch.ch_22(ch.ch_250, false), ch.ch_255]
+ch.ch_251 = [ch.ch_256]
+ch.ch_253 = new Map([])
+ch.ch_254 = ch.ch_16(ch.ch_251, Symbol())
+ch.ch_19(ch.ch_250, ch.ch_252, null)(ch.ch_254(ch.ch_253, null))
+ch.ch_263 = new Map([])
+ch.ch_264 = [ch.ch_22(ch.ch_258, false), ch.ch_263]
+ch.ch_259 = [ch.ch_264]
+ch.ch_261 = new Map([])
+ch.ch_262 = ch.ch_16(ch.ch_259, Symbol())
+ch.ch_19(ch.ch_258, ch.ch_260, null)(ch.ch_262(ch.ch_261, null))
+ch.ch_271 = new Map([])
+ch.ch_272 = [ch.ch_22(ch.ch_266, false), ch.ch_271]
+ch.ch_267 = [ch.ch_272]
+ch.ch_269 = new Map([])
+ch.ch_270 = ch.ch_16(ch.ch_267, Symbol())
+ch.ch_19(ch.ch_266, ch.ch_268, null)(ch.ch_270(ch.ch_269, null))
+ch.ch_279 = new Map([])
+ch.ch_280 = [ch.ch_22(ch.ch_274, false), ch.ch_279]
+ch.ch_275 = [ch.ch_280]
+ch.ch_277 = new Map([])
+ch.ch_278 = ch.ch_16(ch.ch_275, Symbol())
+ch.ch_19(ch.ch_274, ch.ch_276, null)(ch.ch_278(ch.ch_277, null))
+ch.ch_287 = new Map([])
+ch.ch_288 = [ch.ch_22(ch.ch_282, false), ch.ch_287]
+ch.ch_283 = [ch.ch_288]
+ch.ch_285 = new Map([])
+ch.ch_286 = ch.ch_16(ch.ch_283, Symbol())
+ch.ch_19(ch.ch_282, ch.ch_284, null)(ch.ch_286(ch.ch_285, null))
+ch.ch_295 = new Map([])
+ch.ch_296 = [ch.ch_22(ch.ch_290, false), ch.ch_295]
+ch.ch_291 = [ch.ch_296]
+ch.ch_293 = new Map([])
+ch.ch_294 = ch.ch_16(ch.ch_291, Symbol())
+ch.ch_19(ch.ch_290, ch.ch_292, null)(ch.ch_294(ch.ch_293, null))
+ch.ch_303 = new Map([])
+ch.ch_304 = [ch.ch_22(ch.ch_298, false), ch.ch_303]
+ch.ch_299 = [ch.ch_304]
+ch.ch_301 = new Map([])
+ch.ch_302 = ch.ch_16(ch.ch_299, Symbol())
+ch.ch_19(ch.ch_298, ch.ch_300, null)(ch.ch_302(ch.ch_301, null))
+ch.ch_311 = new Map([])
+ch.ch_312 = [ch.ch_22(ch.ch_306, false), ch.ch_311]
+ch.ch_307 = [ch.ch_312]
+ch.ch_309 = new Map([])
+ch.ch_310 = ch.ch_16(ch.ch_307, Symbol())
+ch.ch_19(ch.ch_306, ch.ch_308, null)(ch.ch_310(ch.ch_309, null))
+ch.ch_319 = new Map([])
+ch.ch_320 = [ch.ch_22(ch.ch_314, false), ch.ch_319]
+ch.ch_315 = [ch.ch_320]
+ch.ch_317 = new Map([])
+ch.ch_318 = ch.ch_16(ch.ch_315, Symbol())
+ch.ch_19(ch.ch_314, ch.ch_316, null)(ch.ch_318(ch.ch_317, null))
+ch.ch_327 = new Map([])
+ch.ch_328 = [ch.ch_22(ch.ch_322, false), ch.ch_327]
+ch.ch_323 = [ch.ch_328]
+ch.ch_325 = new Map([])
+ch.ch_326 = ch.ch_16(ch.ch_323, Symbol())
+ch.ch_19(ch.ch_322, ch.ch_324, null)(ch.ch_326(ch.ch_325, null))
+ch.ch_335 = new Map([])
+ch.ch_336 = [ch.ch_22(ch.ch_330, false), ch.ch_335]
+ch.ch_331 = [ch.ch_336]
+ch.ch_333 = new Map([])
+ch.ch_334 = ch.ch_16(ch.ch_331, Symbol())
+ch.ch_19(ch.ch_330, ch.ch_332, null)(ch.ch_334(ch.ch_333, null))
+ch.ch_343 = new Map([])
+ch.ch_344 = [ch.ch_22(ch.ch_338, false), ch.ch_343]
+ch.ch_339 = [ch.ch_344]
+ch.ch_341 = new Map([])
+ch.ch_342 = ch.ch_16(ch.ch_339, Symbol())
+ch.ch_19(ch.ch_338, ch.ch_340, null)(ch.ch_342(ch.ch_341, null))
+ch.ch_351 = new Map([])
+ch.ch_352 = [ch.ch_22(ch.ch_346, false), ch.ch_351]
+ch.ch_347 = [ch.ch_352]
+ch.ch_349 = new Map([])
+ch.ch_350 = ch.ch_16(ch.ch_347, Symbol())
+ch.ch_19(ch.ch_346, ch.ch_348, null)(ch.ch_350(ch.ch_349, null))
+ch.ch_359 = new Map([])
+ch.ch_360 = [ch.ch_22(ch.ch_354, false), ch.ch_359]
+ch.ch_355 = [ch.ch_360]
+ch.ch_357 = new Map([])
+ch.ch_358 = ch.ch_16(ch.ch_355, Symbol())
+ch.ch_19(ch.ch_354, ch.ch_356, null)(ch.ch_358(ch.ch_357, null))
+ch.ch_367 = new Map([])
+ch.ch_368 = [ch.ch_22(ch.ch_362, false), ch.ch_367]
+ch.ch_363 = [ch.ch_368]
+ch.ch_365 = new Map([])
+ch.ch_366 = ch.ch_16(ch.ch_363, Symbol())
+ch.ch_19(ch.ch_362, ch.ch_364, null)(ch.ch_366(ch.ch_365, null))
+ch.ch_375 = new Map([])
+ch.ch_376 = [ch.ch_22(ch.ch_370, false), ch.ch_375]
+ch.ch_371 = [ch.ch_376]
+ch.ch_373 = new Map([])
+ch.ch_374 = ch.ch_16(ch.ch_371, Symbol())
+ch.ch_19(ch.ch_370, ch.ch_372, null)(ch.ch_374(ch.ch_373, null))
+ch.ch_383 = new Map([])
+ch.ch_384 = [ch.ch_22(ch.ch_378, false), ch.ch_383]
+ch.ch_379 = [ch.ch_384]
+ch.ch_381 = new Map([])
+ch.ch_382 = ch.ch_16(ch.ch_379, Symbol())
+ch.ch_19(ch.ch_378, ch.ch_380, null)(ch.ch_382(ch.ch_381, null))
+ch.ch_391 = new Map([])
+ch.ch_392 = [ch.ch_22(ch.ch_386, false), ch.ch_391]
+ch.ch_387 = [ch.ch_392]
+ch.ch_389 = new Map([])
+ch.ch_390 = ch.ch_16(ch.ch_387, Symbol())
+ch.ch_19(ch.ch_386, ch.ch_388, null)(ch.ch_390(ch.ch_389, null))
+ch.ch_399 = new Map([])
+ch.ch_400 = [ch.ch_22(ch.ch_394, false), ch.ch_399]
+ch.ch_395 = [ch.ch_400]
+ch.ch_397 = new Map([])
+ch.ch_398 = ch.ch_16(ch.ch_395, Symbol())
+ch.ch_19(ch.ch_394, ch.ch_396, null)(ch.ch_398(ch.ch_397, null))
+ch.ch_407 = new Map([])
+ch.ch_408 = [ch.ch_22(ch.ch_402, false), ch.ch_407]
+ch.ch_403 = [ch.ch_408]
+ch.ch_405 = new Map([])
+ch.ch_406 = ch.ch_16(ch.ch_403, Symbol())
+ch.ch_19(ch.ch_402, ch.ch_404, null)(ch.ch_406(ch.ch_405, null))
+ch.ch_415 = new Map([])
+ch.ch_416 = [ch.ch_22(ch.ch_410, false), ch.ch_415]
+ch.ch_411 = [ch.ch_416]
+ch.ch_413 = new Map([])
+ch.ch_414 = ch.ch_16(ch.ch_411, Symbol())
+ch.ch_19(ch.ch_410, ch.ch_412, null)(ch.ch_414(ch.ch_413, null))
+ch.ch_423 = new Map([])
+ch.ch_424 = [ch.ch_22(ch.ch_418, false), ch.ch_423]
+ch.ch_419 = [ch.ch_424]
+ch.ch_421 = new Map([])
+ch.ch_422 = ch.ch_16(ch.ch_419, Symbol())
+ch.ch_19(ch.ch_418, ch.ch_420, null)(ch.ch_422(ch.ch_421, null))
+ch.ch_431 = new Map([])
+ch.ch_432 = [ch.ch_22(ch.ch_426, false), ch.ch_431]
+ch.ch_427 = [ch.ch_432]
+ch.ch_429 = new Map([])
+ch.ch_430 = ch.ch_16(ch.ch_427, Symbol())
+ch.ch_19(ch.ch_426, ch.ch_428, null)(ch.ch_430(ch.ch_429, null))
+ch.ch_439 = new Map([])
+ch.ch_440 = [ch.ch_22(ch.ch_434, false), ch.ch_439]
+ch.ch_435 = [ch.ch_440]
+ch.ch_437 = new Map([])
+ch.ch_438 = ch.ch_16(ch.ch_435, Symbol())
+ch.ch_19(ch.ch_434, ch.ch_436, null)(ch.ch_438(ch.ch_437, null))
+ch.ch_447 = new Map([])
+ch.ch_448 = [ch.ch_22(ch.ch_442, false), ch.ch_447]
+ch.ch_443 = [ch.ch_448]
+ch.ch_445 = new Map([])
+ch.ch_446 = ch.ch_16(ch.ch_443, Symbol())
+ch.ch_19(ch.ch_442, ch.ch_444, null)(ch.ch_446(ch.ch_445, null))
+ch.ch_455 = new Map([])
+ch.ch_456 = [ch.ch_22(ch.ch_450, false), ch.ch_455]
+ch.ch_451 = [ch.ch_456]
+ch.ch_453 = new Map([])
+ch.ch_454 = ch.ch_16(ch.ch_451, Symbol())
+ch.ch_19(ch.ch_450, ch.ch_452, null)(ch.ch_454(ch.ch_453, null))
+ch.ch_463 = new Map([])
+ch.ch_464 = [ch.ch_22(ch.ch_458, false), ch.ch_463]
+ch.ch_459 = [ch.ch_464]
+ch.ch_461 = new Map([])
+ch.ch_462 = ch.ch_16(ch.ch_459, Symbol())
+ch.ch_19(ch.ch_458, ch.ch_460, null)(ch.ch_462(ch.ch_461, null))
+ch.ch_471 = new Map([])
+ch.ch_472 = [ch.ch_22(ch.ch_466, false), ch.ch_471]
+ch.ch_467 = [ch.ch_472]
+ch.ch_469 = new Map([])
+ch.ch_470 = ch.ch_16(ch.ch_467, Symbol())
+ch.ch_19(ch.ch_466, ch.ch_468, null)(ch.ch_470(ch.ch_469, null))
+ch.ch_479 = new Map([])
+ch.ch_480 = [ch.ch_22(ch.ch_474, false), ch.ch_479]
+ch.ch_475 = [ch.ch_480]
+ch.ch_477 = new Map([])
+ch.ch_478 = ch.ch_16(ch.ch_475, Symbol())
+ch.ch_19(ch.ch_474, ch.ch_476, null)(ch.ch_478(ch.ch_477, null))
+ch.ch_487 = new Map([])
+ch.ch_488 = [ch.ch_22(ch.ch_482, false), ch.ch_487]
+ch.ch_483 = [ch.ch_488]
+ch.ch_485 = new Map([])
+ch.ch_486 = ch.ch_16(ch.ch_483, Symbol())
+ch.ch_19(ch.ch_482, ch.ch_484, null)(ch.ch_486(ch.ch_485, null))
+ch.ch_495 = new Map([])
+ch.ch_496 = [ch.ch_22(ch.ch_490, false), ch.ch_495]
+ch.ch_491 = [ch.ch_496]
+ch.ch_493 = new Map([])
+ch.ch_494 = ch.ch_16(ch.ch_491, Symbol())
+ch.ch_19(ch.ch_490, ch.ch_492, null)(ch.ch_494(ch.ch_493, null))
+ch.ch_503 = new Map([])
+ch.ch_504 = [ch.ch_22(ch.ch_498, false), ch.ch_503]
+ch.ch_499 = [ch.ch_504]
+ch.ch_501 = new Map([])
+ch.ch_502 = ch.ch_16(ch.ch_499, Symbol())
+ch.ch_19(ch.ch_498, ch.ch_500, null)(ch.ch_502(ch.ch_501, null))
+ch.ch_511 = new Map([])
+ch.ch_512 = [ch.ch_22(ch.ch_506, false), ch.ch_511]
+ch.ch_507 = [ch.ch_512]
+ch.ch_509 = new Map([])
+ch.ch_510 = ch.ch_16(ch.ch_507, Symbol())
+ch.ch_19(ch.ch_506, ch.ch_508, null)(ch.ch_510(ch.ch_509, null))
+ch.ch_519 = new Map([])
+ch.ch_520 = [ch.ch_22(ch.ch_514, false), ch.ch_519]
+ch.ch_515 = [ch.ch_520]
+ch.ch_517 = new Map([])
+ch.ch_518 = ch.ch_16(ch.ch_515, Symbol())
+ch.ch_19(ch.ch_514, ch.ch_516, null)(ch.ch_518(ch.ch_517, null))
+ch.ch_527 = new Map([])
+ch.ch_528 = [ch.ch_22(ch.ch_522, false), ch.ch_527]
+ch.ch_523 = [ch.ch_528]
+ch.ch_525 = new Map([])
+ch.ch_526 = ch.ch_16(ch.ch_523, Symbol())
+ch.ch_19(ch.ch_522, ch.ch_524, null)(ch.ch_526(ch.ch_525, null))
+ch.ch_535 = new Map([])
+ch.ch_536 = [ch.ch_22(ch.ch_530, false), ch.ch_535]
+ch.ch_531 = [ch.ch_536]
+ch.ch_533 = new Map([])
+ch.ch_534 = ch.ch_16(ch.ch_531, Symbol())
+ch.ch_19(ch.ch_530, ch.ch_532, null)(ch.ch_534(ch.ch_533, null))
+ch.ch_543 = new Map([])
+ch.ch_544 = [ch.ch_22(ch.ch_538, false), ch.ch_543]
+ch.ch_539 = [ch.ch_544]
+ch.ch_541 = new Map([])
+ch.ch_542 = ch.ch_16(ch.ch_539, Symbol())
+ch.ch_19(ch.ch_538, ch.ch_540, null)(ch.ch_542(ch.ch_541, null))
+ch.ch_551 = new Map([])
+ch.ch_552 = [ch.ch_22(ch.ch_546, false), ch.ch_551]
+ch.ch_547 = [ch.ch_552]
+ch.ch_549 = new Map([])
+ch.ch_550 = ch.ch_16(ch.ch_547, Symbol())
+ch.ch_19(ch.ch_546, ch.ch_548, null)(ch.ch_550(ch.ch_549, null))
+ch.ch_559 = new Map([])
+ch.ch_560 = [ch.ch_22(ch.ch_554, false), ch.ch_559]
+ch.ch_555 = [ch.ch_560]
+ch.ch_557 = new Map([])
+ch.ch_558 = ch.ch_16(ch.ch_555, Symbol())
+ch.ch_19(ch.ch_554, ch.ch_556, null)(ch.ch_558(ch.ch_557, null))
+ch.ch_645 = new Map([])
+ch.ch_646 = [ch.ch_22(ch.ch_640, false), ch.ch_645]
+ch.ch_641 = [ch.ch_646]
+ch.ch_643 = new Map([])
+ch.ch_644 = ch.ch_16(ch.ch_641, Symbol())
+ch.ch_19(ch.ch_640, ch.ch_642, null)(ch.ch_644(ch.ch_643, null))
+ch.ch_654 = new Map([])
+ch.ch_655 = [ch.ch_22(ch.ch_649, false), ch.ch_654]
+ch.ch_650 = [ch.ch_655]
+ch.ch_652 = new Map([])
+ch.ch_653 = ch.ch_16(ch.ch_650, Symbol())
+ch.ch_19(ch.ch_649, ch.ch_651, null)(ch.ch_653(ch.ch_652, null))
+ch.ch_662 = new Map([])
+ch.ch_663 = [ch.ch_22(ch.ch_657, false), ch.ch_662]
+ch.ch_658 = [ch.ch_663]
+ch.ch_660 = new Map([])
+ch.ch_661 = ch.ch_16(ch.ch_658, Symbol())
+ch.ch_19(ch.ch_657, ch.ch_659, null)(ch.ch_661(ch.ch_660, null))
+ch.ch_670 = new Map([])
+ch.ch_671 = [ch.ch_22(ch.ch_665, false), ch.ch_670]
+ch.ch_666 = [ch.ch_671]
+ch.ch_668 = new Map([])
+ch.ch_669 = ch.ch_16(ch.ch_666, Symbol())
+ch.ch_19(ch.ch_665, ch.ch_667, null)(ch.ch_669(ch.ch_668, null))
+ch.ch_678 = new Map([])
+ch.ch_679 = [ch.ch_22(ch.ch_673, false), ch.ch_678]
+ch.ch_674 = [ch.ch_679]
+ch.ch_676 = new Map([])
+ch.ch_677 = ch.ch_16(ch.ch_674, Symbol())
+ch.ch_19(ch.ch_673, ch.ch_675, null)(ch.ch_677(ch.ch_676, null))
+ch.ch_686 = new Map([])
+ch.ch_687 = [ch.ch_22(ch.ch_681, false), ch.ch_686]
+ch.ch_682 = [ch.ch_687]
+ch.ch_684 = new Map([])
+ch.ch_685 = ch.ch_16(ch.ch_682, Symbol())
+ch.ch_19(ch.ch_681, ch.ch_683, null)(ch.ch_685(ch.ch_684, null))
+ch.ch_695 = new Map([])
+ch.ch_696 = [ch.ch_22(ch.ch_690, false), ch.ch_695]
+ch.ch_691 = [ch.ch_696]
+ch.ch_693 = new Map([])
+ch.ch_694 = ch.ch_16(ch.ch_691, Symbol())
+ch.ch_19(ch.ch_690, ch.ch_692, null)(ch.ch_694(ch.ch_693, null))
+ch.ch_703 = new Map([])
+ch.ch_704 = [ch.ch_22(ch.ch_698, false), ch.ch_703]
+ch.ch_699 = [ch.ch_704]
+ch.ch_701 = new Map([])
+ch.ch_702 = ch.ch_16(ch.ch_699, Symbol())
+ch.ch_19(ch.ch_698, ch.ch_700, null)(ch.ch_702(ch.ch_701, null))
+ch.ch_711 = new Map([])
+ch.ch_712 = [ch.ch_22(ch.ch_706, false), ch.ch_711]
+ch.ch_707 = [ch.ch_712]
+ch.ch_709 = new Map([])
+ch.ch_710 = ch.ch_16(ch.ch_707, Symbol())
+ch.ch_19(ch.ch_706, ch.ch_708, null)(ch.ch_710(ch.ch_709, null))
+ch.ch_719 = new Map([])
+ch.ch_720 = [ch.ch_22(ch.ch_714, false), ch.ch_719]
+ch.ch_715 = [ch.ch_720]
+ch.ch_717 = new Map([])
+ch.ch_718 = ch.ch_16(ch.ch_715, Symbol())
+ch.ch_19(ch.ch_714, ch.ch_716, null)(ch.ch_718(ch.ch_717, null))
+ch.ch_727 = new Map([])
+ch.ch_728 = [ch.ch_22(ch.ch_722, false), ch.ch_727]
+ch.ch_723 = [ch.ch_728]
+ch.ch_725 = new Map([])
+ch.ch_726 = ch.ch_16(ch.ch_723, Symbol())
+ch.ch_19(ch.ch_722, ch.ch_724, null)(ch.ch_726(ch.ch_725, null))
+ch.ch_735 = new Map([])
+ch.ch_736 = [ch.ch_22(ch.ch_730, false), ch.ch_735]
+ch.ch_731 = [ch.ch_736]
+ch.ch_733 = new Map([])
+ch.ch_734 = ch.ch_16(ch.ch_731, Symbol())
+ch.ch_19(ch.ch_730, ch.ch_732, null)(ch.ch_734(ch.ch_733, null))
+ch.ch_743 = new Map([])
+ch.ch_744 = [ch.ch_22(ch.ch_738, false), ch.ch_743]
+ch.ch_739 = [ch.ch_744]
+ch.ch_741 = new Map([])
+ch.ch_742 = ch.ch_16(ch.ch_739, Symbol())
+ch.ch_19(ch.ch_738, ch.ch_740, null)(ch.ch_742(ch.ch_741, null))
+ch.ch_751 = new Map([])
+ch.ch_752 = [ch.ch_22(ch.ch_746, false), ch.ch_751]
+ch.ch_747 = [ch.ch_752]
+ch.ch_749 = new Map([])
+ch.ch_750 = ch.ch_16(ch.ch_747, Symbol())
+ch.ch_19(ch.ch_746, ch.ch_748, null)(ch.ch_750(ch.ch_749, null))
+ch.ch_759 = new Map([])
+ch.ch_760 = [ch.ch_22(ch.ch_754, false), ch.ch_759]
+ch.ch_755 = [ch.ch_760]
+ch.ch_757 = new Map([])
+ch.ch_758 = ch.ch_16(ch.ch_755, Symbol())
+ch.ch_19(ch.ch_754, ch.ch_756, null)(ch.ch_758(ch.ch_757, null))
+ch.ch_768 = new Map([])
+ch.ch_769 = [ch.ch_22(ch.ch_763, false), ch.ch_768]
+ch.ch_764 = [ch.ch_769]
+ch.ch_766 = new Map([])
+ch.ch_767 = ch.ch_16(ch.ch_764, Symbol())
+ch.ch_19(ch.ch_763, ch.ch_765, null)(ch.ch_767(ch.ch_766, null))
+ch.ch_776 = new Map([])
+ch.ch_777 = [ch.ch_22(ch.ch_771, false), ch.ch_776]
+ch.ch_772 = [ch.ch_777]
+ch.ch_774 = new Map([])
+ch.ch_775 = ch.ch_16(ch.ch_772, Symbol())
+ch.ch_19(ch.ch_771, ch.ch_773, null)(ch.ch_775(ch.ch_774, null))
+ch.ch_784 = new Map([])
+ch.ch_785 = [ch.ch_22(ch.ch_779, false), ch.ch_784]
+ch.ch_780 = [ch.ch_785]
+ch.ch_782 = new Map([])
+ch.ch_783 = ch.ch_16(ch.ch_780, Symbol())
+ch.ch_19(ch.ch_779, ch.ch_781, null)(ch.ch_783(ch.ch_782, null))
+ch.ch_792 = new Map([])
+ch.ch_793 = [ch.ch_22(ch.ch_787, false), ch.ch_792]
+ch.ch_788 = [ch.ch_793]
+ch.ch_790 = new Map([])
+ch.ch_791 = ch.ch_16(ch.ch_788, Symbol())
+ch.ch_19(ch.ch_787, ch.ch_789, null)(ch.ch_791(ch.ch_790, null))
+ch.ch_800 = new Map([])
+ch.ch_801 = [ch.ch_22(ch.ch_795, false), ch.ch_800]
+ch.ch_796 = [ch.ch_801]
+ch.ch_798 = new Map([])
+ch.ch_799 = ch.ch_16(ch.ch_796, Symbol())
+ch.ch_19(ch.ch_795, ch.ch_797, null)(ch.ch_799(ch.ch_798, null))
+ch.ch_808 = new Map([])
+ch.ch_809 = [ch.ch_22(ch.ch_803, false), ch.ch_808]
+ch.ch_804 = [ch.ch_809]
+ch.ch_806 = new Map([])
+ch.ch_807 = ch.ch_16(ch.ch_804, Symbol())
+ch.ch_19(ch.ch_803, ch.ch_805, null)(ch.ch_807(ch.ch_806, null))
+ch.ch_816 = new Map([])
+ch.ch_817 = [ch.ch_22(ch.ch_811, false), ch.ch_816]
+ch.ch_812 = [ch.ch_817]
+ch.ch_814 = new Map([])
+ch.ch_815 = ch.ch_16(ch.ch_812, Symbol())
+ch.ch_19(ch.ch_811, ch.ch_813, null)(ch.ch_815(ch.ch_814, null))
+ch.ch_824 = new Map([])
+ch.ch_825 = [ch.ch_22(ch.ch_819, false), ch.ch_824]
+ch.ch_820 = [ch.ch_825]
+ch.ch_822 = new Map([])
+ch.ch_823 = ch.ch_16(ch.ch_820, Symbol())
+ch.ch_19(ch.ch_819, ch.ch_821, null)(ch.ch_823(ch.ch_822, null))
+ch.ch_832 = new Map([])
+ch.ch_833 = [ch.ch_22(ch.ch_827, false), ch.ch_832]
+ch.ch_828 = [ch.ch_833]
+ch.ch_830 = new Map([])
+ch.ch_831 = ch.ch_16(ch.ch_828, Symbol())
+ch.ch_19(ch.ch_827, ch.ch_829, null)(ch.ch_831(ch.ch_830, null))
+ch.ch_841 = new Map([])
+ch.ch_842 = [ch.ch_22(ch.ch_836, false), ch.ch_841]
+ch.ch_837 = [ch.ch_842]
+ch.ch_839 = new Map([])
+ch.ch_840 = ch.ch_16(ch.ch_837, Symbol())
+ch.ch_19(ch.ch_836, ch.ch_838, null)(ch.ch_840(ch.ch_839, null))
+ch.ch_849 = new Map([])
+ch.ch_850 = [ch.ch_22(ch.ch_844, false), ch.ch_849]
+ch.ch_845 = [ch.ch_850]
+ch.ch_847 = new Map([])
+ch.ch_848 = ch.ch_16(ch.ch_845, Symbol())
+ch.ch_19(ch.ch_844, ch.ch_846, null)(ch.ch_848(ch.ch_847, null))
+ch.ch_857 = new Map([])
+ch.ch_858 = [ch.ch_22(ch.ch_852, false), ch.ch_857]
+ch.ch_853 = [ch.ch_858]
+ch.ch_855 = new Map([])
+ch.ch_856 = ch.ch_16(ch.ch_853, Symbol())
+ch.ch_19(ch.ch_852, ch.ch_854, null)(ch.ch_856(ch.ch_855, null))
+ch.ch_865 = new Map([])
+ch.ch_866 = [ch.ch_22(ch.ch_860, false), ch.ch_865]
+ch.ch_861 = [ch.ch_866]
+ch.ch_863 = new Map([])
+ch.ch_864 = ch.ch_16(ch.ch_861, Symbol())
+ch.ch_19(ch.ch_860, ch.ch_862, null)(ch.ch_864(ch.ch_863, null))
+ch.ch_874 = new Map([])
+ch.ch_875 = [ch.ch_22(ch.ch_869, false), ch.ch_874]
+ch.ch_870 = [ch.ch_875]
+ch.ch_872 = new Map([])
+ch.ch_873 = ch.ch_16(ch.ch_870, Symbol())
+ch.ch_19(ch.ch_869, ch.ch_871, null)(ch.ch_873(ch.ch_872, null))
+ch.ch_882 = new Map([])
+ch.ch_883 = [ch.ch_22(ch.ch_877, false), ch.ch_882]
+ch.ch_878 = [ch.ch_883]
+ch.ch_880 = new Map([])
+ch.ch_881 = ch.ch_16(ch.ch_878, Symbol())
+ch.ch_19(ch.ch_877, ch.ch_879, null)(ch.ch_881(ch.ch_880, null))
+ch.ch_890 = new Map([])
+ch.ch_891 = [ch.ch_22(ch.ch_885, false), ch.ch_890]
+ch.ch_886 = [ch.ch_891]
+ch.ch_888 = new Map([])
+ch.ch_889 = ch.ch_16(ch.ch_886, Symbol())
+ch.ch_19(ch.ch_885, ch.ch_887, null)(ch.ch_889(ch.ch_888, null))
+ch.ch_898 = new Map([])
+ch.ch_899 = [ch.ch_22(ch.ch_893, false), ch.ch_898]
+ch.ch_894 = [ch.ch_899]
+ch.ch_896 = new Map([])
+ch.ch_897 = ch.ch_16(ch.ch_894, Symbol())
+ch.ch_19(ch.ch_893, ch.ch_895, null)(ch.ch_897(ch.ch_896, null))
+ch.ch_906 = new Map([])
+ch.ch_907 = [ch.ch_22(ch.ch_901, false), ch.ch_906]
+ch.ch_902 = [ch.ch_907]
+ch.ch_904 = new Map([])
+ch.ch_905 = ch.ch_16(ch.ch_902, Symbol())
+ch.ch_19(ch.ch_901, ch.ch_903, null)(ch.ch_905(ch.ch_904, null))
+ch.ch_914 = new Map([])
+ch.ch_915 = [ch.ch_22(ch.ch_909, false), ch.ch_914]
+ch.ch_910 = [ch.ch_915]
+ch.ch_912 = new Map([])
+ch.ch_913 = ch.ch_16(ch.ch_910, Symbol())
+ch.ch_19(ch.ch_909, ch.ch_911, null)(ch.ch_913(ch.ch_912, null))
+ch.ch_922 = new Map([])
+ch.ch_923 = [ch.ch_22(ch.ch_917, false), ch.ch_922]
+ch.ch_918 = [ch.ch_923]
+ch.ch_920 = new Map([])
+ch.ch_921 = ch.ch_16(ch.ch_918, Symbol())
+ch.ch_19(ch.ch_917, ch.ch_919, null)(ch.ch_921(ch.ch_920, null))
+ch.ch_930 = new Map([])
+ch.ch_931 = [ch.ch_22(ch.ch_925, false), ch.ch_930]
+ch.ch_926 = [ch.ch_931]
+ch.ch_928 = new Map([])
+ch.ch_929 = ch.ch_16(ch.ch_926, Symbol())
+ch.ch_19(ch.ch_925, ch.ch_927, null)(ch.ch_929(ch.ch_928, null))
+ch.ch_938 = new Map([])
+ch.ch_939 = [ch.ch_22(ch.ch_933, false), ch.ch_938]
+ch.ch_934 = [ch.ch_939]
+ch.ch_936 = new Map([])
+ch.ch_937 = ch.ch_16(ch.ch_934, Symbol())
+ch.ch_19(ch.ch_933, ch.ch_935, null)(ch.ch_937(ch.ch_936, null))
+ch.ch_946 = new Map([])
+ch.ch_947 = [ch.ch_22(ch.ch_941, false), ch.ch_946]
+ch.ch_942 = [ch.ch_947]
+ch.ch_944 = new Map([])
+ch.ch_945 = ch.ch_16(ch.ch_942, Symbol())
+ch.ch_19(ch.ch_941, ch.ch_943, null)(ch.ch_945(ch.ch_944, null))
+ch.ch_954 = new Map([])
+ch.ch_955 = [ch.ch_22(ch.ch_949, false), ch.ch_954]
+ch.ch_950 = [ch.ch_955]
+ch.ch_952 = new Map([])
+ch.ch_953 = ch.ch_16(ch.ch_950, Symbol())
+ch.ch_19(ch.ch_949, ch.ch_951, null)(ch.ch_953(ch.ch_952, null))
+ch.ch_962 = new Map([])
+ch.ch_963 = [ch.ch_22(ch.ch_957, false), ch.ch_962]
+ch.ch_958 = [ch.ch_963]
+ch.ch_960 = new Map([])
+ch.ch_961 = ch.ch_16(ch.ch_958, Symbol())
+ch.ch_19(ch.ch_957, ch.ch_959, null)(ch.ch_961(ch.ch_960, null))
+ch.ch_970 = new Map([])
+ch.ch_971 = [ch.ch_22(ch.ch_965, false), ch.ch_970]
+ch.ch_966 = [ch.ch_971]
+ch.ch_968 = new Map([])
+ch.ch_969 = ch.ch_16(ch.ch_966, Symbol())
+ch.ch_19(ch.ch_965, ch.ch_967, null)(ch.ch_969(ch.ch_968, null))
+ch.ch_978 = new Map([])
+ch.ch_979 = [ch.ch_22(ch.ch_973, false), ch.ch_978]
+ch.ch_974 = [ch.ch_979]
+ch.ch_976 = new Map([])
+ch.ch_977 = ch.ch_16(ch.ch_974, Symbol())
+ch.ch_19(ch.ch_973, ch.ch_975, null)(ch.ch_977(ch.ch_976, null))
+ch.ch_986 = new Map([])
+ch.ch_987 = [ch.ch_22(ch.ch_981, false), ch.ch_986]
+ch.ch_982 = [ch.ch_987]
+ch.ch_984 = new Map([])
+ch.ch_985 = ch.ch_16(ch.ch_982, Symbol())
+ch.ch_19(ch.ch_981, ch.ch_983, null)(ch.ch_985(ch.ch_984, null))
+ch.ch_994 = new Map([])
+ch.ch_995 = [ch.ch_22(ch.ch_989, false), ch.ch_994]
+ch.ch_990 = [ch.ch_995]
+ch.ch_992 = new Map([])
+ch.ch_993 = ch.ch_16(ch.ch_990, Symbol())
+ch.ch_19(ch.ch_989, ch.ch_991, null)(ch.ch_993(ch.ch_992, null))
+ch.ch_1002 = new Map([])
+ch.ch_1003 = [ch.ch_22(ch.ch_997, false), ch.ch_1002]
+ch.ch_998 = [ch.ch_1003]
+ch.ch_1000 = new Map([])
+ch.ch_1001 = ch.ch_16(ch.ch_998, Symbol())
+ch.ch_19(ch.ch_997, ch.ch_999, null)(ch.ch_1001(ch.ch_1000, null))
+ch.ch_1010 = new Map([])
+ch.ch_1011 = [ch.ch_22(ch.ch_1005, false), ch.ch_1010]
+ch.ch_1006 = [ch.ch_1011]
+ch.ch_1008 = new Map([])
+ch.ch_1009 = ch.ch_16(ch.ch_1006, Symbol())
+ch.ch_19(ch.ch_1005, ch.ch_1007, null)(ch.ch_1009(ch.ch_1008, null))
+ch.ch_1018 = new Map([])
+ch.ch_1019 = [ch.ch_22(ch.ch_1013, false), ch.ch_1018]
+ch.ch_1014 = [ch.ch_1019]
+ch.ch_1016 = new Map([])
+ch.ch_1017 = ch.ch_16(ch.ch_1014, Symbol())
+ch.ch_19(ch.ch_1013, ch.ch_1015, null)(ch.ch_1017(ch.ch_1016, null))
+ch.ch_1026 = new Map([])
+ch.ch_1027 = [ch.ch_22(ch.ch_1021, false), ch.ch_1026]
+ch.ch_1022 = [ch.ch_1027]
+ch.ch_1024 = new Map([])
+ch.ch_1025 = ch.ch_16(ch.ch_1022, Symbol())
+ch.ch_19(ch.ch_1021, ch.ch_1023, null)(ch.ch_1025(ch.ch_1024, null))
+ch.ch_1034 = new Map([])
+ch.ch_1035 = [ch.ch_22(ch.ch_1029, false), ch.ch_1034]
+ch.ch_1030 = [ch.ch_1035]
+ch.ch_1032 = new Map([])
+ch.ch_1033 = ch.ch_16(ch.ch_1030, Symbol())
+ch.ch_19(ch.ch_1029, ch.ch_1031, null)(ch.ch_1033(ch.ch_1032, null))
+ch.ch_1042 = new Map([])
+ch.ch_1043 = [ch.ch_22(ch.ch_1037, false), ch.ch_1042]
+ch.ch_1038 = [ch.ch_1043]
+ch.ch_1040 = new Map([])
+ch.ch_1041 = ch.ch_16(ch.ch_1038, Symbol())
+ch.ch_19(ch.ch_1037, ch.ch_1039, null)(ch.ch_1041(ch.ch_1040, null))
+ch.ch_1050 = new Map([])
+ch.ch_1051 = [ch.ch_22(ch.ch_1045, false), ch.ch_1050]
+ch.ch_1046 = [ch.ch_1051]
+ch.ch_1048 = new Map([])
+ch.ch_1049 = ch.ch_16(ch.ch_1046, Symbol())
+ch.ch_19(ch.ch_1045, ch.ch_1047, null)(ch.ch_1049(ch.ch_1048, null))
+ch.ch_11 = null
+ch.ch_12 = ele => {
+            let name = ele.getAttribute('name')
+            ch.ch_11 = ele
+            document.documentElement.setAttribute('trackaim', name)
+            document.getElementById('trackaim_name').textContent = name  
+        }
+;(async () => {  // 垃圾JS到现在还没解决无分号换行问题
+                // ch.ch_568.style.left = window.innerWidth / 2 + 'px'
+                // ch.ch_568.style.top = window.innerHeight / 2 + 'px'
+                ch.ch_568.style.transformOrigin = 'left top'
+                ch.ch_568.style.transform = `scale(${ ch.ch_10 })`
+                ch.ch_12(ch.ch_546)
+                let func = () => {
+                    let aim = ch.ch_11
+                    if (aim) {
+                        ch.ch_568.style.left = window.innerWidth / 2 - (parseInt(aim.style.left) + aim.clientWidth / 2) * ch.ch_10 + 'px'
+                        ch.ch_568.style.top = window.innerHeight / 2 - (parseInt(aim.style.top) + aim.clientHeight / 2) * ch.ch_10 + 'px'
+                    }
+                }
+                while (true) {
+                    await ch.ch_4(func)
+                }
+            })()
+ch.ch_562 = document.getElementById("ch_561")
+ch.ch_15 = ele => {
+            ele.addEventListener('mousedown', () => {
+                if (event.button === 2) { ch.ch_12(ele) }              
+            })
+        }
+ch.ch_15(ch.ch_14)
+ch.ch_15(ch.ch_26)
+ch.ch_15(ch.ch_34)
+ch.ch_15(ch.ch_42)
+ch.ch_15(ch.ch_50)
+ch.ch_15(ch.ch_58)
+ch.ch_15(ch.ch_66)
+ch.ch_15(ch.ch_74)
+ch.ch_15(ch.ch_82)
+ch.ch_15(ch.ch_90)
+ch.ch_15(ch.ch_98)
+ch.ch_15(ch.ch_106)
+ch.ch_15(ch.ch_114)
+ch.ch_15(ch.ch_122)
+ch.ch_15(ch.ch_130)
+ch.ch_15(ch.ch_138)
+ch.ch_15(ch.ch_146)
+ch.ch_15(ch.ch_154)
+ch.ch_15(ch.ch_162)
+ch.ch_15(ch.ch_170)
+ch.ch_15(ch.ch_178)
+ch.ch_15(ch.ch_186)
+ch.ch_15(ch.ch_194)
+ch.ch_15(ch.ch_202)
+ch.ch_15(ch.ch_210)
+ch.ch_15(ch.ch_218)
+ch.ch_15(ch.ch_226)
+ch.ch_15(ch.ch_234)
+ch.ch_15(ch.ch_242)
+ch.ch_15(ch.ch_250)
+ch.ch_15(ch.ch_258)
+ch.ch_15(ch.ch_266)
+ch.ch_15(ch.ch_274)
+ch.ch_15(ch.ch_282)
+ch.ch_15(ch.ch_290)
+ch.ch_15(ch.ch_298)
+ch.ch_15(ch.ch_306)
+ch.ch_15(ch.ch_314)
+ch.ch_15(ch.ch_322)
+ch.ch_15(ch.ch_330)
+ch.ch_15(ch.ch_338)
+ch.ch_15(ch.ch_346)
+ch.ch_15(ch.ch_354)
+ch.ch_15(ch.ch_362)
+ch.ch_15(ch.ch_370)
+ch.ch_15(ch.ch_378)
+ch.ch_15(ch.ch_386)
+ch.ch_15(ch.ch_394)
+ch.ch_15(ch.ch_402)
+ch.ch_15(ch.ch_410)
+ch.ch_15(ch.ch_418)
+ch.ch_15(ch.ch_426)
+ch.ch_608 = async ele => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                if (ele.getAttribute('state') === '1') {await ch.ch_5(0.2); continue}
+                let items = [
+                    {
+                        'get_value': get_y_value,
+                        'set_value': set_y_value,
+                        'end_value': get_y_value() - 100,
+                    },
+                ]
+                await ch.ch_573(items, 0.5, 0, stop)
+                ele.style.visibility = 'hidden'
+                await ch.ch_5(2)
+                items = [
+                    {
+                        'get_value': get_x_value,
+                        'set_value': set_x_value,
+                        'end_value': ch.ch_572(get_x0() + self_width, get_x_end() - 2 * self_width),
+                    },
+                    {
+                        'get_value': get_y_value,
+                        'set_value': set_y_value,
+                        'end_value': ch.ch_572(get_y0() + self_height, get_y_end() - 2 * self_height),
+                    },
+                ]
+                await ch.ch_573(items, 0, 0, stop)
+                ele.style.visibility = ''
+                ele.setAttribute('state', '1')
+            }
+        }
+ch.ch_608(ch.ch_426)
+ch.ch_15(ch.ch_434)
+ch.ch_608(ch.ch_434)
+ch.ch_15(ch.ch_442)
+ch.ch_608(ch.ch_442)
+ch.ch_15(ch.ch_450)
+ch.ch_608(ch.ch_450)
+ch.ch_15(ch.ch_458)
+ch.ch_608(ch.ch_458)
+ch.ch_15(ch.ch_466)
+ch.ch_608(ch.ch_466)
+ch.ch_15(ch.ch_474)
+ch.ch_608(ch.ch_474)
+ch.ch_15(ch.ch_482)
+ch.ch_608(ch.ch_482)
+ch.ch_15(ch.ch_490)
+ch.ch_608(ch.ch_490)
+ch.ch_15(ch.ch_498)
+ch.ch_608(ch.ch_498)
+ch.ch_15(ch.ch_506)
+ch.ch_608(ch.ch_506)
+ch.ch_15(ch.ch_514)
+ch.ch_608(ch.ch_514)
+ch.ch_15(ch.ch_522)
+ch.ch_608(ch.ch_522)
+ch.ch_15(ch.ch_530)
+ch.ch_608(ch.ch_530)
+ch.ch_15(ch.ch_538)
+ch.ch_608(ch.ch_538)
+ch.ch_15(ch.ch_546)
+ch.ch_597 = [ch.ch_426, ch.ch_434, ch.ch_442, ch.ch_450, ch.ch_458, ch.ch_466, ch.ch_474, ch.ch_482, ch.ch_490, ch.ch_498, ch.ch_506, ch.ch_514, ch.ch_522, ch.ch_530, ch.ch_538]
+ch.ch_598 = async ele => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            let get_items = aim => [
+                {
+                    'get_value': get_x_value,
+                    'set_value': set_x_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.left) - self_width * 0.8,
+                        parseInt(aim.style.left) + aim.clientWidth - self_width * 0.2
+                    ) - get_x0(),
+                },
+                {
+                    'get_value': get_y_value,
+                    'set_value': set_y_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.top) - self_height * 0.8,
+                        parseInt(aim.style.top) + aim.clientHeight - self_height * 0.2
+                    ) - get_y0(),
+                },
+            ]
+            let get_distance = aim => Math.sqrt(
+                    Math.pow(
+                        parseInt(aim.style.left) - parseInt(ele.style.left),
+                        2
+                    ) +
+                    Math.pow(
+                        parseInt(aim.style.top) - parseInt(ele.style.top),
+                        2
+                    )
+            )
+            let just_gold = null
+            let distance = null
+            let aim = null
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                let distances = []
+                for (let gold of ch.ch_597) {
+                    distances.push([get_distance(gold), gold])
+                }
+                distances.sort((a, b) => a[0] - b[0])
+                for (let x of distances) {
+                    distance = x[0]
+                    aim = x[1]
+                    if (aim.getAttribute('state') === '1') {
+                        if (aim !== just_gold) {
+                            break
+                        }
+                    }
+                }
+                let items = get_items(aim)
+                if (items[0]['end_value'] < get_x_value()) {ele.style.transform = 'scaleX(-1)'} else {ele.style.transform = 'scaleX(1)'}
+                await ch.ch_573(items, distance * 0.01, 0, stop)
+            }
+        }
+ch.ch_598(ch.ch_546)
+ch.ch_15(ch.ch_554)
+ch.ch_596 = async (ele, aim, period) => {
+            let [
+                    self_width, self_height, layer_width, layer_height,
+                    creat_stop,
+                    get_x0, get_y0, get_x_end, get_y_end,
+                    get_x_value, set_x_value, get_y_value, set_y_value
+            ] = await ch.ch_571(ele=ele)
+            let aim_width = aim.clientWidth
+            let aim_height = aim.clientHeight
+            let multiple = 0
+            let get_items = aim => [
+                {
+                    'get_value': get_x_value,
+                    'set_value': set_x_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.left) - self_width - aim_width * multiple,
+                        parseInt(aim.style.left) + aim_width + aim_width * multiple
+                    ) - get_x0(),
+                },
+                {
+                    'get_value': get_y_value,
+                    'set_value': set_y_value,
+                    'end_value': ch.ch_572(
+                        parseInt(aim.style.top) - self_height - aim_height * multiple,
+                        parseInt(aim.style.top) + aim_height + aim_height * multiple
+                    ) - get_y0(),
+                },
+            ]
+            while (true) {
+                let stop = creat_stop()
+                if (stop()) {await ch.ch_5(0.2); continue}
+                await ch.ch_573(get_items(aim), period, 0, stop)
+            }
+        }
+ch.ch_596(ch.ch_554, ch.ch_546, 1)
+ch.ch_15(ch.ch_640)
+ch.ch_15(ch.ch_649)
+ch.ch_15(ch.ch_657)
+ch.ch_15(ch.ch_665)
+ch.ch_15(ch.ch_673)
+ch.ch_15(ch.ch_681)
+ch.ch_15(ch.ch_690)
+ch.ch_15(ch.ch_698)
+ch.ch_15(ch.ch_706)
+ch.ch_15(ch.ch_714)
+ch.ch_15(ch.ch_722)
+ch.ch_15(ch.ch_730)
+ch.ch_15(ch.ch_738)
+ch.ch_15(ch.ch_746)
+ch.ch_15(ch.ch_754)
+ch.ch_15(ch.ch_763)
+ch.ch_15(ch.ch_771)
+ch.ch_15(ch.ch_779)
+ch.ch_15(ch.ch_787)
+ch.ch_15(ch.ch_795)
+ch.ch_15(ch.ch_803)
+ch.ch_15(ch.ch_811)
+ch.ch_15(ch.ch_819)
+ch.ch_15(ch.ch_827)
+ch.ch_15(ch.ch_836)
+ch.ch_15(ch.ch_844)
+ch.ch_15(ch.ch_852)
+ch.ch_15(ch.ch_860)
+ch.ch_15(ch.ch_869)
+ch.ch_15(ch.ch_877)
+ch.ch_15(ch.ch_885)
+ch.ch_15(ch.ch_893)
+ch.ch_15(ch.ch_901)
+ch.ch_15(ch.ch_909)
+ch.ch_15(ch.ch_917)
+ch.ch_15(ch.ch_925)
+ch.ch_15(ch.ch_933)
+ch.ch_15(ch.ch_941)
+ch.ch_15(ch.ch_949)
+ch.ch_15(ch.ch_957)
+ch.ch_15(ch.ch_965)
+ch.ch_15(ch.ch_973)
+ch.ch_15(ch.ch_981)
+ch.ch_15(ch.ch_989)
+ch.ch_15(ch.ch_997)
+ch.ch_15(ch.ch_1005)
+ch.ch_15(ch.ch_1013)
+ch.ch_15(ch.ch_1021)
+ch.ch_15(ch.ch_1029)
+ch.ch_15(ch.ch_1037)
+ch.ch_15(ch.ch_1045)
+ch.ch_15(ch.ch_562)
+ch.ch_1093 = document.getElementById("ch_1092")
+ch.ch_1093.addEventListener('click', async () => {ch.ch_11 = null
+            document.documentElement.setAttribute('trackaim', '')
+            document.getElementById('trackaim_name').textContent = ''})
+ch.ch_564 = document.getElementById("ch_563")
+ch.ch_566 = document.getElementById("ch_565")
+ch.ch_564.addEventListener('click', async () => {let bgm_switch = ch.ch_564
+            if (bgm_switch.getAttribute('switch')) {
+                bgm_switch.setAttribute('switch', '')
+                ch.ch_566.pause()
+            }
+            else {
+                bgm_switch.setAttribute('switch', '1')
+                ch.ch_566.play()
+            }})
+
+</script>
+</body>
+</html>

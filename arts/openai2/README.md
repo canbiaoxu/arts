@@ -1,35 +1,23 @@
-# 项目描述
+# 描述
 
-ChatGPT 工具包，支持连续对话、流式对话（逐字显示）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、在命令行对话、限制历史消息数量、异步请求。
+ChatGPT 工具包，支持多模态对话（gpt-4o）、连续对话、流式对话（逐字显示）、生成图像（DALL·E）、对话存档与载入、对话回滚、对话伪造、轮询 api_key 池、群聊多角色模拟、限制历史消息数量、异步请求。
 
-# 作者
-
-[江南雨上](mailto:lcctoor@outlook.com)
-
-[主页](https://lcctoor.github.io/arts) \| [Github](https://github.com/lcctoor) \| [PyPi](https://pypi.org/user/lcctoor) \| [微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) \| [邮箱](mailto:lcctoor@outlook.com) \| [捐赠](https://lcctoor.github.io/arts/arts/ip_static/DonationQRC-0rmb.jpg)
-
-# Bug提交、功能提议
-
-你可以通过 [Github-Issues](https://github.com/lcctoor/arts/issues)、[微信](https://lcctoor.github.io/arts/arts/ip_static/WeChatQRC.jpg) 与我联系。
+[源码](https://github.com/canbiaoxu/arts/tree/main/arts/openai)
 
 # 安装
 
 ```
-pip install openai2
+pip install arts
 ```
 
-# 获取api_key
+# [获取api_key](https://platform.openai.com/account/api-keys)
 
-[获取链接1](https://platform.openai.com/account/api-keys)
-
-[获取链接2](https://www.baidu.com/s?wd=%E8%8E%B7%E5%8F%96%20openai%20api_key)
-
-# 教程 ([查看美化版](https://lcctoor.github.io/arts/arts/openai2) 👈)
+# 教程
 
 ## 导入
 
 ```python
-from openai2 import Chat
+from arts.openai2 import Chat
 ```
 
 ## 创建对话
@@ -44,17 +32,17 @@ Lucy = Chat(api_key=api_key, model="gpt-3.5-turbo")  # 每个实例可使用 相
 ## 对话
 
 ```python
-Tony.request('自然数50的后面是几?')  # >>> 51
-Lucy.request('自然数100的后面是几?')  # >>> 101
+Tony.request('自然数50的后面是几?')  # >>> '51'
+Lucy.request('自然数100的后面是几?')  # >>> '101'
 
-Tony.request('再往后是几?')  # >>> 52
-Lucy.request('再往后是几?')  # >>> 102
+Tony.request('再往后是几?')  # >>> '52'
+Lucy.request('再往后是几?')  # >>> '102'
 
-Tony.request('再往后呢?')  # >>> 53
-Lucy.request('再往后呢?')  # >>> 103
+Tony.request('再往后呢?')  # >>> '53'
+Lucy.request('再往后呢?')  # >>> '103'
 ```
 
-## 流式对话 ([查看演示](https://lcctoor.github.io/arts/arts/openai2/ip_static/流式对话演示.mp4) 👈)
+## 流式对话
 
 ```python
 for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
@@ -78,7 +66,7 @@ for answer in Lucy.stream_request('世界上最大的海洋是哪个?'):
 
 ```python
 import asyncio
-from openai2 import Chat
+from arts.openai2 import Chat
 
 Tony = Chat(api_key=api_key, model="gpt-3.5-turbo")
 
@@ -108,6 +96,38 @@ async for answer in Tony.async_stream_request('世界上最大的海洋是哪个
 洋
 。
 ```
+
+## 多模态对话（gpt-4o）
+
+```python
+from pathlib import Path
+from arts.openai2 import Chat, Multimodal_Part
+
+
+Bruce = Chat(api_key='sk-jg93...', model="gpt-4o")
+
+
+pic = Path(rf'C:\鼠标.jpeg').read_bytes()
+
+answer = Bruce.request(
+
+    '下面这张图片里画了什么？',
+  
+    Multimodal_Part.jpeg(pic)
+)
+
+print(answer)  # >>> '这张图片里画了一个鼠标。'
+```
+
+注：
+
+1、Multimodal_Part 除了 jpeg 方法以外，还有 png、text …… 等方法。
+
+2、对于 str 型对象，以下这两种写法是等价的：`Bruce.request(..., '这张图片里画了什么', ...)`、`Bruce.request(..., Multimodal_Part.text('这张图片里画了什么'), ...)`。
+
+3、多模态对话支持同步对话、异步对话、同步流式对话、异步流式对话…… 相对于普通对话，唯一的区别就是支持多模态。
+
+4、目前已知支持多模态对话的模型有：gpt-4o、gpt-4o-mini、gpt-4o-2024-05-13、gpt-4o-mini-2024-07-18。
 
 ## 对话回滚
 
@@ -140,7 +160,7 @@ Anna.request('再往后呢?')  # >>> 5
 ## 轮询 api_key 池
 
 ```python
-from openai2 import Chat, AKPool
+from arts.openai2 import Chat, AKPool
 
 AK1 = 'sk-ug8w...'
 AK2 = AKPool(['sk-mf40...', 'sk-m6g7...', ...])
@@ -221,7 +241,7 @@ Jenny.request('再往后呢?')  # >>> 4
 利用对话导入功能，可以伪造对话：
 
 ```python
-from openai2 import Chat, user_msg, assistant_msg
+from arts.openai2 import Chat, user_msg, assistant_msg
 
 Mickey = Chat(api_key=api_key, model="gpt-3.5-turbo")
 
@@ -238,11 +258,77 @@ print(answer)  # >>> 非常抱歉，我刚才的回答有些不适当。1+1=2, 1
 
 注：对话导出与导入可以穿插在对话中的任何时刻。
 
+## 生成图像（DALL·E）
+
+返回图片的二进制：
+
+```python
+from pathlib import Path
+from arts.openai2 import Chat
+
+Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+images = Tony.dalle('请画一只猫', image_count=2)
+
+for i, x in enumerate(images):
+    Path(f"第{i}张.png").write_bytes(x)
+```
+
+返回图片的URL：
+
+```python
+from arts.openai2 import Chat
+
+Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+images = Tony.dalle('请画一只猫', image_count=2, return_format='url')
+
+for i, url in enumerate(images):
+    print(f"第{i}张的URL是：", url)
+```
+
+## 异步生成图像（DALL·E）
+
+返回图片的二进制：
+
+```python
+import asyncio
+from pathlib import Path
+from arts.openai2 import Chat
+
+async def main():
+    Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+    images = await Tony.async_dalle('请画一只猫', image_count=2)
+  
+    for i, x in enumerate(images):
+        Path(f"第{i}张.png").write_bytes(x)
+
+asyncio.run(main())
+```
+
+返回图片的URL：
+
+```python
+import asyncio
+from arts.openai2 import Chat
+
+async def main():
+    Tony = Chat(api_key='sk-jg93...', model="dall-e-2")
+
+    images = await Tony.async_dalle('请画一只猫', image_count=2, return_format='url')
+  
+    for i, url in enumerate(images):
+        print(f"第{i}张的URL是：", url)
+
+asyncio.run(main())
+```
+
 ## 群聊多角色模拟
 
 ```python
 import json
-from openai2 import GroupChat
+from arts.openai2 import GroupChat
 
 api_key = '...'  # 更换成自己的 api_key
 group = GroupChat(api_key=api_key, model="gpt-3.5-turbo")
@@ -408,20 +494,3 @@ Ariel.unpin_messages(0, -2, -1)  # 解锁索引为 0、-2、-1 的消息
 3、`openai2.Chat.async_request` 与 `openai2.Chat.async_stream_request` 底层调用了 `openai.AsyncOpenAI.chat.completions.create`，支持 `openai.AsyncOpenAI.chat.completions.create` 的所有参数。
 
 [查看相关参数](https://platform.openai.com/docs/api-reference/chat) 👈
-
-## 在命令行对话 ([查看演示](https://lcctoor.github.io/arts/arts/openai2/ip_static/命令行对话演示.mp4) 👈)
-
-```cpp
-openai2 add_apikey sk-T92mZYXHLWKt1234gtPKT3BlbkFJ
-openai2 chat
-```
-
-指令集
-
-| 指令                               | 功能                         | 说明                     |
-| ---------------------------------- | ---------------------------- | ------------------------ |
-| openai2  add_apikey  你的apikey | 添加 1 个 apikey             | 如需添加多个，可执行多次 |
-| openai2  read_apikey              | 查看所有 apikey              |                          |
-| openai2  clear_apikey             | 清除所有 apikey              |                          |
-| openai2  chat                     | 继续上次的对话               |                          |
-| openai2  newchat                  | 清空对话记录, 然后开始新对话 |                          |

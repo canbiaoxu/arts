@@ -1,25 +1,13 @@
-一个用来对 字符串/列表/元组/数列 等数据按固定单元长度分组的功能：
+# 文件夹说明
 
-```python
-from skybox import sky_box
+此文件夹下，存放的是许灿标的部分本地文件的哈希值，以及生成这些哈希值所使用的脚本。
 
+# 作者
 
-# 分字符串
-data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-sky_box(data, 3)  # >>> ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQR', 'STU', 'VWX', 'YZ']
+姓名：许灿标
 
+作者相关链接:
 
-# 分列表
-data = ['赤', '橙', '黄', '绿', '青', '蓝', '紫']
-sky_box(data, 3)  # >>> [['赤', '橙', '黄'], ['绿', '青', '蓝'], ['紫']]
-
-
-# 分元组
-data = ('赤', '橙', '黄', '绿', '青', '蓝', '紫')
-sky_box(data, 3)  # >>> [('赤', '橙', '黄'), ('绿', '青', '蓝'), ('紫',)]
-
-
-# 分数列
-data = range(1, 15)
-sky_box(data, 3)  # >>> [range(1, 4), range(4, 7), range(7, 10), range(10, 13), range(13, 15)]
-```
+- 邮箱: mailto:canbiaoxu@outlook.com
+- Github: https://github.com/canbiaoxu
+- 主页: https://canbiaoxu.com/
