@@ -151,7 +151,7 @@ window.read_ai_answer = async (word) => {
     })
 }
 
-const request = indexedDB.open("canbiaoxu.com.free_word.v1", 1)
+const request = indexedDB.open("github.com.canbiaoxu.arts.free_word.v1", 1)
 // 库名不能包含斜杠`/`
 
 request.onupgradeneeded = function (event) {

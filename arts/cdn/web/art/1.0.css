@@ -195,7 +195,7 @@ html {
             }
 
             html[screen_type='y'] & {
-                justify-items: left;
+                justify-items: center;
 
                 &>*:not(audio) {
                     max-width: 100%;

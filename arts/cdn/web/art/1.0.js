@@ -1,6 +1,4 @@
-print = console.log
 art = {}
-
 
 art.video_suffixes = ['mp4']
 art.img_suffixes = ['jpg', 'png', 'jpeg']
@@ -69,8 +67,9 @@ code = (code_string, min_height = 17.5) => {
 art.unfold_code = (textarea) => { textarea.style.height = textarea.scrollHeight + 25 + 'px' }
 
 art.set_screen_type = () => {
+    document.documentElement.setAttribute('screen_type', 'y')  // 检测失败时按竖屏处理
     if (!window.frameElement) {
-        let screen_type = window.innerWidth > window.innerHeight ? 'x' : 'y'
+        let screen_type = screen.orientation.type.includes('landscape') ? 'x' : 'y'
         document.documentElement.setAttribute('screen_type', screen_type)
     }
 }
@@ -91,8 +90,8 @@ art.render = (mini_title = false, big_title = true) => {
     let foot_text = ''
     let title = document.title
     if (window.self === window.top) {
-        if (title && mini_title) {mini_title_text = `<mini_title>${title}</mini_title>`}
-        if (title && big_title) {big_title_text = `<h1>${title}</h1>`}
+        if (title && mini_title) { mini_title_text = `<mini_title>${title}</mini_title>` }
+        if (title && big_title) { big_title_text = `<h1>${title}</h1>` }
         foot_text = `<go_home><button href='/'>主页 👈</button></go_home>`
     }
     innerHTML = art.clean_text(mini_title_text + big_title_text + innerHTML + foot_text)
@@ -117,3 +116,5 @@ art.render = (mini_title = false, big_title = true) => {
         resizeObserver.observe(document.documentElement)
     }
 }
+
+art.set_screen_type()

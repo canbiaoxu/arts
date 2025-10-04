@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html class='ch_161 ch_162 ch_163 ch_164'>
+
+<head><base href="/album/vortex_study/study_vortex_1.3/study_vortex_1.3_tutorial/index.html">
+    <title>study_vortex 1.3 教程</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <base target='_blank'>
+    <style>
+        * {
+            vertical-align: middle;
+            text-decoration: none;
+            position: relative;
+            padding: 0;
+            overflow: auto;
+            outline: none;
+            margin: 0;
+            font-size: 1rem;
+            font-family: 'Chinese Quote', 'Segoe UI', Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+        }
+
+        .ch_164 {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: white;
+        }
+
+        .ch_165 {
+            display: block;
+        }
+
+        .ch_166 {
+            display: inline-block;
+        }
+
+        .ch_174 {
+            width: 100%;
+            height: 100%;
+            grid-template-columns: auto 1fr auto;
+            display: inline-grid;
+            column-gap: 0.5rem;
+            align-items: center;
+        }
+
+        .ch_177 {
+            width: 100%;
+            row-gap: 0.5rem;
+            padding: 0.5rem;
+            justify-items: center;
+            height: 100%;
+            grid-template-rows: 1fr auto;
+            display: inline-grid;
+            column-gap: 0.5rem;
+            align-items: center;
+        }
+
+        .ch_184 {
+            width: 9rem;
+            padding: 0;
+            font-size: 7rem;
+            border-radius: 50%;
+            background-color: rgba(0, 179, 98, 1);
+        }
+
+        .ch_183:hover {
+            background-color: rgb(249, 249, 249);
+        }
+
+        .ch_182:active {
+            background-color: transparent;
+        }
+
+        .ch_168 {
+            padding: 0.618em 1em 0.618em 1em;
+            font-size: 0.8rem;
+            border-radius: 3em;
+            background-color: transparent;
+        }
+
+        html[is_coarse_pointer="false"] .ch_169:not([is_current_nav="True"]):hover {
+            background-color: rgba(0, 179, 98, 0.45);
+        }
+
+        .ch_167[is_current_nav="True"] {
+            background-color: rgba(0, 179, 98, 1);
+        }
+
+        .ch_173 {
+            white-space: nowrap;
+            scrollbar-width: none;
+            overflow-x: auto;
+            display: inline-block;
+            -ms-overflow-style: none;
+        }
+
+        .ch_172:not(.ch_exec_goto_scrollLeft) {
+            scroll-snap-type: x mandatory;
+        }
+
+        .ch_171::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ch_170>* {
+            white-space: normal;
+        }
+
+        .ch_176 {
+            width: 100%;
+            scroll-snap-align: start;
+            overflow: auto;
+            margin: 0;
+            height: 100%;
+            flex-wrap: wrap;
+            display: inline-flex;
+        }
+
+        .ch_181 {
+            vertical-align: middle;
+            max-width: 100%;
+            max-height: 100%;
+            display: inline-block;
+        }
+
+        .ch_179 {
+            vertical-align: middle;
+            max-width: 100%;
+            max-height: 100%;
+            display: inline-block;
+        }
+
+        .ch_175 {
+            vertical-align: baseline;
+            display: inline-block;
+        }
+
+        .ch_180 {
+            white-space: pre-wrap;
+            vertical-align: baseline;
+            user-select: text;
+            padding: 0.75em 1.5em 0.75em 1.5em;
+            overflow-wrap: break-word;
+            line-height: 1.75;
+            border-radius: 0.75em;
+        }
+
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none
+                /* 对 IE 和 Edge 隐藏滚动条 */
+            ;
+        }
+
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ch_178 {
+            border-width: 0.25rem;
+            border-radius: 4rem;
+            border-color: rgb(11, 138, 242);
+        }
+    </style>
+</head>
+
+<body class='ch_165'
+    style="padding:0.5rem; height:100%; width:100%; display:grid; row-gap:0.5rem; grid-template-rows:auto 1fr;">
+    <script>
+        "use strict";
+
+        if (1 + 1 === 2) {
+            window.ch = new Proxy(
+                new Map(),
+                { get: (target, name) => target.get(name), set: (target, name, value) => target.set(name, value) }
+            )
+        }
+        else {
+            window.ch = {}
+            console.log('type(ch) is not Map !')
+        }
+
+    </script>
+    <div class='ch_166' id=ch_152><button class='is_nav ch_167 ch_168 ch_169'
+            is_current_nav='True'>创建「富文本」知识库</button><button
+            class='is_nav ch_167 ch_168 ch_169'>创建「纯文本」知识库</button><button
+            class='is_nav ch_167 ch_168 ch_169'>答题流程</button><button
+            class='is_nav ch_167 ch_168 ch_169'>唐诗宋词</button><button
+            class='is_nav ch_167 ch_168 ch_169'>猜成语</button><button class='is_nav ch_167 ch_168 ch_169'>英语单词 ·
+            记忆</button><button class='is_nav ch_167 ch_168 ch_169'>猜单词</button><button
+            class='is_nav ch_167 ch_168 ch_169'>英语词典</button><button class='is_nav ch_167 ch_168 ch_169'>元素周期表 ·
+            猜元素</button><button class='is_nav ch_167 ch_168 ch_169'>元素周期表 · 猜位置</button></div>
+    <div class='ch_170 ch_171 ch_172 ch_173' id=ch_144>
+        <div class='ch_174'><span class='ch_175'></span>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_12 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><video class='ch_178 ch_179' src='./../教程/创建富文本知识库/1.mp4' controls='true'></video>
+                        <pre class='ch_180'>创建「富文本」知识库</pre>
+                    </div>
+                </div>
+            </div><span class='ch_175'></span>
+        </div>
+        <div class='ch_174'><span class='ch_175'></span>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_27 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><video class='ch_178 ch_179' src='./../教程/创建纯文本知识库/1.mp4' controls='true'></video>
+                        <pre class='ch_180'>创建「纯文本」知识库</pre>
+                    </div>
+                </div>
+            </div><span class='ch_175'></span>
+        </div>
+        <div class='ch_174'><span class='ch_175'></span>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_40 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/enter.png'>
+                        <pre class='ch_180'>答题流程</pre>
+                    </div>
+                </div>
+            </div><span class='ch_175'></span>
+        </div>
+        <div class='ch_174'><span class='ch_175'></span>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_53 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/1.png'>
+                        <pre class='ch_180'>点击任意诗词标题，即可显示对应的文章</pre>
+                    </div>
+                </div>
+            </div><span class='ch_175'></span>
+        </div>
+        <div class='ch_174'><button class='ch_182 ch_183 ch_184' id=ch_185>←</button>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_66 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/2.png'>
+                        <pre class='ch_180'>根据成语的释义，点击你认为正确的成语</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/3.png'>
+                        <pre class='ch_180'>点击正确时，显示为绿色（和题目一样的颜色，表示与题目是匹配的）</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/4.png'>
+                        <pre class='ch_180'>点击错误时，显示为红色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/21.png'>
+                        <pre class='ch_180'>再次点击任意位置，即进入下一题</pre>
+                    </div>
+                </div>
+            </div><button class='ch_182 ch_183 ch_184' id=ch_187>→</button>
+        </div>
+        <div class='ch_174'><button class='ch_182 ch_183 ch_184' id=ch_189>←</button>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_79 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/31.png'>
+                        <pre class='ch_180'>根据释义，在横线处填写你认为正确的单词</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/enter.png'>
+                        <pre class='ch_180'>答题流程</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/32.png'>
+                        <pre class='ch_180'>填写正确时，显示为绿色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/33.png'>
+                        <pre class='ch_180'>填写错误时，显示为红色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/34.png'>
+                        <pre class='ch_180'>填写错误时，可按【Backspace】（退格键）消除错误的字符</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/34.png'>
+                        <pre class='ch_180'>按【9】键，将播放美音; 按【0】键，将播放英音</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/34.png'>
+                        <pre class='ch_180'>若想显示答案，则按回车键; 若想进入下一题，也按回车键</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/space.png'>
+                        <pre class='ch_180'>空格键的作用与回车键相同</pre>
+                    </div>
+                </div>
+            </div><button class='ch_182 ch_183 ch_184' id=ch_191>→</button>
+        </div>
+        <div class='ch_174'><span class='ch_175'></span>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_92 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/8.png'>
+                        <pre class='ch_180'>根据单词的释义，点击你认为正确的单词</pre>
+                    </div>
+                </div>
+            </div><span class='ch_175'></span>
+        </div>
+        <div class='ch_174'><button class='ch_182 ch_183 ch_184' id=ch_193>←</button>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_105 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/9.png'>
+                        <pre class='ch_180'>在搜索栏输入你想检索的单词或释义</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/10.png'>
+                        <pre class='ch_180'>点击单词的标签进行过滤：
+绿色表示必须包含该标签
+红色表示排除该标签
+黄色表示必须包含所有黄色标签中的至少一个</pre>
+                    </div>
+                </div>
+            </div><button class='ch_182 ch_183 ch_184' id=ch_195>→</button>
+        </div>
+        <div class='ch_174'><button class='ch_182 ch_183 ch_184' id=ch_197>←</button>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_118 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/61.png'>
+                        <pre class='ch_180'>根据灰色方块的位置，在横线处填写你认为正确的元素符号或中文名</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/enter.png'>
+                        <pre class='ch_180'>答题流程</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/62.png'>
+                        <pre class='ch_180'>填写正确时，显示为绿色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/63.png'>
+                        <pre class='ch_180'>填写错误时，显示为红色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/64.png'>
+                        <pre class='ch_180'>填写错误时，可按【Backspace】（退格键）消除错误的字符</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/64.png'>
+                        <pre class='ch_180'>按【0】键，将播放元素的名称</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/65.png'>
+                        <pre class='ch_180'>若想显示答案，则按回车键; 若想进入下一题，也按回车键</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/space.png'>
+                        <pre class='ch_180'>空格键的作用与回车键相同</pre>
+                    </div>
+                </div>
+            </div><button class='ch_182 ch_183 ch_184' id=ch_199>→</button>
+        </div>
+        <div class='ch_174'><button class='ch_182 ch_183 ch_184' id=ch_201>←</button>
+            <div class='ch_170 ch_171 ch_172 ch_173' page_id='1' id=ch_131 style="width:100%; height:100%;">
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/71.png'>
+                        <pre class='ch_180'>根据元素的符号和中文名，点击你认为正确的元素单元格</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/72.png'>
+                        <pre class='ch_180'>点击正确时，显示为绿色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/73.png'>
+                        <pre class='ch_180'>点击错误时，显示为灰色</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/74.png'>
+                        <pre class='ch_180'>点击题目区域，可显示答案</pre>
+                    </div>
+                </div>
+                <div class='ch_176'>
+                    <div class='ch_177'><img class='ch_178 ch_181' src='./../static/75.png'>
+                        <pre class='ch_180'>再次点击任意位置，即可进入下一题</pre>
+                    </div>
+                </div>
+            </div><button class='ch_182 ch_183 ch_184' id=ch_203>→</button>
+        </div>
+    </div>
+    <script>
+        "use strict";
+
+        document.documentElement.setAttribute('is_coarse_pointer', String(window.matchMedia("(pointer: coarse)").matches))
+        ch.ch_13 = document.getElementById("ch_12")
+        ch.ch_14 = new Map([["current_index", null]])
+        ch.ch_9 = (items, last_value = null) =>
+            (outward_dict = null) =>
+                value => {
+                    if (outward_dict && outward_dict.has(value)) { value = outward_dict.get(value) }
+                    if (last_value !== value) {
+                        last_value = value
+                        for (let [set_value, inward_dict] of items) {
+                            if (inward_dict && inward_dict.has(value)) { set_value(inward_dict.get(value)) }
+                            else { set_value(value) }
+                        }
+                    }
+                }
+        ch.ch_1 = new Map()
+        ch.ch_2 = (obj, command) => {
+            if (!ch.ch_1.has(obj)) { ch.ch_1.set(obj, new Map()) }
+            let indexes = ch.ch_1.get(obj)
+            if (!indexes.has(command)) { indexes.set(command, 0) }
+            let new_index = indexes.get(command) + 1
+            indexes.set(command, new_index)
+            return new_index
+        }
+        ch.ch_3 = (obj, command, index) => ch.ch_1.get(obj).get(command) === index
+        ch.ch_4 = (func) => new Promise(resolve => requestAnimationFrame(() => { func(); resolve() }))
+        ch.ch_5 = async (ele, scrollLeft, seconds = 0) => {
+            let command_index = ch.ch_2(ele, 'scrollLeft')
+            if (seconds) {
+                let start_time = performance.now()  // 立即获取当前时间，以尽可能让时间准确
+                ele.classList.add('ch_exec_goto_scrollLeft')  // 立即设为 ch_exec_goto_scrollLeft
+                let milliseconds = seconds * 1000
+                let end_time = start_time + milliseconds
+                let start_scrollLeft = ele.scrollLeft
+                let distance = scrollLeft - start_scrollLeft
+                let gradient = distance / milliseconds  // 斜率
+                let state = { 'finished': false }
+                let scroll = () => {
+                    let current_time = performance.now()
+                    if (current_time < end_time) { ele.scrollLeft = gradient * (current_time - start_time) + start_scrollLeft }  // y = k*x + b
+                    else { state['finished'] = true }
+                }
+                while (true) {
+                    if (!ch.ch_3(ele, 'scrollLeft', command_index)) { return null }
+                    await ch.ch_4(scroll)
+                    if (state['finished']) break
+                }
+                ele.classList.remove('ch_exec_goto_scrollLeft')
+                await ch.ch_4(() => { ele.scrollLeft = scrollLeft })  // 两个功能：确保最终位置正确、激活同步
+            }
+            else
+                await ch.ch_4(() => { ele.scrollLeft = scrollLeft })
+        }
+        ch.ch_11 = (pages_box, current_index, scroll_seconds) =>
+            async value => {
+                let index = Number(value)
+                if (Number.isInteger(index)) {  // 3.0、4.0 这种格式也会表现为 True
+                    index = parseInt(index)  // 转化为 3、4 这种真正的整数
+                    if (index !== current_index.get('current_index')) {
+                        let page = pages_box.children[index - 1]
+                        if (page) {
+                            current_index.set('current_index', index)
+                            if (scroll_seconds)
+                                await ch.ch_5(pages_box, page.offsetLeft, scroll_seconds)
+                            else
+                                pages_box.scrollLeft = page.offsetLeft
+                        }
+                    }
+                }
+            }
+        ch.ch_18 = ch.ch_11(ch.ch_13, ch.ch_14, 0)
+        ch.ch_19 = new Map([])
+        ch.ch_20 = [ch.ch_18, ch.ch_19]
+        ch.ch_6 = (ele, name, value) => {
+            try { ele.setAttribute(name, value) } catch (e) { }
+            try { ele[name] = value } catch (e) { }
+        }
+        ch.ch_23 = value => ch.ch_6(ch.ch_13, 'page_id', value)
+        ch.ch_24 = new Map([])
+        ch.ch_25 = [ch.ch_23, ch.ch_24]
+        ch.ch_10 = [ch.ch_20, ch.ch_25]
+        ch.ch_15 = new Map([])
+        ch.ch_21 = new Map([])
+        ch.ch_16 = ch.ch_9(ch.ch_10, null)
+        ch.ch_28 = document.getElementById("ch_27")
+        ch.ch_29 = new Map([["current_index", null]])
+        ch.ch_32 = ch.ch_11(ch.ch_28, ch.ch_29, 0)
+        ch.ch_33 = new Map([])
+        ch.ch_34 = [ch.ch_32, ch.ch_33]
+        ch.ch_36 = value => ch.ch_6(ch.ch_28, 'page_id', value)
+        ch.ch_37 = new Map([])
+        ch.ch_38 = [ch.ch_36, ch.ch_37]
+        ch.ch_26 = [ch.ch_34, ch.ch_38]
+        ch.ch_30 = new Map([])
+        ch.ch_35 = new Map([])
+        ch.ch_31 = ch.ch_9(ch.ch_26, null)
+        ch.ch_41 = document.getElementById("ch_40")
+        ch.ch_42 = new Map([["current_index", null]])
+        ch.ch_45 = ch.ch_11(ch.ch_41, ch.ch_42, 0)
+        ch.ch_46 = new Map([])
+        ch.ch_47 = [ch.ch_45, ch.ch_46]
+        ch.ch_49 = value => ch.ch_6(ch.ch_41, 'page_id', value)
+        ch.ch_50 = new Map([])
+        ch.ch_51 = [ch.ch_49, ch.ch_50]
+        ch.ch_39 = [ch.ch_47, ch.ch_51]
+        ch.ch_43 = new Map([])
+        ch.ch_48 = new Map([])
+        ch.ch_44 = ch.ch_9(ch.ch_39, null)
+        ch.ch_54 = document.getElementById("ch_53")
+        ch.ch_55 = new Map([["current_index", null]])
+        ch.ch_58 = ch.ch_11(ch.ch_54, ch.ch_55, 0)
+        ch.ch_59 = new Map([])
+        ch.ch_60 = [ch.ch_58, ch.ch_59]
+        ch.ch_62 = value => ch.ch_6(ch.ch_54, 'page_id', value)
+        ch.ch_63 = new Map([])
+        ch.ch_64 = [ch.ch_62, ch.ch_63]
+        ch.ch_52 = [ch.ch_60, ch.ch_64]
+        ch.ch_56 = new Map([])
+        ch.ch_61 = new Map([])
+        ch.ch_57 = ch.ch_9(ch.ch_52, null)
+        ch.ch_67 = document.getElementById("ch_66")
+        ch.ch_68 = new Map([["current_index", null]])
+        ch.ch_71 = ch.ch_11(ch.ch_67, ch.ch_68, 0)
+        ch.ch_72 = new Map([])
+        ch.ch_73 = [ch.ch_71, ch.ch_72]
+        ch.ch_75 = value => ch.ch_6(ch.ch_67, 'page_id', value)
+        ch.ch_76 = new Map([])
+        ch.ch_77 = [ch.ch_75, ch.ch_76]
+        ch.ch_65 = [ch.ch_73, ch.ch_77]
+        ch.ch_69 = new Map([])
+        ch.ch_74 = new Map([])
+        ch.ch_70 = ch.ch_9(ch.ch_65, null)
+        ch.ch_80 = document.getElementById("ch_79")
+        ch.ch_81 = new Map([["current_index", null]])
+        ch.ch_84 = ch.ch_11(ch.ch_80, ch.ch_81, 0)
+        ch.ch_85 = new Map([])
+        ch.ch_86 = [ch.ch_84, ch.ch_85]
+        ch.ch_88 = value => ch.ch_6(ch.ch_80, 'page_id', value)
+        ch.ch_89 = new Map([])
+        ch.ch_90 = [ch.ch_88, ch.ch_89]
+        ch.ch_78 = [ch.ch_86, ch.ch_90]
+        ch.ch_82 = new Map([])
+        ch.ch_87 = new Map([])
+        ch.ch_83 = ch.ch_9(ch.ch_78, null)
+        ch.ch_93 = document.getElementById("ch_92")
+        ch.ch_94 = new Map([["current_index", null]])
+        ch.ch_97 = ch.ch_11(ch.ch_93, ch.ch_94, 0)
+        ch.ch_98 = new Map([])
+        ch.ch_99 = [ch.ch_97, ch.ch_98]
+        ch.ch_101 = value => ch.ch_6(ch.ch_93, 'page_id', value)
+        ch.ch_102 = new Map([])
+        ch.ch_103 = [ch.ch_101, ch.ch_102]
+        ch.ch_91 = [ch.ch_99, ch.ch_103]
+        ch.ch_95 = new Map([])
+        ch.ch_100 = new Map([])
+        ch.ch_96 = ch.ch_9(ch.ch_91, null)
+        ch.ch_106 = document.getElementById("ch_105")
+        ch.ch_107 = new Map([["current_index", null]])
+        ch.ch_110 = ch.ch_11(ch.ch_106, ch.ch_107, 0)
+        ch.ch_111 = new Map([])
+        ch.ch_112 = [ch.ch_110, ch.ch_111]
+        ch.ch_114 = value => ch.ch_6(ch.ch_106, 'page_id', value)
+        ch.ch_115 = new Map([])
+        ch.ch_116 = [ch.ch_114, ch.ch_115]
+        ch.ch_104 = [ch.ch_112, ch.ch_116]
+        ch.ch_108 = new Map([])
+        ch.ch_113 = new Map([])
+        ch.ch_109 = ch.ch_9(ch.ch_104, null)
+        ch.ch_119 = document.getElementById("ch_118")
+        ch.ch_120 = new Map([["current_index", null]])
+        ch.ch_123 = ch.ch_11(ch.ch_119, ch.ch_120, 0)
+        ch.ch_124 = new Map([])
+        ch.ch_125 = [ch.ch_123, ch.ch_124]
+        ch.ch_127 = value => ch.ch_6(ch.ch_119, 'page_id', value)
+        ch.ch_128 = new Map([])
+        ch.ch_129 = [ch.ch_127, ch.ch_128]
+        ch.ch_117 = [ch.ch_125, ch.ch_129]
+        ch.ch_121 = new Map([])
+        ch.ch_126 = new Map([])
+        ch.ch_122 = ch.ch_9(ch.ch_117, null)
+        ch.ch_132 = document.getElementById("ch_131")
+        ch.ch_133 = new Map([["current_index", null]])
+        ch.ch_136 = ch.ch_11(ch.ch_132, ch.ch_133, 0)
+        ch.ch_137 = new Map([])
+        ch.ch_138 = [ch.ch_136, ch.ch_137]
+        ch.ch_140 = value => ch.ch_6(ch.ch_132, 'page_id', value)
+        ch.ch_141 = new Map([])
+        ch.ch_142 = [ch.ch_140, ch.ch_141]
+        ch.ch_130 = [ch.ch_138, ch.ch_142]
+        ch.ch_134 = new Map([])
+        ch.ch_139 = new Map([])
+        ch.ch_135 = ch.ch_9(ch.ch_130, null)
+        ch.ch_145 = document.getElementById("ch_144")
+        ch.ch_146 = new Map([["current_index", null]])
+        ch.ch_149 = ch.ch_11(ch.ch_145, ch.ch_146, 0)
+        ch.ch_150 = new Map([])
+        ch.ch_151 = [ch.ch_149, ch.ch_150]
+        ch.ch_154 = (navigation, navs, value) => {
+            let index = Number(value)
+            if (Number.isInteger(index)) {  // 3.0、4.0 这种格式也会表现为 True
+                let nav = navs[parseInt(index) - 1]
+                if (nav) {
+                    for (let x of navs) { x.setAttribute('is_current_nav', 'False') }
+                    nav.setAttribute('is_current_nav', 'True')
+                    let nav_rect = nav.getBoundingClientRect()
+                    let navigation_rect = navigation.getBoundingClientRect()
+                    let distance = (nav_rect.left + nav_rect.right) / 2 - (navigation_rect.left + navigation_rect.right) / 2
+                    navigation.scrollLeft += distance
+                }
+            }
+        }
+        ch.ch_153 = document.getElementById("ch_152")
+        ch.ch_155 = Array.from(ch.ch_153.querySelectorAll('.is_nav'))
+        ch.ch_158 = value => ch.ch_154(ch.ch_153, ch.ch_155, value)
+        ch.ch_159 = new Map([])
+        ch.ch_160 = [ch.ch_158, ch.ch_159]
+        ch.ch_143 = [ch.ch_151, ch.ch_160]
+        ch.ch_147 = new Map([])
+        ch.ch_156 = new Map([])
+        ch.ch_148 = ch.ch_9(ch.ch_143, null)
+        ch.ch_17 = (pages_box, current_index, sync_value) => {
+            pages_box.addEventListener('scroll',
+                () => {
+                    if (!pages_box.classList.contains('ch_exec_goto_scrollLeft')) {
+                        let index = Math.round(pages_box.scrollLeft / pages_box.clientWidth) + 1
+                        if (index !== current_index.get('current_index')) {
+                            current_index.set('current_index', index)
+                            sync_value(String(index))
+                        }
+                    }
+                }
+            )
+        }
+        ch.ch_17(ch.ch_13, ch.ch_14, ch.ch_16(ch.ch_15))
+        ch.ch_7 = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+        ch.ch_22 = (sync_value, ele, prop_name, event_name = '') => {
+            new ch.ch_7(
+                (records, _) => { sync_value(ele.getAttribute(prop_name)) }
+            ).observe(ele, { attributes: true, attributeFilter: [prop_name] })
+            if (event_name) { ele.addEventListener(event_name, () => sync_value(ele[prop_name])) }
+        }
+        ch.ch_22(ch.ch_16(ch.ch_21), ch.ch_13, "page_id", null)
+        ch.ch_17(ch.ch_28, ch.ch_29, ch.ch_31(ch.ch_30))
+        ch.ch_22(ch.ch_31(ch.ch_35), ch.ch_28, "page_id", null)
+        ch.ch_17(ch.ch_41, ch.ch_42, ch.ch_44(ch.ch_43))
+        ch.ch_22(ch.ch_44(ch.ch_48), ch.ch_41, "page_id", null)
+        ch.ch_17(ch.ch_54, ch.ch_55, ch.ch_57(ch.ch_56))
+        ch.ch_22(ch.ch_57(ch.ch_61), ch.ch_54, "page_id", null)
+        ch.ch_17(ch.ch_67, ch.ch_68, ch.ch_70(ch.ch_69))
+        ch.ch_22(ch.ch_70(ch.ch_74), ch.ch_67, "page_id", null)
+        ch.ch_17(ch.ch_80, ch.ch_81, ch.ch_83(ch.ch_82))
+        ch.ch_22(ch.ch_83(ch.ch_87), ch.ch_80, "page_id", null)
+        ch.ch_17(ch.ch_93, ch.ch_94, ch.ch_96(ch.ch_95))
+        ch.ch_22(ch.ch_96(ch.ch_100), ch.ch_93, "page_id", null)
+        ch.ch_17(ch.ch_106, ch.ch_107, ch.ch_109(ch.ch_108))
+        ch.ch_22(ch.ch_109(ch.ch_113), ch.ch_106, "page_id", null)
+        ch.ch_17(ch.ch_119, ch.ch_120, ch.ch_122(ch.ch_121))
+        ch.ch_22(ch.ch_122(ch.ch_126), ch.ch_119, "page_id", null)
+        ch.ch_17(ch.ch_132, ch.ch_133, ch.ch_135(ch.ch_134))
+        ch.ch_22(ch.ch_135(ch.ch_139), ch.ch_132, "page_id", null)
+        ch.ch_17(ch.ch_145, ch.ch_146, ch.ch_148(ch.ch_147))
+        ch.ch_157 = (navigation, navs, sync_value) => {
+            navigation.addEventListener('click',
+                () => {
+                    let nav = event.target
+                    if (nav.classList.contains('is_nav')) { sync_value(String(navs.indexOf(nav) + 1)) }
+                }
+            )
+        }
+        ch.ch_157(ch.ch_153, ch.ch_155, ch.ch_148(ch.ch_156))
+        ch.ch_186 = document.getElementById("ch_185")
+        ch.ch_186.addEventListener('click', async () => { ch.ch_67.setAttribute('page_id', String(Math.max(1, Number(ch.ch_67.getAttribute('page_id')) - 1))) })
+        ch.ch_188 = document.getElementById("ch_187")
+        ch.ch_188.addEventListener('click', async () => { ch.ch_67.setAttribute('page_id', String(Math.min(ch.ch_67.childElementCount, Number(ch.ch_67.getAttribute('page_id')) + 1))) })
+        ch.ch_190 = document.getElementById("ch_189")
+        ch.ch_190.addEventListener('click', async () => { ch.ch_80.setAttribute('page_id', String(Math.max(1, Number(ch.ch_80.getAttribute('page_id')) - 1))) })
+        ch.ch_192 = document.getElementById("ch_191")
+        ch.ch_192.addEventListener('click', async () => { ch.ch_80.setAttribute('page_id', String(Math.min(ch.ch_80.childElementCount, Number(ch.ch_80.getAttribute('page_id')) + 1))) })
+        ch.ch_194 = document.getElementById("ch_193")
+        ch.ch_194.addEventListener('click', async () => { ch.ch_106.setAttribute('page_id', String(Math.max(1, Number(ch.ch_106.getAttribute('page_id')) - 1))) })
+        ch.ch_196 = document.getElementById("ch_195")
+        ch.ch_196.addEventListener('click', async () => { ch.ch_106.setAttribute('page_id', String(Math.min(ch.ch_106.childElementCount, Number(ch.ch_106.getAttribute('page_id')) + 1))) })
+        ch.ch_198 = document.getElementById("ch_197")
+        ch.ch_198.addEventListener('click', async () => { ch.ch_119.setAttribute('page_id', String(Math.max(1, Number(ch.ch_119.getAttribute('page_id')) - 1))) })
+        ch.ch_200 = document.getElementById("ch_199")
+        ch.ch_200.addEventListener('click', async () => { ch.ch_119.setAttribute('page_id', String(Math.min(ch.ch_119.childElementCount, Number(ch.ch_119.getAttribute('page_id')) + 1))) })
+        ch.ch_202 = document.getElementById("ch_201")
+        ch.ch_202.addEventListener('click', async () => { ch.ch_132.setAttribute('page_id', String(Math.max(1, Number(ch.ch_132.getAttribute('page_id')) - 1))) })
+        ch.ch_204 = document.getElementById("ch_203")
+        ch.ch_204.addEventListener('click', async () => { ch.ch_132.setAttribute('page_id', String(Math.min(ch.ch_132.childElementCount, Number(ch.ch_132.getAttribute('page_id')) + 1))) })
+
+    </script>
+</body>
+
+</html>
