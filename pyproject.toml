@@ -1,0 +1,16 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+version = "2026.5.17"
+
+name = "skk"
+description = "This project encapsulates commonly used functions in Python development to help you develop applications more efficiently."
+dependencies = ["numpy", "pymysql", "aiomysql", "pymongo", "motor", "tornado", "openai", "asyncpg"]
+
+authors = [{name = "Canbiao Xu", email = "canbiaoxu@outlook.com"}]
+requires-python = ">=3.12"
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: Apache Software License"]
